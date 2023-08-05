@@ -1,0 +1,16 @@
+module Services
+  class PaymentOptions
+    def self.create(debt)
+      puts "hello"
+      puts debt.inspect
+
+      payment_options_1 = Payment_option.new
+      monthly_payment_principal_1 = debt.income * 0.1
+      monthly_payment_interest
+      payment_options_1.monthly_payment_principal = debt.income * 0.1
+      payment_options_1 = Payment_option.new()
+      debugger
+
+    end
+  end
+end
