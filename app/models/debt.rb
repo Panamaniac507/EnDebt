@@ -7,4 +7,5 @@ class Debt < ApplicationRecord
   validates :remaining_principal, presence: true
   validates :expense, presence: true
   validates :income, presence: true
+  validates :debt_due_date, presence: true
 end

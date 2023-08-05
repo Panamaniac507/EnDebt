@@ -1,0 +1,10 @@
+<%= simple_form_for [@debt] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :interest_rate %>
+    <%= f.input :remaining_principal %>
+    <%= f.input :original_principal %>
+    <%= f.input :income %>
+    <%= f.input :expense %>
+    <%= f.input :debt_due_date %>
+    <%= f.submit class: 'btn btn-flat' %>
+<% end %>

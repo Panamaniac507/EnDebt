@@ -1,0 +1,8 @@
+<div>
+  <% @debts.each do |debt| %>
+    <%= debt.id %>
+    <% debt.payment_options.each do |po| %>
+      <%= po.id %>
+    <% end %>
+  <% end %>
+</div>
