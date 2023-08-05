@@ -1,5 +1,4 @@
 class PaymentOptionsController < ApplicationController
-
   def show
     @debt = Debt.find(params[:debt_id])
   end
