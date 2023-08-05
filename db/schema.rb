@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_05_034219) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_125443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "debts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.float "interest_rate"
+    t.integer "remaining_principal"
+    t.integer "original_principal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "income"
+    t.integer "expense"
+    t.index ["user_id"], name: "index_debts_on_user_id"
+  end
+
+  create_table "payment_options", force: :cascade do |t|
+    t.bigint "debt_id", null: false
+    t.integer "total_monthly_payment"
+    t.date "final_payment_date"
+    t.boolean "active_plan"
+    t.integer "monthly_payment_principal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_payment_options_on_debt_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "payment_option_id", null: false
+    t.integer "next_payment_amount"
+    t.date "next_paying_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_option_id"], name: "index_payments_on_payment_option_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_034219) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "first_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "debts", "users"
+  add_foreign_key "payment_options", "debts"
+  add_foreign_key "payments", "payment_options"
 end
