@@ -9,7 +9,7 @@ class DebtsController < ApplicationController
     @debt.remaining_principal = @debt.original_principal
     @debt.user = current_user
     if @debt.save
-      redirect_to payment_options_dashboard_path
+      redirect_to debt_path(@debt)
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +24,6 @@ class DebtsController < ApplicationController
   def debt_params
     params.require(:debt).permit(:name, :interest_rate, :remaining_principal,
        :original_principal, :income,
-        :expense, :debt_due_date)
+        :expense, :debt_due_date, :user_id)
   end
 end
