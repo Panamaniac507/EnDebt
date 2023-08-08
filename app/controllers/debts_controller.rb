@@ -2,12 +2,14 @@ class DebtsController < ApplicationController
 
   def new
     @debt = Debt.new
+    authorize @debt
   end
 
   def create
     @debt = Debt.new(debt_params)
     @debt.remaining_principal = @debt.original_principal
     @debt.user = current_user
+    authorize @debt
     if @debt.save
       redirect_to debt_path(@debt)
     else

@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+<br>
+<h1>EnDebt</h1>
+<p>...Coming Soon!!</p>
+
+  <div class="main">
+    <% if current_user%>
+      <%= link_to "Sign Out", destroy_user_session_path%>
+    <% else current_user%>
+      <%= link_to "Sign In", new_user_session_path%>
+    <% end %>
+  </div>
+</div>
