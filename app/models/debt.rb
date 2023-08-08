@@ -8,4 +8,11 @@ class Debt < ApplicationRecord
   validates :expense, presence: true
   validates :income, presence: true
   validates :debt_due_date, presence: true
+
+  after_create :create_payment_options
+
+  private
+  def create_payment_options
+    Services::PaymentOptions.create(self)
+  end
 end
