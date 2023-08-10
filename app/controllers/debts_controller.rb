@@ -1,5 +1,4 @@
 class DebtsController < ApplicationController
-
   def new
     @debt = Debt.new
     authorize @debt
@@ -7,7 +6,7 @@ class DebtsController < ApplicationController
 
   def create
     @debt = Debt.new(debt_params)
-    @debt.remaining_principal = @debt.original_principal
+    @debt.remaining_principal = debt_params[:original_principal]
     @debt.user = current_user
     authorize @debt
     if @debt.save
@@ -19,6 +18,7 @@ class DebtsController < ApplicationController
 
   def show
     @debt = Debt.find(params[:id])
+    authorize @debt
   end
 
   private

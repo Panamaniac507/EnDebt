@@ -6,6 +6,10 @@ class DebtPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    record.user == user
+  end
+
   def new?
     create?
   end
