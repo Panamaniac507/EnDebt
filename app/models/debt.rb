@@ -90,9 +90,10 @@ class Debt < ApplicationRecord
         remaining_principal_1 = self.original_principal - monthly_payment_principal_1
         monthly_interest_amount_1 = remaining_principal_1 * (self.interest_rate / 100) * 30 / 365
         array_interest_amount_1 << monthly_interest_amount_1
-        until remaining_principal_1 >= monthly_payment_principal_1
+        while remaining_principal_1 >= monthly_payment_principal_1
           monthly_interest_amount_1 = remaining_principal_1 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_1 << monthly_interest_amount_1
+          remaining_principal_1 = remaining_principal_1 - monthly_payment_principal_1
         end
         if remaining_principal_1 > 0
           array_interest_amount_1 << remaining_principal_1
@@ -104,9 +105,10 @@ class Debt < ApplicationRecord
         remaining_principal_2 = self.original_principal - monthly_payment_principal_2
         monthly_interest_amount_2 = remaining_principal_2 * (self.interest_rate / 100) * 30 / 365
         array_interest_amount_2 << monthly_interest_amount_2
-        until remaining_principal_2 >= monthly_payment_principal_2
+        while remaining_principal_2 >= monthly_payment_principal_2
           monthly_interest_amount_2 = remaining_principal_2 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_2 << monthly_interest_amount_2
+          remaining_principal_2 = remaining_principal_2 - monthly_payment_principal_2
         end
         if remaining_principal_2 > 0
           array_interest_amount_2 << remaining_principal_2
@@ -118,9 +120,10 @@ class Debt < ApplicationRecord
         remaining_principal_3 = self.original_principal - monthly_payment_principal_3
         monthly_interest_amount_3 = remaining_principal_3 * (self.interest_rate / 100) * 30 / 365
         array_interest_amount_3 << monthly_interest_amount_3
-        until remaining_principal_3 >= monthly_payment_principal_3
+        while remaining_principal_3 >= monthly_payment_principal_3
           monthly_interest_amount_3 = remaining_principal_3 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_3 << monthly_interest_amount_3
+          remaining_principal_3 = remaining_principal_3 - monthly_payment_principal_3
         end
         if remaining_principal_3 > 0
           array_interest_amount_3 << remaining_principal_3
@@ -177,6 +180,7 @@ class Debt < ApplicationRecord
           # Payment.create!(next_payment_amount: data_next_payment_amount_1, next_paying_date: data_next_paying_date_1, status: status, payment_option: payment_option_2)
           # Payment.create!(next_payment_amount: data_next_payment_amount_1, next_paying_date: data_next_paying_date_1, status: status, payment_option: payment_option_3)
         end
+        raise
 
 
 
