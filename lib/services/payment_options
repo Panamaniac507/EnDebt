@@ -1,16 +1,131 @@
 module Services
+  require "date"
+
   class PaymentOptions
     def self.create(debt)
       puts "hello"
-      puts debt.inspect
+      # puts debt.inspect
+      # debugger
 
-      payment_options_1 = Payment_option.new
-      monthly_payment_principal_1 = debt.income * 0.1
-      monthly_payment_interest
-      payment_options_1.monthly_payment_principal = debt.income * 0.1
-      payment_options_1 = Payment_option.new()
-      debugger
+      # get monthly payment amount for principal
+      if debt.income < debt.expense
+        monthly_payment_principal_1 = 50
+      else
+        monthly_payment_principal_1 = 0.1 * debt.income
+        # monthly_payment_principal_2 = 0.2 * debt.income
+        # monthly_payment_principal_3 = 0.3 * debt.income
+      end
+
+      # get "final_payment_date"
+      num_month_payoff_1 = debt.original_principal / monthly_payment_principal_1
+      if num_month_payoff_1%2 != 0
+        num_month_payoff_1 = num_month_payoff_1.float + 1
+      end
+
+        # num_month_payoff_2 = debt.original_principal / monthly_payment_principal_2
+        # if num_month_payoff_2%2 != 0
+        #   num_month_payoff_2 = num_month_payoff_2.float + 1
+        # end
+
+        # num_month_payoff_3 = debt.original_principal / monthly_payment_principal_3
+        # if num_month_payoff_3%2 != 0
+        #   num_month_payoff_3 = num_month_payoff_3.float + 1
+        # end
+
+      original_date = Date.today
+      original_date.day = debt.debt_due_date.day
+      final_date_1 = original_date >> num_month_payoff_1
+        # final_month_2 = original_date >> num_month_payoff_2
+        # final_month_3 = original_date >> num_month_payoff_3
+
+        # final_year_1 = (final_month_1/12).float
+        # final_month_1 = (final_month_1%12)
+      final_payment_date_1 = Date.new(final_date_1.year, final_date_1.month, debt.debt_due_date.day)
+
+        # final_year_2 = (final_month_2/12).float
+        # final_month_2 = (final_month_2%12)
+        # final_payment_date_2 = Date.new(final_year_2, final_month_2, debt.debt_due_date.day)
+
+        # final_year_3 = (final_month_3/12).float
+        # final_month_3 = (final_month_3%12)
+        # final_payment_date_3 = Date.new(final_year_3, final_month_3, debt.debt_due_date.day)
+
+
+      # get next payment date
+      array_next_paying_date_1 = []
+      today = Date.today
+      today.day = debt.debt_due_date.day
+      next_paying_date_1 = today >> 1
+      num_month_payoff_1.times do |num|
+        array_next_paying_date_1 << next_paying_date_1
+        next_paying_date_1 = next_paying_date_1 >> 1
+      end
+
+      # get monthly interest amount
+      array_interest_amount_1 = []
+      monthly_interest_amount_1 = debt.original_principal * (debt.interest_rate / 100) * 30 / 365
+      array_interest_amount_1 << monthly_interest_amount_1
+      remaining_principal = debt.original_principal - monthly_payment_principal_1
+      monthly_interest_amount_1 = remaining_principal * (debt.interest_rate / 100) * 30 / 365
+      array_interest_amount_1 << monthly_interest_amount_1
+      until remaining_principal >= monthly_payment_principal_1
+        monthly_interest_amount_1 = remaining_principal * (debt.interest_rate / 100) * 30 / 365
+        array_interest_amount_1 << monthly_interest_amount_1
+      end
+
+      array_total_monthly_payment = []
+      array_interest_amount_1.each do |amount|
+        total_monthly_payment = amount + monthly_payment_principal_1
+        array_total_monthly_payment << total_monthly_payment
+      end
+
+      # get total payment to payoff in total
+      total_monthly_payment_1 = array_total_monthly_payment.sum
+
+      # get total payment of interest
+      total_monthly_interest_payment_1 = array_interest_amount_1.sum
+
+
+      PaymentOption.create!(total_monthly_payment: total_monthly_payment_1, final_payment_date: final_payment_date_1, active_plan: false, monthly_payment_principal: monthly_payment_principal_1, debt: debt)
+
+
 
     end
   end
 end
+
+
+# create_table "payment_options", force: :cascade do |t|
+#   t.bigint "debt_id", null: false
+#   t.integer "total_monthly_payment"
+#   t.date "final_payment_date"
+#   t.boolean "active_plan"
+#   t.integer "monthly_payment_principal"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.index ["debt_id"], name: "index_payment_options_on_debt_id"
+# end
+
+# create_table "debts", force: :cascade do |t|
+#   t.string "name"
+#   t.bigint "user_id", null: false
+#   t.float "interest_rate"
+#   t.integer "remaining_principal"
+#   t.integer "original_principal"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.integer "income"
+#   t.integer "expense"
+#   t.date "debt_due_date"
+#   t.index ["user_id"], name: "index_debts_on_user_id"
+# end
+
+# create_table "payments", force: :cascade do |t|
+#   t.bigint "payment_option_id", null: false
+#   t.integer "next_payment_amount"
+#   t.date "next_paying_date"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.integer "status"
+#   t.index ["payment_option_id"], name: "index_payments_on_payment_option_id"
+# end
