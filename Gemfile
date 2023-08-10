@@ -29,6 +29,11 @@ gem "jbuilder"
 
 gem "pundit"
 
+# gem to create graphics
+gem "chartkick"
+# gem to group by day, week, hour of the day...goes hand with hand with chartkick
+gem "groupdate"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
