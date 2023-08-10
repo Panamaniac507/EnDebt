@@ -180,7 +180,6 @@ class Debt < ApplicationRecord
           # Payment.create!(next_payment_amount: data_next_payment_amount_1, next_paying_date: data_next_paying_date_1, status: status, payment_option: payment_option_2)
           # Payment.create!(next_payment_amount: data_next_payment_amount_1, next_paying_date: data_next_paying_date_1, status: status, payment_option: payment_option_3)
         end
-        raise
 
 
 
