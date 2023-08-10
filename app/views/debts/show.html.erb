@@ -1,3 +1,5 @@
 <div class="container">
 <%= @debt.name  %>
+<%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
+<%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
 </div>
