@@ -19,6 +19,8 @@ class DebtsController < ApplicationController
   def show
     @debt = Debt.find(params[:id])
     authorize @debt
+    # get payment options create
+    @payment_options = @debt.payment_options
   end
 
   private

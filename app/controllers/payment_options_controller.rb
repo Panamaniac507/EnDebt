@@ -22,8 +22,8 @@ class PaymentOptionsController < ApplicationController
 
   def dashboard
     # Logic to retrieve payment options for the current user
-    # in the future, we will have several debts therefore line 27.
-    @debts = current_user.debts
+    # in the future, we will have several debts therefore line 26.
+    # @debts = current_user.debts
   end
 
   def show
