@@ -228,21 +228,5 @@ class Debt < ApplicationRecord
             end
             Payment.create!(next_payment_amount: data_next_payment_amount_3, next_paying_date: data_next_paying_date_3, status: status, payment_option: payment_option_3)
           end
-
-
-
-        # create_table "payments", force: :cascade do |t|
-        #   t.bigint "payment_option_id", null: false
-        #   t.integer "next_payment_amount"
-        #   t.date "next_paying_date"
-        #   t.datetime "created_at", null: false
-        #   t.datetime "updated_at", null: false
-        #   t.integer "status"
-        #   t.index ["payment_option_id"], name: "index_payments_on_payment_option_id"
-        # end
-
   end
 end
-    # Services::PaymentOptions.create(self)
-#   end
-# end

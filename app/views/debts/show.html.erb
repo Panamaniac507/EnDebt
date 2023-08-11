@@ -1,143 +1,161 @@
-<div class="container">
+<div class="container mb-4">
 <%= @debt.name  %>
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
 <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
 </div>
 
-<div class="container breakdown">
+<div class="container breakdown shadow p-3 mb-5 bg-body rounded">
   <h2>Debt Information</h2>
   <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
   <%# @payment_options[0].payment.count.times do |num|
     @payment_options[0].payment[num].each do || %>
   <h3>Details</h3>
 
-  <div class="info">
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Remaining balance of principal</h4>
     <%= @debt.remaining_principal %>
   </div>
 
-  <div class="info">
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Total expected amount of payment at this pace</h4>
     <%= @payment_options[0].total_monthly_payment %>
   </div>
 
-  <div class="info">
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>How much you pay for interest</h4>
     <%= @payment_options[0].total_interest_amount %>
   </div>
 
-  <div class="info">
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Expected date you finish payment</h4>
     <%= @payment_options[0].final_payment_date %>
   </div>
 
 </div>
 
-<div class="container plan">
-  <h2>Choose your payment plan</h2>
-  <%# graphic should be here %>
-  <div class="each_plan">
-    <%# should be accordion %>
-    <p>Plan1</p>
-    <h3>Description</h3>
-    <div class="info">
-      <h4>Good point</h4>
-      <p>You can pay minumun for month, so you can use your money for other things.</p>
-    </div>
-    <div class="info">
-      <h4>Bad point</h4>
-      <p>It takes longer and payment amount is likely to bigger than other plan.</p>
-    </div>
-    <div class="info">
-      <h4>Monthly payment amount for principal</h4>
-      <%= @payment_options[0].monthly_payment_principal %>
-    </div>
-    <div class="info">
-        <h4>Total expected amount of payment</h4>
-        <%= @payment_options[0].total_monthly_payment %>
-    </div>
-    <div class="info">
-        <h4>How much you pay for interest</h4>
-        <%= @payment_options[0].total_interest_amount %>
-    </div>
-    <div class="info">
-      <h4>Expected date you finish payment</h4>
-      <%= @payment_options[0].final_payment_date %>
-    </div>
+<div class="container mb-4">
+<h2>Graph area</h2>
+</div>
 
-    <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-    <%# <%= link_to "Select", payment_options_dashboard_path(@payment_options[0]) %>
+<div class="container plan shadow p-3 mb-5 bg-body rounded mb-4">
+<h2>Choose your plan!</h2>
+<div class="accordion" id="accordionExample">
 
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Plan 1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <h3>Description</h3>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Good point</h4>
+          <p>You can pay minumun for month, so you can use your money for other things.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Bad point</h4>
+          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Monthly payment amount for principal</h4>
+          <%= @payment_options[0].monthly_payment_principal %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Total expected amount of payment</h4>
+          <%= @payment_options[0].total_monthly_payment %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>How much you pay for interest</h4>
+          <%= @payment_options[0].total_interest_amount %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Expected date you finish payment</h4>
+          <%= @payment_options[0].final_payment_date %>
+        </div>
+       <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
+        <%= link_to "Select", payment_options_path(@payment_options[0]), method: :put, class: "btn btn-primary mt-3" %>
+      </div>
+    </div>
   </div>
 
-
-  <div class="each_plan">
-    <%# should be accordion %>
-    <p>Plan2</p>
-    <h3>Description</h3>
-    <div class="info">
-      <h4>Good point</h4>
-      <p>You can pay minumun for month, so you can use your money for other things.</p>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Plan 2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <h3>Description</h3>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Good point</h4>
+          <p>You can pay minumun for month, so you can use your money for other things.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Bad point</h4>
+          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Monthly payment amount for principal</h4>
+          <%= @payment_options[1].monthly_payment_principal %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Total expected amount of payment</h4>
+          <%= @payment_options[1].total_monthly_payment %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>How much you pay for interest</h4>
+          <%= @payment_options[1].total_interest_amount %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Expected date you finish payment</h4>
+          <%= @payment_options[1].final_payment_date %>
+        </div>
+        <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
+        <%= link_to "Select", payment_options_path(@payment_options[1]), method: :put, class: "btn btn-primary mt-3" %>
+      </div>
     </div>
-    <div class="info">
-      <h4>Bad point</h4>
-      <p>It takes longer and payment amount is likely to bigger than other plan.</p>
-    </div>
-    <div class="info">
-      <h4>Monthly payment amount for principal</h4>
-      <%= @payment_options[1].monthly_payment_principal %>
-    </div>
-    <div class="info">
-        <h4>Total expected amount of payment</h4>
-        <%= @payment_options[1].total_monthly_payment %>
-    </div>
-    <div class="info">
-        <h4>How much you pay for interest</h4>
-        <%= @payment_options[1].total_interest_amount %>
-    </div>
-    <div class="info">
-      <h4>Expected date you finish payment</h4>
-      <%= @payment_options[1].final_payment_date %>
-    </div>
-
-    <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-    <%# <%= link_to "Select", payment_options_dashboard_path(@payment_options[0]) %>
-
   </div>
 
-    <div class="each_plan">
-    <%# should be accordion %>
-    <p>Plan2</p>
-    <h3>Description</h3>
-    <div class="info">
-      <h4>Good point</h4>
-      <p>You can pay minumun for month, so you can use your money for other things.</p>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Plan 3     <strong>Recommend</strong>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <h3>Description</h3>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Good point</h4>
+          <p>You can pay minumun for month, so you can use your money for other things.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Bad point</h4>
+          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Monthly payment amount for principal</h4>
+          <%= @payment_options[2].monthly_payment_principal %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+            <h4>Total expected amount of payment</h4>
+            <%= @payment_options[2].total_monthly_payment %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+            <h4>How much you pay for interest</h4>
+            <%= @payment_options[2].total_interest_amount %>
+        </div>
+        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+          <h4>Expected date you finish payment</h4>
+          <%= @payment_options[2].final_payment_date %>
+        </div>
+        <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
+        <%= link_to "Select", payment_options_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
+      </div>
     </div>
-    <div class="info">
-      <h4>Bad point</h4>
-      <p>It takes longer and payment amount is likely to bigger than other plan.</p>
-    </div>
-    <div class="info">
-      <h4>Monthly payment amount for principal</h4>
-      <%= @payment_options[2].monthly_payment_principal %>
-    </div>
-    <div class="info">
-        <h4>Total expected amount of payment</h4>
-        <%= @payment_options[2].total_monthly_payment %>
-    </div>
-    <div class="info">
-        <h4>How much you pay for interest</h4>
-        <%= @payment_options[2].total_interest_amount %>
-    </div>
-    <div class="info">
-      <h4>Expected date you finish payment</h4>
-      <%= @payment_options[2].final_payment_date %>
-    </div>
-
-    <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-    <%# <%= link_to "Select", payment_options_dashboard_path(@payment_options[0]) %>
-
   </div>
-
-
+</div>
 </div>
