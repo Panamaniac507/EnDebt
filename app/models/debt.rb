@@ -183,9 +183,9 @@ class Debt < ApplicationRecord
 
 
         # create PaymentOption object
-        payment_option_1 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_1, final_payment_date: final_payment_date_1, active_plan: false, monthly_payment_principal: monthly_payment_principal_1, debt: self)
-        payment_option_2 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_2, final_payment_date: final_payment_date_2, active_plan: false, monthly_payment_principal: monthly_payment_principal_2, debt: self)
-        payment_option_3 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_3, final_payment_date: final_payment_date_3, active_plan: false, monthly_payment_principal: monthly_payment_principal_3, debt: self)
+        payment_option_1 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_1, total_interest_amount: total_monthly_interest_payment_1, final_payment_date: final_payment_date_1, active_plan: false, monthly_payment_principal: monthly_payment_principal_1, debt: self)
+        payment_option_2 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_2, total_interest_amount: total_monthly_interest_payment_2, final_payment_date: final_payment_date_2, active_plan: false, monthly_payment_principal: monthly_payment_principal_2, debt: self)
+        payment_option_3 = PaymentOption.create!(total_monthly_payment: total_monthly_payment_3, total_interest_amount: total_monthly_interest_payment_3, final_payment_date: final_payment_date_3, active_plan: false, monthly_payment_principal: monthly_payment_principal_3, debt: self)
 
 
         # Create payment objects
