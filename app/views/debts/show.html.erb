@@ -1,15 +1,17 @@
 <div class="container mb-4">
-<%= @debt.name  %>
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
 <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
 </div>
+
+<%# try to add bar chart %>
+<%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
 
 <div class="container breakdown shadow p-3 mb-5 bg-body rounded">
   <h2>Debt Information</h2>
   <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
   <%# @payment_options[0].payment.count.times do |num|
     @payment_options[0].payment[num].each do || %>
-  <h3>Details</h3>
+
 
   <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Remaining balance of principal</h4>
@@ -89,11 +91,11 @@
       <div class="accordion-body">
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Good point</h4>
-          <p>You can pay minumun for month, so you can use your money for other things.</p>
+          <p>You can pay moderate for month, so you can use your money for other things.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Bad point</h4>
-          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
+          <p>It takes a bit longer and payment amount is likely to bigger than plan 1.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Monthly payment amount for principal</h4>
@@ -127,11 +129,11 @@
       <div class="accordion-body">
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Good point</h4>
-          <p>You can pay minumun for month, so you can use your money for other things.</p>
+          <p>You can pay off faster and you pay less than other plan, so you can save your money for other things.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Bad point</h4>
-          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
+          <p>Monthly payment amount is bigger than other plan. so you need to push yourself</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
           <h4>Monthly payment amount for principal</h4>
