@@ -80,8 +80,7 @@
           <h4>Expected date you finish payment</h4>
           <%= @payment_options[0].final_payment_date %>
         </div>
-       <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-        <%= link_to "Select", payment_options_path(@payment_options[0]), method: :put, class: "btn btn-primary mt-3" %>
+        <%= link_to "Select", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-primary mt-3" %>
       </div>
     </div>
   </div>
@@ -118,8 +117,7 @@
           <h4>Expected date you finish payment</h4>
           <%= @payment_options[1].final_payment_date %>
         </div>
-        <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-        <%= link_to "Select", payment_options_path(@payment_options[1]), method: :put, class: "btn btn-primary mt-3" %>
+        <%= link_to "Select", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-primary mt-3" %>
       </div>
     </div>
   </div>
@@ -156,8 +154,7 @@
           <h4>Expected date you finish payment</h4>
           <%= @payment_options[2].final_payment_date %>
         </div>
-        <%# need to define if user should go to dashbord page or stay at same page and only content is changed%>
-        <%= link_to "Select", payment_options_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
+        <%= link_to "Select", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
       </div>
     </div>
   </div>

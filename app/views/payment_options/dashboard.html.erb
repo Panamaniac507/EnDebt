@@ -7,4 +7,7 @@
   <%# <% end %>
 <%# </div> %>
 <h1>test</h1>
-<%= @selected_option %>
+<% @selected_payment_options.each do |option| %>
+  <%= option.id %>
+  <%= option.monthly_payment_principal %>
+<% end %>
