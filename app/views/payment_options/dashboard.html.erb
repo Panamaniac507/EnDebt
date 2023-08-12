@@ -6,8 +6,58 @@
     <%# <% end %>
   <%# <% end %>
 <%# </div> %>
-<h1>test</h1>
+
+<div class="ontainer">
+<div class="container breakdown shadow p-3 mb-5 bg-body rounded">
+  <h2>Debt Information based on your plan</h2>
+  <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
+  <%# @payment_options[0].payment.count.times do |num|
+    @payment_options[0].payment[num].each do || %>
+
 <% @selected_payment_options.each do |option| %>
-  <%= option.id %>
-  <%= option.monthly_payment_principal %>
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+    <h4>Remaining balance of principal</h4>
+    <%= option.debt.remaining_principal %>
+  </div>
+
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+    <h4>Total expected amount of payment at this pace</h4>
+    <%= option.total_monthly_payment %>
+  </div>
+
+    <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+    <h4>Monthly payment amount for principal</h4>
+    <%= option.monthly_payment_principal %>
+  </div>
+
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+    <h4>How much you pay for interest</h4>
+    <%= option.total_interest_amount %>
+  </div>
+
+  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+    <h4>Expected date you finish payment</h4>
+    <%= option.final_payment_date %>
+  </div>
 <% end %>
+
+</div>
+
+<% @selected_payment_options.each do |option| %>
+  <div class="container schedule">
+    <h3>Your Next Payment Due Date</h3>
+    <% option.payments.each do |payment| %>
+      <% if payment.status === 1 %>
+        <strong><%= payment.next_paying_date %></strong>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="confirm">
+    <h3>Did you pay this month?</h3>
+    <%= link_to "Done", payment_options_dashboard_path, class: "btn btn-primary mt-3"%>
+  </div>
+
+
+</div>
