@@ -1,6 +1,12 @@
 <div class="container mb-4">
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
-<%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
+<%# <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
+<div class="original_payment">
+<%= column_chart @original_payments %>
+</div>
+
+
+
 </div>
 
 <%# try to add bar chart %>
@@ -42,6 +48,16 @@
 
 <div class="container mb-4">
 <h2>Graph area</h2>
+
+
+<div class="payment_option">
+
+
+</div>
+
+
+
+
 </div>
 
 <div class="container plan shadow p-3 mb-5 bg-body rounded mb-4">
@@ -57,11 +73,11 @@
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Good point</h4>
+          <h4>Merit</h4>
           <p>You can pay minumun for month, so you can use your money for other things.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Bad point</h4>
+          <h4>Demerit</h4>
           <p>It takes longer and payment amount is likely to bigger than other plan.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
@@ -95,11 +111,11 @@
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Good point</h4>
+          <h4>Merit</h4>
           <p>You can pay moderate for month, so you can use your money for other things.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Bad point</h4>
+          <h4>Demerit</h4>
           <p>It takes a bit longer and payment amount is likely to bigger than plan 1.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
@@ -127,17 +143,17 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Plan 3     <strong>Recommend</strong>
+        Plan 3 - <strong>Advised Option</strong>
       </button>
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Good point</h4>
+          <h4>Merit</h4>
           <p>You can pay off faster and you pay less than other plan, so you can save your money for other things.</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Bad point</h4>
+          <h4>Demerit</h4>
           <p>Monthly payment amount is bigger than other plan. so you need to push yourself</p>
         </div>
         <div class="info shadow-sm p-3 mb-1 bg-body rounded">

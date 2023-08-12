@@ -23,12 +23,14 @@ class DebtsController < ApplicationController
     @payment_options = @debt.payment_options
     @payment_option = @debt.payment_options.where(active_plan: true).first
     @original_payments = {}
+    @original_interest = {}
     i = 0
     # line 30 should be the actual number of payments
     # with the original number of monthly payments
     # 12 below is just for testing purposes.
     12.times do
-      @original_payments[Date.today + i.months] = @debt.monthly_principal_ammount
+      @original_payments[Date.today + i.months] = @debt.monthly_principal_amount
+      @original_interests[Date.today + i.months] = @debt.interest_rate
       i += 1
     end
     # {@debt.monthly_principal_ammount}
