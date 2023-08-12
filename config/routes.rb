@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :debts, only: [:new, :create, :show]
   get 'payment_options/dashboard', to: 'payment_options#dashboard', as: :payment_options_dashboard
   resources :payment_options, only: [:new, :create, :update, :show, :delete]
+
+  get 'payment_options/:id/choose', to: 'payment_options#choose', as: :payment_options_choose
 end

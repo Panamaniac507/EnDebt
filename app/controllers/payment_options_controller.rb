@@ -8,8 +8,10 @@ class PaymentOptionsController < ApplicationController
     @current_user = current_user
   end
 
-  def update
-    @payment_option_selected = Payment_option.find(params[:id])
+  def choose
+    # add policy pundit later
+    skip_authorization
+    @payment_option_selected = PaymentOption.find(params[:id])
     @payment_option_selected.update(active_plan: true)
     redirect_to payment_options_dashboard_path
   end
@@ -29,17 +31,19 @@ class PaymentOptionsController < ApplicationController
   def dashboard
     # Logic to retrieve payment options for the current user
     # in the future, we will have several debts therefore line 26.
+    # add policy pundit later
     skip_authorization
     @debts = current_user.debts
     @debt = @debts[0]
-    @payment_options = @debt.payment_options
-    @payment_options.each do |option|
-      if option.active_plan == true
-        @selected_option = option
-      else
-        # render payment_options page
-      end
-    end
+    @payment_options = current_user.payment_options
+    @selected_payment_options = @payment_options.where(active_plan: true)
+    # @payment_options.each do |option|
+    #   if option.active_plan == true
+    #     @selected_option = option
+    #   else
+    #     # render payment_options page
+    #   end
+    # end
   end
 
 
