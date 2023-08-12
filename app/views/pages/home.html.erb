@@ -1,16 +1,8 @@
 <div class="container">
 <br>
-<h1>EnDebt</h1>
-<p>...Coming Soon!!</p>
 
 <%= image_tag 'endebt_logo.svg' %>
 
 
-  <div>
-    <% if current_user%>
-      <%= link_to "Sign Out", destroy_user_session_path, class:"btn btn-primary"%>
-    <% else current_user%>
-      <%= link_to "Sign In", new_user_session_path, class:"btn btn-primary"%>
-    <% end %>
-  </div>
+
 </div>

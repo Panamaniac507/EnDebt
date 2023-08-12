@@ -4,8 +4,8 @@
     <%= f.input :monthly_principal_amount %>
     <%= f.input :remaining_principal %>
     <%= f.input :original_principal %>
-    <%= f.input :income %>
-    <%= f.input :expense %>
-    <%= f.input :debt_due_date %>
+    <%= f.input :income, label: "Monthly Income"%>
+    <%= f.input :expense, label: "Monthly Expense" %>
+    <%= f.input :debt_due_date, hint: "Add due date for next payment" %>
     <%= f.submit class: 'btn btn-flat' %>
 <% end %>
