@@ -28,6 +28,6 @@ class DebtsController < ApplicationController
   def debt_params
     params.require(:debt).permit(:name, :interest_rate, :remaining_principal,
        :original_principal, :income,
-        :expense, :debt_due_date, :user_id)
+        :expense, :debt_due_date, :user_id, :monthly_principal_amount)
   end
 end
