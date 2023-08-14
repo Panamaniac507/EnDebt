@@ -43,6 +43,8 @@ class DebtsController < ApplicationController
       @monthly_interests[Date.today + j.months] = monthly_interest_amount
       j += 1
     end
+      # to call chatgpt, should NOT run it if it is required as it costs
+      # @response = OpenaiService.new('what is debt?').call
   end
 
   private
