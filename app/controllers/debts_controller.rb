@@ -44,29 +44,65 @@ class DebtsController < ApplicationController
       j += 1
     end
 
+    # # stacked column chart for total---
+    @debt_p_total = [@debt.original_principal]
+    @debt_i_total = [@payment_options[3].total_interest_amount]
+
+    @data_total = [
+      {
+        name: "Principal Amount",
+        data: [["",@debt_p_total]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["",@debt_i_total]]
+      }
+    ]
+
     # stacked column chart---
     @data_monthly_principal = []
+    @data_monthly_principal_short = []
     @payment_options[3].payments.each do |payment|
       @data_monthly_principal << [payment.next_paying_date, @debt.monthly_principal_amount]
     end
+    num = (@data_monthly_principal.count / 5)
+    count = 0
+    5.times do |n|
+      @data_monthly_principal_short << @data_monthly_principal[count]
+      count += num
+    end
 
     @data_monthly_interest = []
+    @data_monthly_interest_short = []
     @payment_options[3].payments.each do |payment|
       @data_monthly_interest << [payment.next_paying_date, (payment.next_payment_amount - @debt.monthly_principal_amount)]
+    end
+    num = (@data_monthly_interest.count / 5)
+    count = 0
+    5.times do |n|
+      @data_monthly_interest_short << @data_monthly_interest[count]
+      count += num
     end
 
     @data_all = [
       {
-        name: "Monthly principal",
-        data: @data_monthly_principal
+        name: "Monthly payment amount for principal",
+        data: @data_monthly_principal_short
       },
       {
-        name: "Monthly interest",
-        data: @data_monthly_interest
+        name: "Monthly payment amount for interest",
+        data: @data_monthly_interest_short
       }
     ]
+
+    # pie chart for progress
+    @progress_data =
+      {
+        "Payment Done": 20, "Payment Not Done":60
+      }
+
     #to call chatgpt, should NOT run it if it is required as it costs
-    #@response = OpenaiService.new('what is debt?').call
+    # @response = OpenaiService.new('what is debt?').call
 
   end
     # stacked column chart---end
