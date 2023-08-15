@@ -1,23 +1,25 @@
 <div class="container mb-4">
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
 <%# <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
-<div class="original_payment">
-<%= column_chart @original_payments, stacked: true %>
-</div>
+<%# <div class="original_payment"> %>
+<% column_chart @original_payments, stacked: true %>
+<%# </div> %>
 
-<div class="original_interest">
+<%# <div class="original_interest"> %>
 
-<%= column_chart @monthly_interests %>
+<% column_chart @monthly_interests %>
 
-</div>
+<%# </div> %>
 
 </div>
 
 <%# try to add bar chart %>
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
+<div class="data_all">
+<%= column_chart @data_all, width: "1500px", height: "400px", stacked:true%>
+</div>
 
-<%= column_chart @data_all, stacked:true%>
-
+<br>
 
 <div class="container breakdown shadow p-3 mb-5 bg-body rounded">
   <h2>Debt Information</h2>
