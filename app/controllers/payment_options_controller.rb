@@ -1,10 +1,12 @@
 class PaymentOptionsController < ApplicationController
   def show
     @debt = Debt.find(params[:debt_id])
+    authorize @debt
   end
 
   def new
     @payment_option = Payment_option.new
+    authorize @payment_option
     @current_user = current_user
   end
 
@@ -21,6 +23,7 @@ class PaymentOptionsController < ApplicationController
     @payment_option = Payment_option.new(payment_option_params)
     @payment_option.user = current_user
     @payment_option.debt = @debt
+    authorize @payment_option
     if @payment_option.save
       redirect_to payment_options_dashboard_path
     else
@@ -53,6 +56,7 @@ class PaymentOptionsController < ApplicationController
 
   def delete
     @payment_options = Payment_option.find(params[:id])
+    authorize @payment_options
     @payment_options.destroy
   end
 
