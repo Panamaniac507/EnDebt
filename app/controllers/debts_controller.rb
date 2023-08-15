@@ -43,9 +43,33 @@ class DebtsController < ApplicationController
       @monthly_interests[Date.today + j.months] = monthly_interest_amount
       j += 1
     end
-      # to call chatgpt, should NOT run it if it is required as it costs
-      # @response = OpenaiService.new('what is debt?').call
+
+    # stacked column chart---
+    @data_monthly_principal = []
+    @payment_options[3].payments.each do |payment|
+      @data_monthly_principal << [payment.next_paying_date, @debt.monthly_principal_amount]
+    end
+
+    @data_monthly_interest = []
+    @payment_options[3].payments.each do |payment|
+      @data_monthly_interest << [payment.next_paying_date, (payment.next_payment_amount - @debt.monthly_principal_amount)]
+    end
+
+    @data_all = [
+      {
+        name: "Monthly principal",
+        data: @data_monthly_principal
+      },
+      {
+        name: "Monthly interest",
+        data: @data_monthly_interest
+      }
+    ]
+    #to call chatgpt, should NOT run it if it is required as it costs
+    #@response = OpenaiService.new('what is debt?').call
+
   end
+    # stacked column chart---end
 
   private
 

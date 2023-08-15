@@ -1,10 +1,8 @@
 // Specific CSS for your home-page
-.btn btn-primary {
-  background-color: #9eeaf9;
-  padding: 20px 100px;
-  display: inline-block;
-  text-decoration :none;
-  text-align: center;
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
-  border-radius: 4px;
+
+
+#main_logo {
+display: flex;
+justify-content: center;
+height: 25%;
 }
