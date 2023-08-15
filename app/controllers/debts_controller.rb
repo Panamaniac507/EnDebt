@@ -65,6 +65,9 @@ class DebtsController < ApplicationController
         data: @data_monthly_interest
       }
     ]
+    #to call chatgpt, should NOT run it if it is required as it costs
+    #@response = OpenaiService.new('what is debt?').call
+
   end
     # stacked column chart---end
 

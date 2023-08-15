@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :payment_options, only: [:new, :create, :update, :show, :delete]
 
   get 'payment_options/:id/choose', to: 'payment_options#choose', as: :payment_options_choose
+  # chat method for openai
+  # get 'chatgpt/chat', to: 'chatgpt#index', as: :chat
+  # post 'chatgpt/chat', to: 'chatgpt#chat', as: :chatgpt_chat
 end
