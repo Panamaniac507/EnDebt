@@ -1,49 +1,59 @@
 
-<%= simple_form_for [@debt] do |f| %>
-
-    <%= f.input :name %>
-    <%= f.input :interest_rate %>
-    <%= f.input :monthly_principal_amount %>
-    <%= f.input :remaining_principal %>
-
-    <%= f.input :original_principal %>
-    <%= f.input :income, label: "Monthly Income"%>
-    <%= f.input :expense, label: "Monthly Expense" %>
-    <%= f.input :debt_due_date, hint: "Add due date for next payment"%>
-
-    <%= f.submit class: 'btn btn-primary' %>
-<% end %>
-
-
-
-
-
 <%# <%= simple_form_for [@debt] do |f| %>
-<%# <div class="form"> %>
-      <%# <div class="title">Welcome</div>
-      <div class="subtitle">Test</div>
 
-      <div class="input-container ic1">
-        <input id="Name" class="input" type="text" placeholder=" " />
-        <label for="Name" class="placeholder"><%= f.input :name</label>
-      <%# </div> %>
+    <%# <%= f.input :name %>
+    <%# <%= f.input :interest_rate %>
+    <%# <%= f.input :monthly_principal_amount %>
+    <%# <%= f.input :remaining_principal %>
 
-      <%# <div class="input-container ic2"> %>
-        <%# <input id="interest-rate" class="input" type="text" placeholder=" " /> %>
-        <%# <label for="interest-rate" class="placeholder">test2</label> %>
-      <%# </div> %>
+    <%# <%= f.input :original_principal %>
+    <%# <%= f.input :income, label: "Monthly Income"%>
+    <%# <%= f.input :expense, label: "Monthly Expense" %>
+    <%# <%= f.input :debt_due_date, hint: "Add due date for next payment"%>
 
-      <%# <div class="input-container ic3"> %>
-        <%# <input id="email" class="input" type="text" placeholder=" " /> %>
-        <%# <label for="email" class="placeholder">Email</> %>
-      <%# </div> %>
+    <%# <%= f.submit class: 'btn btn-primary' %>
+<%# <% end %>
 
-      <%# <div class="input-container ic4"> %>
-        <%# <input id="email" class="input" type="text" placeholder=" " /> %>
-        <%# <label for="email" class="placeholder">Email</> %>
-      <%# </div> %>
 <%# <br> %>
 
-      <%# <button type="text" class="submit">submit</button> %>
-<%# </div> %>
-    <%# <% end %>
+<div class="test">
+  <%= simple_form_for [@debt] do |f| %>
+
+  <div class="mb-3">
+    <%= f.input :name, label: "Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :interest_rate, label: "Interest Rate" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :monthly_principal_amount, label: "Monthly Principal Amount" %>
+  </div>
+
+<div class="mb-3">
+    <%= f.input :remaining_principal, label: "Remaining Principal" %>
+
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :original_principal, label: "Original Principal" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :income, label: "Monthly Income"%>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :expense, label: "Monthly Expense" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :debt_due_date, label: "Debt Due Date"%>
+
+  </div>
+
+  <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
+
+<% end %>
+</div>
