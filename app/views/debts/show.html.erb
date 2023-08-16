@@ -1,13 +1,27 @@
 <div class="container mb-4">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="data_all">
+        <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
+      </div>
+    </div>
+  </div>
+
+  <%# pie chart-- %>
+  <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], donut: true %>
+
+  <%# column chart for total-- %>
+  <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], stacked:true%>
+
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
 <%# <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
 <%# <div class="original_payment"> %>
-<% column_chart @original_payments, stacked: true %>
+<%# <% column_chart @original_payments, stacked: true %>
 <%# </div> %>
 
 <%# <div class="original_interest"> %>
 
-<% column_chart @monthly_interests %>
+<%# <% column_chart @monthly_interests %>
 
 <%# </div> %>
 
@@ -15,9 +29,6 @@
 
 <%# try to add bar chart %>
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
-<div class="data_all">
-<%= column_chart @data_all, width: "1500px", height: "400px", stacked:true%>
-</div>
 
 <br>
 
