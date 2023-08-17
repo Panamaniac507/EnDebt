@@ -13,3 +13,8 @@ application.register("hello", HelloController)
 // window.Stimulus = Application.start()
 // const context = require.context("./controllers", true, /\.js$/)
 // Stimulus.load(definitionsFromContext(context))
+import Carousel from 'stimulus-carousel'
+application.register('carousel', Carousel)
+
+// import SwiperController from "./swiper_controller"
+// application.register('swiper', SwiperController)
