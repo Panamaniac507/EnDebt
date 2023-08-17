@@ -1,17 +1,45 @@
+
 <div class="container mb-4">
   <div class="row">
     <div class="col-xs-12">
-      <div class="data_all">
-        <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
+      <div class="container">
+        <div class="row">
+          <div data-controller="carousel" class="swiper-container" data-carousel-options-value='{"navigation":"ture"}'>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="data_all">
+                  <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <%# pie chart-- %>
+                <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], donut: true %>
+              </div>
+              <div class="swiper-slide">
+                <%# column chart for total-- %>
+                <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], stacked:true%>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <%# pie chart-- %>
-  <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], donut: true %>
+<%# <div data-controller="swiper">
+    <div class="swiper-container" data-swiper-target="container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="" alt="Slide 1">slide1</div>
+        <div class="swiper-slide"><img src="" alt="Slide 2">slide2</div>
+        <!-- Add more slides here -->
+      </div>
+    </div>
+    <div data-action="click->swiper#prevSlide">Previous</div>
+    <div data-action="click->swiper#nextSlide">Next</div>
+</div> %>
 
-  <%# column chart for total-- %>
-  <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], stacked:true%>
+  <%# colum chart-- %>
 
 <%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
 <%# <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
@@ -25,29 +53,45 @@
 
 <%# </div> %>
 
-</div>
+
 
 <%# try to add bar chart %>
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
 
-<br>
-
-<div class="container breakdown shadow p-3 mb-5 bg-body rounded">
+<div class="container">
   <h2>Debt Information</h2>
+    <div class="row">
+      <div class="col-6">
+        <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Remaining balance of principal</p>
+            <%= @debt.remaining_principal %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="info-card shadow-sm p-3 mb-1 rounded">
+          <p>Total expected amount of payment at this pace</p>
+          <%= @payment_options[3].total_monthly_payment %>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
   <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
   <%# @payment_options[0].payment.count.times do |num|
     @payment_options[0].payment[num].each do || %>
 
 
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Remaining balance of principal</h4>
-    <%= @debt.remaining_principal %>
-  </div>
+  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+              <h4>Remaining balance of principal</h4>
+          <%= @debt.remaining_principal %>
+  <%# </div> %>
 
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
+  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Total expected amount of payment at this pace</h4>
     <%= @payment_options[3].total_monthly_payment %>
-  </div>
+  <%# </div> %>
 
     <div class="info shadow-sm p-3 mb-1 bg-body rounded">
     <h4>Monthly payment amount for principal</h4>
