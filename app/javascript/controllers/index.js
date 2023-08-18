@@ -4,17 +4,14 @@
 
 import { application } from "./application"
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-// import { Application } from "@hotwired/stimulus"
-// import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+import SwiperController from "./swiper_controller"
+application.register("swiper", SwiperController)
 
-// window.Stimulus = Application.start()
-// const context = require.context("./controllers", true, /\.js$/)
-// Stimulus.load(definitionsFromContext(context))
-import Carousel from 'stimulus-carousel'
-application.register('carousel', Carousel)
-
-// import SwiperController from "./swiper_controller"
-// application.register('swiper', SwiperController)
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
