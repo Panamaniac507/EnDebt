@@ -101,11 +101,77 @@ class DebtsController < ApplicationController
         "Payment Done": 20, "Payment Not Done":60
       }
 
+
+
+    # # stacked column chart for showing balance of principal and interest---
+
+
+    # for plan1
+    @debt_p_plan_1 = [@debt.original_principal]
+    @debt_i_plan_1 = [@payment_options[0].total_interest_amount]
+
+    @data_plan_1 = [
+      {
+        name: "Principal Amount",
+        data: [["Minimum Plan",@debt_p_plan_1]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["Minimun Plan",@debt_i_plan_1]]
+      }
+    ]
+
+    # for plan2
+    @debt_p_plan_2 = [@debt.original_principal]
+    @debt_i_plan_2 = [@payment_options[1].total_interest_amount]
+
+    @data_plan_2 = [
+      {
+        name: "Principal Amount",
+        data: [["Standard Plan",@debt_p_plan_2]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["Standard Plan",@debt_i_plan_2]]
+      }
+    ]
+
+    # for plan3
+    @debt_p_plan_3 = [@debt.original_principal]
+    @debt_i_plan_3 = [@payment_options[2].total_interest_amount]
+
+    @data_plan_3 = [
+      {
+        name: "Principal Amount",
+        data: [["Super Plan",@debt_p_plan_3]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["Super Plan",@debt_i_plan_3]]
+      }
+    ]
+
+    # for comparison
+
+    @debt_p_original = [@debt.original_principal]
+    @debt_i_original = [@payment_options[3].total_interest_amount]
+
+    @data_compare = [
+      {
+        name: "Principal Amount",
+        data: [["Original Plan",@debt_p_original],["Minimum Plan",@debt_p_plan_1], ["Standard Plan",@debt_p_plan_2],["Super Plan",@debt_p_plan_3]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["Original Plan",@debt_i_original],["Minimum Plan",@debt_i_plan_1], ["Standard Plan",@debt_i_plan_2],["Super Plan",@debt_i_plan_3]]
+      }
+    ]
+
+
     #to call chatgpt, should NOT run it if it is required as it costs
     # @response = OpenaiService.new('what is debt?').call
 
   end
-    # stacked column chart---end
 
   private
 
