@@ -34,6 +34,9 @@ gem "chartkick"
 # gem to group by day, week, hour of the day...goes hand with hand with chartkick
 gem "groupdate"
 
+# gem to create a very cool carousel for the new debt profile page
+gem "wicked"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
