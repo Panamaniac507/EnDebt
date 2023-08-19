@@ -1,32 +1,9 @@
+<div class="container first_view">
+  <h2>Welcome, <%= @debt.name %></h2>
 
-<div class="container mb-4">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="container">
-        <div class="row">
-          <%# <div data-controller="swiper" data-container-target="container" class="swiper-container" data-swiper-options-value='{"navigation":"true"}'> %>
-            <div data-controller="swiper" data-swiper-next-button-target="nextButton" data-swiper-prev-button-target="prevButton" class="mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide data_all">
-                <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
-              </div>
-              <div class="swiper-slide">
-                <%# pie chart-- %>
-                <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], title: "Progress of Payment", donut: true %>
-              </div>
-              <div class="swiper-slide">
-                <%# column chart for total-- %>
-                <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", stacked:true%>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+
+
 
 <%# <div
   data-controller="swiper"
@@ -66,11 +43,41 @@
 <%# try to add bar chart %>
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
 
-<div class="container mb-5">
-  <h2>Debt Profile</h2>
-      <h5>Point you need to understand</h5>
-      <p>The less you pay for monthly payment, the longer takes and end up paying relatively big.
-      You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[3].total_monthly_payment %> $ with this plan. It means you are paying <%= @payment_options[3].total_monthly_payment - @debt.original_principal %> $ as extra. </p>
+<div class="container mb-5 shadow-sm p-3 mb-1 rounded">
+  <h2>Debt Breakdown</h2>
+      <h5>Points you need to understand about your debt</h5>
+      <ul>
+        <li>The less you pay for monthly payment, the longer takes and end up paying relatively big.</li>
+        <li>You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[3].total_monthly_payment %> $ with this plan.</li>
+        <li> It means you are paying <%= @payment_options[3].total_monthly_payment - @debt.original_principal %> $ as extra.</li>
+        <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
+      </ul>
+<div class="container p-3">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+      </div>
+      <div class="carousel-item">
+        <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
+      </div>
+      <div class="carousel-item">
+        <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+</div>
+
+  <div class="containr">
     <div class="row">
       <div class="col-6">
         <div class="info-card shadow-sm p-3 mb-1 rounded">
@@ -115,7 +122,8 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
+
 
 <div class="container">
   <div class="description">
@@ -123,71 +131,34 @@
     <p>There are 3 plans to payoff your debt earlier, cheaper and maintain your level of life at the same time</p>
     <p>Choose one, follow the schedule and get your happy life back👏</p>
   </div>
-
-  <div class="container mb-4">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="container">
-          <div class="row">
-            <div data-controller="carousel" class="swiper-container" data-carousel-options-value='{"navigation":"ture"}'>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                   <%= column_chart @data_compare, colors: ["#78C1F3","#FFC93C"], title: "Comparison of Plans", stacked:true %>
-                </div>
-                <div class="swiper-slide">
-                  <%# column chart for plan1-- %>
-                  <%= column_chart @data_plan_1, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Minimun Plan", stacked:true %>
-                </div>
-                <div class="swiper-slide">
-                  <%# column chart for plan2-- %>
-                  <%= column_chart @data_plan_2, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Standard Plan", stacked:true%>
-                </div>
-                <div class="swiper-slide">
-                  <%# column chart for plan3-- %>
-                  <%= column_chart @data_plan_3, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Super Plan", stacked:true%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-
-
-  <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
-  <%# @payment_options[0].payment.count.times do |num|
-    @payment_options[0].payment[num].each do || %>
-
-
-  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-              <h4>Remaining balance of principal</h4>
-          <%= @debt.remaining_principal %>
-  <%# </div> %>
-
-  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Total expected amount of payment at this pace</h4>
-    <%= @payment_options[3].total_monthly_payment %>
-  <%# </div> %>
-
-    <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Monthly payment amount for principal</h4>
-    <%= @payment_options[3].monthly_payment_principal %>
-  <%# </div> %>
-
-  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>How much you pay for interest</h4>
-    <%= @payment_options[3].total_interest_amount %>
-  <%# </div> %>
-
-  <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded"> %>
-    <%# <h4>Expected date you finish payment</h4> %>
-    <%# <%= @payment_options[3].final_payment_date %>
-  <%# </div> %>
-
-<%# </div> %>
+<div class="container p-3">
+  <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel"data-bs-interval="50000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <%= column_chart @data_compare, colors: ["#78C1F3","#FFC93C"], title: "Comparison of Plans", stacked:true %>
+      </div>
+      <div class="carousel-item">
+          <%= column_chart @data_plan_1, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Minimun Plan", stacked:true %>
+      </div>
+      <div class="carousel-item">
+          <%= column_chart @data_plan_2, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Standard Plan", stacked:true%>
+      </div>
+      <div class="carousel-item">
+        <%= column_chart @data_plan_3, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Super Plan", stacked:true%>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 
 <div data-controller='toggle'>
 <div class="container option-cards p-3 mb-1">
@@ -200,14 +171,14 @@
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="option-card shadow-sm rounded p-3 mb-1">
+      <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_stand'>
         <h4>Standard Plan</h4>
         <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal</p>
       </div>
     </div>
     <div class="col-12 col-md-4">
-      <div class="option-card shadow-sm rounded p-3 mb-1">
-        <h4>King Plan</h4>
+      <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_super'>
+        <h4>Premium Plan</h4>
         <p>You pay big for monthly payment, but takes shorter.
         End up paying relatively small.</p>
       </div>
@@ -215,7 +186,7 @@
   </div>
 </div>
 
-  <div class="container plan-detail minimum-card shadow-sm p-3 mb-1 rounded" data-toggle-target='mini'>
+  <div class="container plan-detail minimum-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='mini'>
     <h5>Minimum Plan</h5>
     <h6>Point of this plan</h6>
     <p>You pay less for monthly payment, but takes longer.
@@ -254,7 +225,7 @@
       </div>
   </div>
 
-    <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded">
+    <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='stand'>
     <h5>Standard Plan</h5>
     <h6>Point of this plan</h6>
     <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal.
@@ -292,8 +263,8 @@
       </div>
   </div>
 
-    <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded">
-    <h5>Super Plan</h5>
+    <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded d-none"data-toggle-target='super'>
+    <h5>Premium Plan</h5>
     <h6>Point of this plan</h6>
     <p>You pay big for monthly payment, but takes shorter.
         End up paying relatively small.
@@ -332,136 +303,7 @@
   </div>
 </div>
 
-
-
-<%# <div data-controller="reveal" data-reveal-hidden-class="d-none">
-  <button data-action="click->reveal#toggle" type="button" class="btn">Toggle me!</button>
-
-  <p data-reveal-target="item" class="d-none mt-4">Hey 👋</p>
-  <p data-reveal-target="item" class="d-none mt-4">You can have multiple items</p>
-</div> %>
-
-
-
 <div class="container mb-4">
   <%# chat gpt thing here %>
  <%# <%= @response["choices"][0]["message"]["content"] %>
 </div>
-
-<%#
-<div class="container plan shadow p-3 mb-5 bg-body rounded mb-4">
-<h2>Choose your plan!</h2>
-<div class="accordion" id="accordionExample">
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Plan 1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Merit</h4>
-          <p>You can pay minumun for month, so you can use your money for other things.</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Demerit</h4>
-          <p>It takes longer and payment amount is likely to bigger than other plan.</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Monthly payment amount for principal</h4>
-          <%= @payment_options[0].monthly_payment_principal %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Total expected amount of payment</h4>
-          <%= @payment_options[0].total_monthly_payment %>
-        <%# </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>How much you pay for interest</h4>
-          <%= @payment_options[0].total_interest_amount %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded"> %>
-          <%# <h4>Expected date you finish payment</h4> %>
-          <%# <%= @payment_options[0].final_payment_date %>
-        <%# </div> %>
-        <%# <%= link_to "Select", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-primary mt-3" %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# </div> %>
-
-  <%# <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Plan 2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample"> %>
-      <%# <div class="accordion-body">
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Merit</h4>
-          <p>You can pay moderate for month, so you can use your money for other things.</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Demerit</h4>
-          <p>It takes a bit longer and payment amount is likely to bigger than plan 1.</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Monthly payment amount for principal</h4>
-          <%= @payment_options[1].monthly_payment_principal %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <%# <h4>Total expected amount of payment</h4>
-          <%= @payment_options[1].total_monthly_payment %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded"> %>
-          <%# <h4>How much you pay for interest</h4> %>
-          <%# <%= @payment_options[1].total_interest_amount %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded"> %>
-          <%# <h4>Expected date you finish payment</h4> %>
-          <%# <%= @payment_options[1].final_payment_date %>
-        <%# </div> %>
-        <%# <%= link_to "Select", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-primary mt-3" %>
-      <%# </div> %>
-    <%# </div>  %>
-  <%# </div> %>
-<%#
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Plan 3 - <strong>Advised Option</strong>
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Merit</h4>
-          <p>You can pay off faster and you pay less than other plan, so you can save your money for other things.</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Demerit</h4>
-          <p>Monthly payment amount is bigger than other plan. so you need to push yourself</p>
-        </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Monthly payment amount for principal</h4>
-          <%= @payment_options[2].monthly_payment_principal %>
-        <%# </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-            <h4>Total expected amount of payment</h4>
-            <%= @payment_options[2].total_monthly_payment %>
-        <%# </div> %>
-        <%# <div class="info shadow-sm p-3 mb-1 bg-body rounded"> %>
-            <%# <h4>How much you pay for interest</h4> %>
-            <%# <%= @payment_options[2].total_interest_amount %>
-        <%# </div>
-        <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-          <h4>Expected date you finish payment</h4>
-          <%= @payment_options[2].final_payment_date %>
-        <%# </div>
-        <%= link_to "Select", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# </div> %>
-<%# </div> %>
-<%# </div> %>
