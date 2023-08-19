@@ -4,12 +4,11 @@
     <div class="col-xs-12">
       <div class="container">
         <div class="row">
-          <div data-controller="carousel" class="swiper-container" data-carousel-options-value='{"navigation":"ture"}'>
+          <%# <div data-controller="swiper" data-container-target="container" class="swiper-container" data-swiper-options-value='{"navigation":"true"}'> %>
+            <div data-controller="swiper" data-swiper-next-button-target="nextButton" data-swiper-prev-button-target="prevButton" class="mySwiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="data_all">
-                  <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
-                </div>
+              <div class="swiper-slide data_all">
+                <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", stacked:true%>
               </div>
               <div class="swiper-slide">
                 <%# pie chart-- %>
@@ -20,6 +19,8 @@
                 <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", stacked:true%>
               </div>
             </div>
+            <div class="swiper-button-next" data-target="swiper.nextButton"></div>
+            <div class="swiper-button-prev" data-target="swiper.prevButton"></div>
           </div>
         </div>
       </div>
@@ -27,7 +28,12 @@
   </div>
 </div>
 
-
+<%# <div
+  data-controller="swiper"
+  data-swiper-next-button-target="nextButton"
+  data-swiper-prev-button-target="prevButton"
+  class="mySwiper"
+> %>
 
 <%# <div data-controller="swiper">
     <div class="swiper-container" data-swiper-target="container">
