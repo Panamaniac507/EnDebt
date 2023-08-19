@@ -12,7 +12,7 @@
     "stimulus": "^3.2.2",
     "stimulus-carousel": "^5.0.1",
     "stimulus-reveal-controller": "^4.1.0",
-    "swiper": "8.4.5",
+    "swiper": "^10.2.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
