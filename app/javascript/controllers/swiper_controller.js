@@ -36,6 +36,12 @@ export default class extends Controller {
         prevEl: ".swiper-button-prev",
       },
     });
+    new Swiper(".mySwiper_plan", {
+      navigation: {
+        nextEl: ".swiper-button-next-plan",
+        prevEl: ".swiper-button-prev-plan",
+      },
+    });
   }
 }
 
