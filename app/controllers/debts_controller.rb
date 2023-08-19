@@ -12,7 +12,7 @@ class DebtsController < ApplicationController
     @debt.user = current_user
     @debt.save
     authorize @debt
-    redirect_to new_debt_build_path(debt_id: 2)
+    redirect_to new_debt_build_path(@debt)
   end
 
   def show
