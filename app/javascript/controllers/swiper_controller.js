@@ -1,6 +1,6 @@
 // stimulus/controllers/swiper_controller.js
 import { Controller } from "@hotwired/stimulus";
-import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
+// import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
 
 export default class extends Controller {
   static targets = ["container"];
