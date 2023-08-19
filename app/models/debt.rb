@@ -12,6 +12,8 @@ class Debt < ApplicationRecord
   before_create :active?
   after_create :create_payment_options
 
+  enum status: {add_name: 'add_name', add_interest_rate: 'add_interest_rate', add_original_principal: 'add_original_principal', add_remaining_principal: 'add_remaining_principal', add_expense: 'add_expense', add_income: 'add_income' add_debt_due_date: 'add_debt_due_date' }
+
 
 # the below is to be able to create our debt profile parameter by parameter
   def active?
