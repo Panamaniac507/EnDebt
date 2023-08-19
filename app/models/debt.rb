@@ -4,7 +4,7 @@ class Debt < ApplicationRecord
   validates :name, presence: true, if: :active_or_name?
   validates :interest_rate, presence: true, if: :active_or_interest_rate?
   validates :original_principal, presence: true, if: :active_or_original_principal?
-  validates :remaining_principal, presence: true, if: :active_remaining_principal?
+  validates :remaining_principal, presence: true, if: :active_or_remaining_principal?
   validates :expense, presence: true, if: :active_or_expense?
   validates :income, presence: true, if: :active_or_income?
   validates :debt_due_date, presence: true, if: :active_or_debt_due_date?
@@ -12,7 +12,7 @@ class Debt < ApplicationRecord
   before_create :active?
   after_create :create_payment_options
 
-  private
+
 # the below is to be able to create our debt profile parameter by parameter
   def active?
     status == 'active'
@@ -45,6 +45,8 @@ class Debt < ApplicationRecord
   def active_or_debt_due_date?
     status.include?('debt_due_date') || active?
   end
+
+  private
 
   # below is logic to create payment options object and payment object
   def create_payment_options

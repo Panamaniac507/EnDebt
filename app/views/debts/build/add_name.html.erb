@@ -2,4 +2,5 @@
 <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
 <%= f.input :name, label: "Name" %>
 <% end %>
+<%= link_to 'skip', next_wizard_path %>
 </div>
