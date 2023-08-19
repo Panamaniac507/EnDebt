@@ -1,49 +1,12 @@
-<%# <div>
-  <% @debts.each do |debt| %>
-    <%# <%= debt.id %>
-    <%# <% debt.payment_options.each do |po| %>
-      <%# <%= po.id %>
-    <%# <% end %>
-  <%# <% end %>
-<%# </div> %>
-
 <div class="container">
-<div class="container breakdown shadow p-3 mb-5 bg-body rounded">
-  <h2>Debt Information based on your plan</h2>
-  <%# grafic here, depends on how granuality we show, we can get amount and date of payment from Payment data %>
-  <%# @payment_options[0].payment.count.times do |num|
-    @payment_options[0].payment[num].each do || %>
-
-<% @selected_payment_options.each do |option| %>
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Remaining balance of principal</h4>
-    <%= option.debt.remaining_principal %>
-  </div>
-
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Total expected amount of payment at this pace</h4>
-    <%= option.total_monthly_payment %>
-  </div>
-
-    <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Monthly payment amount for principal</h4>
-    <%= option.monthly_payment_principal %>
-  </div>
-
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>How much you pay for interest</h4>
-    <%= option.total_interest_amount %>
-  </div>
-
-  <div class="info shadow-sm p-3 mb-1 bg-body rounded">
-    <h4>Expected date you finish payment</h4>
-    <%= option.final_payment_date %>
-  </div>
-<% end %>
+  <div class="container first_view">
+  <h2>Hey, how are you?? <%= @debt.name %></h2>
+</div>
 
 </div>
 
-<% @selected_payment_options.each do |option| %>
+<div class="container payment">
+  <% @selected_payment_options.each do |option| %>
   <div class="container schedule">
     <h3>Your Next Payment Due Date</h3>
     <% option.payments.each do |payment| %>
@@ -53,11 +16,95 @@
     <% end %>
   </div>
   <% end %>
+</div>
+
+
+<% @selected_payment_options.each do |option| %>
+  <div class="container mb-5 shadow-sm p-3 mb-1 rounded">
+    <h2>Debt Breakdown</h2>
+        <h5>Points you need to understand about your debt</h5>
+        <ul>
+          <li>The less you pay for monthly payment, the longer takes and end up paying relatively big.</li>
+          <li>You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= option.total_monthly_payment %> $ with this plan.</li>
+          <li> It means you are paying <%= option.total_monthly_payment - @debt.original_principal %> $ as extra.</li>
+          <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
+        </ul>
+    <div class="container p-3">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+          </div>
+          <div class="carousel-item">
+            <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
+          </div>
+          <div class="carousel-item">
+            <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <div class="containr">
+      <div class="row">
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Original Principal</p>
+            <%= @debt.original_principal %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Remaining Balance</p>
+            <%= option.debt.remaining_principal %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Expected Total Amount</p>
+            <%= option.total_monthly_payment %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Expected Interest Amount</p>
+            <%= option.total_interest_amount %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Monthly Principal</p>
+            <%= option.monthly_payment_principal %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="info-card shadow-sm p-3 mb-1 rounded">
+            <p>Expected Finish Date</p>
+            <%= option.final_payment_date %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="confirm">
     <h3>Did you pay this month???</h3>
-    <%= link_to "Done", payment_options_dashboard_path, class: "btn btn-primary mt-3"%>
+    <%= link_to "Done", payment_options_paid_path, class: "btn btn-primary mt-3"%>
   </div>
-
 
 </div>

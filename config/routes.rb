@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :build, controller: 'debts/build'
   end
   get 'payment_options/dashboard', to: 'payment_options#dashboard', as: :payment_options_dashboard
+  get 'payment_options/paid', to: 'payment_options#paid', as: :payment_options_paid
   resources :payment_options, only: [:new, :create, :update, :show, :delete]
 
   get 'payment_options/:id/choose', to: 'payment_options#choose', as: :payment_options_choose

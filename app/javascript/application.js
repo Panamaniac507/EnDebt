@@ -4,7 +4,7 @@ import "./controllers"
 import "bootstrap"
 import "chartkick/chart.js"
 //// swiper core styles
-import 'swiper/swiper.min.css'
+// import 'swiper/swiper.min.css'
 
 // // modules styles
 // import 'swiper/components/navigation/navigation.min.css'
