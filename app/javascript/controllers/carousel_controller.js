@@ -1,5 +1,5 @@
 // import Carousel from 'stimulus-carousel'
-// // import { container } from 'webpack'
+// import { container } from 'webpack'
 
 // export default class extends Carousel {
 //   static targets = ["container"]

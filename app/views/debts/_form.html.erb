@@ -19,41 +19,57 @@
 <div class="test">
   <%= simple_form_for [@debt] do |f| %>
 
-  <div class="mb-3">
+
+<%# <div data-controller="carousel" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><%= f.input :name, label: "Name" %></div>
+    <%# <div class="swiper-slide"><%= f.input :interest_rate, label: "Interest Rate" %></div>
+    <%# <div class="swiper-slide"><%= f.input :monthly_principal_amount, label: "Monthly Principal Amount" %> <%#= f.submit "Create Debt Profile", class: 'btn btn-primary'</div> %>
+  <%# </div> %>
+<%# </div> %>
+
+<div data-controller="carousel" class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1683009427470-a36fee396389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt=""></div>
+    <div class="swiper-slide"><img src="https://plus.unsplash.com/premium_photo-1691854350133-8e9a6c8d443c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80" alt=""></div>
+    <div class="swiper-slide"> <img src="https://images.unsplash.com/photo-1646021780609-9c908307edc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=992&q=80" alt=""></div>
+  </div>
+</div>
+  <%# <div class="mb-3">
     <%= f.input :name, label: "Name" %>
-  </div>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :interest_rate, label: "Interest Rate" %>
-  </div>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :interest_rate, label: "Interest Rate" %>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :monthly_principal_amount, label: "Monthly Principal Amount" %>
-  </div>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :monthly_principal_amount, label: "Monthly Principal Amount" %>
+  <%# </div> %>
 
-<div class="mb-3">
-    <%= f.input :remaining_principal, label: "Remaining Principal" %>
+<%# <div class="mb-3"> %>
+    <%# <%= f.input :remaining_principal, label: "Remaining Principal" %>
 
-  </div>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :original_principal, label: "Original Principal" %>
-  </div>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :original_principal, label: "Original Principal" %>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :income, label: "Monthly Income"%>
-  </div>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :income, label: "Monthly Income"%>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :expense, label: "Monthly Expense" %>
-  </div>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :expense, label: "Monthly Expense" %>
+  <%# </div> %>
 
-  <div class="mb-3">
-    <%= f.input :debt_due_date, label: "Debt Due Date"%>
+  <%# <div class="mb-3"> %>
+    <%# <%= f.input :debt_due_date, label: "Debt Due Date"%>
 
-  </div>
+  <%# </div> %>
 
-  <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
+  <%# <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
 
 <% end %>
 </div>
