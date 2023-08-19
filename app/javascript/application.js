@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "chartkick/chart.js"
 //// swiper core styles
+
 import 'swiper/swiper.min.css'
 import "bootstrap"
 

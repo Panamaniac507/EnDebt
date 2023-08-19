@@ -165,8 +165,6 @@ class DebtsController < ApplicationController
         data: [["Original Plan",@debt_i_original],["Minimum Plan",@debt_i_plan_1], ["Standard Plan",@debt_i_plan_2],["Super Plan",@debt_i_plan_3]]
       }
     ]
-
-
     #to call chatgpt, should NOT run it if it is required as it costs
     # @response = OpenaiService.new('what is debt?').call
 

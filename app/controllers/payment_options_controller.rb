@@ -47,6 +47,90 @@ class PaymentOptionsController < ApplicationController
     #     # render payment_options page
     #   end
     # end
+  # # stacked column chart for total---
+    @debt_p_total = [@debt.original_principal]
+    @debt_i_total = [@selected_payment_options[0].total_interest_amount]
+
+    @data_total = [
+      {
+        name: "Principal Amount",
+        data: [["",@debt_p_total]]
+      },
+      {
+        name: "Interest Amount",
+        data: [["",@debt_i_total]]
+      }
+    ]
+
+    # stacked column chart---
+    @data_monthly_principal = []
+    @data_monthly_principal_short = []
+    @selected_payment_options[0].payments.each do |payment|
+      @data_monthly_principal << [payment.next_paying_date, @debt.monthly_principal_amount]
+    end
+    num = (@data_monthly_principal.count / 5)
+    count = 0
+    5.times do |n|
+      @data_monthly_principal_short << @data_monthly_principal[count]
+      count += num
+    end
+
+    @data_monthly_interest = []
+    @data_monthly_interest_short = []
+    @selected_payment_options[0].payments.each do |payment|
+      @data_monthly_interest << [payment.next_paying_date, (payment.next_payment_amount - @debt.monthly_principal_amount)]
+    end
+    num = (@data_monthly_interest.count / 5)
+    count = 0
+    5.times do |n|
+      @data_monthly_interest_short << @data_monthly_interest[count]
+      count += num
+    end
+
+    @data_all = [
+      {
+        name: "Monthly payment amount for principal",
+        data: @data_monthly_principal_short
+      },
+      {
+        name: "Monthly payment amount for interest",
+        data: @data_monthly_interest_short
+      }
+    ]
+
+    # pie chart for progress
+    @progress_data =
+      {
+        "Payment Done": 20, "Payment Not Done":60
+      }
+
+  end
+
+  def paid
+    skip_authorization
+    @debts = current_user.debts
+    @debt = @debts[0]
+    @payment_options = current_user.payment_options
+    @selected_payment_options = @payment_options.where(active_plan: true)
+    payment_id = 0
+    @selected_payment_options[0].payments.each do |payment|
+      if payment.status == 1
+        @payment_update = Payment.find(payment.id)
+        @payment_update.update(status: 2)
+        payment_id = @payment_update.id + 1
+        if payment_id
+          @next = Payment.find(payment_id)
+          @next.update(status: 1)
+        else
+          @payment_update.update(status: 3)
+        end
+      end
+    end
+    # remain = @selected_payment_options[0].remaining_principal - @selected_payment_options.monthly_payment_principal
+    # debt = @selected_payment_options[0].debt_id
+    # debt.update(remaining_principal: remain)
+
+    redirect_to payment_options_dashboard_path
   end
 
 
