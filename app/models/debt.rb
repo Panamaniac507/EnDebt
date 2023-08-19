@@ -4,15 +4,16 @@ class Debt < ApplicationRecord
   validates :name, presence: true, if: :active_or_name?
   validates :interest_rate, presence: true, if: :active_or_interest_rate?
   validates :original_principal, presence: true, if: :active_or_original_principal?
-  validates :remaining_principal, presence: true, if: :active_remaining_principal?
+  validates :remaining_principal, presence: true, if: :active_or_remaining_principal?
   validates :expense, presence: true, if: :active_or_expense?
   validates :income, presence: true, if: :active_or_income?
   validates :debt_due_date, presence: true, if: :active_or_debt_due_date?
 
   before_create :active?
-  after_create :create_payment_options
 
-  private
+  enum status: { building: 'building', add_name: 'add_name', add_interest_rate: 'add_interest_rate', add_original_principal: 'add_original_principal', add_remaining_principal: 'add_remaining_principal', add_monthly_principal_amount: 'add_monthly_principal_amount', add_expense: 'add_expense', add_income: 'add_income', add_debt_due_date: 'add_debt_due_date', active: 'active' }
+
+
 # the below is to be able to create our debt profile parameter by parameter
   def active?
     status == 'active'
