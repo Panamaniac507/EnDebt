@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :debts, only: [:new, :create, :show]
+  resources :debts do
+    resources :build, controller: 'debts/build'
+  end
   get 'payment_options/dashboard', to: 'payment_options#dashboard', as: :payment_options_dashboard
   resources :payment_options, only: [:new, :create, :update, :show, :delete]
 
