@@ -1,19 +1,18 @@
 class DebtsController < ApplicationController
+  before_action :skip_authorization
+
+  # def new
+  #   @debt = Debt.new
+  #   authorize @debt
+  # end
+
   def new
     @debt = Debt.new
-    authorize @debt
-  end
-
-  def create
-    @debt = Debt.new(debt_params)
-    @debt.remaining_principal = debt_params[:original_principal]
+    # @debt.remaining_principal = debt_params[:original_principal]
     @debt.user = current_user
+    @debt.save
     authorize @debt
-    if @debt.save
-      redirect_to debt_path(@debt)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    redirect_to new_debt_build_path(@debt)
   end
 
   def show
@@ -173,9 +172,9 @@ class DebtsController < ApplicationController
 
   private
 
-  def debt_params
-    params.require(:debt).permit(:name, :interest_rate, :remaining_principal,
-       :original_principal, :income,
-        :expense, :debt_due_date, :user_id, :monthly_principal_amount)
-  end
+  # def debt_params
+  #   params.require(:debt).permit(:name, :interest_rate, :remaining_principal,
+  #      :original_principal, :income,
+  #       :expense, :debt_due_date, :user_id, :monthly_principal_amount, :status)
+  # end
 end

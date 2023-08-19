@@ -1,10 +1,11 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
 import "./controllers"
-import "bootstrap"
 import "chartkick/chart.js"
 //// swiper core styles
-// import 'swiper/swiper.min.css'
+
+import 'swiper/swiper.min.css'
+import "bootstrap"
 
 // // modules styles
 // import 'swiper/components/navigation/navigation.min.css'
