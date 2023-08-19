@@ -28,22 +28,38 @@ import Swiper from "swiper/bundle";
 //     this.swiper.slideNext();
 //   }
 // }
-
 export default class extends Controller {
   connect() {
-    new Swiper(this.element, {
+    new Swiper(".mySwiper", {
       navigation: {
-        nextEl: this.nextButtonTarget,
-        prevEl: this.prevButtonTarget,
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
     });
   }
-
-  get nextButtonTarget() {
-    return this.data.get("nextButtonTarget");
-  }
-
-  get prevButtonTarget() {
-    return this.data.get("prevButtonTarget");
-  }
 }
+
+
+
+// export default class extends Controller {
+//   connect() {
+//     new Swiper(this.element, {
+//       navigation: {
+//         nextEl: this.nextButtonTarget,
+//         prevEl: this.prevButtonTarget,
+//       },
+//     });
+//     console.log(this.element)
+//     console.log(this.nextButtonTarget)
+//   }
+
+//   get nextButtonTarget() {
+//     console.log("check1");
+//     console.log(this.data.get("nextButtonTarget"));
+//     return this.data.get("nextButtonTarget");
+//   }
+
+//   get prevButtonTarget() {
+//     return this.data.get("prevButtonTarget");
+//   }
+// }
