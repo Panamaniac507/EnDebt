@@ -38,3 +38,38 @@ max-height: 700px;
 .footer .fa-heart {
   color: #D23333;
 }
+
+.main-word {
+  color: black;
+  font-weight: bold;
+}
+
+.main-image {
+  margin: 20px;
+}
+
+.btn-action {
+  background-color: #FFC93C;
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+}
+
+.btn-action:hover {
+  background-color: #FFC93C;
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.fv-back-color {
+  background-color: #9BE8D8;
+}
+
+.second-section {
+  background-color: #ecf2f7;
+}
+
+.third-section {
+  background-color: #dffff0;
+}

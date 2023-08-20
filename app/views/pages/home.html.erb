@@ -1,15 +1,81 @@
 <%# added a container class to wrap up the complete page.  %>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-4">
-      <div class="main_logo">
-        <%= image_tag 'endebt_logo.svg'%>
+<div class="container fv-back-color">
+    <div class="row">
+      <div class="col-12 p-2 mb-3">
+        <h1 class="main-word mt-2">Get EnDebt and Pay off your credit card debt as less as possible.</h1>
+        <p>We are here to help you to understand your debt and avoid to pay unexpectedly big extra amount.</p>
       </div>
+        <%= image_tag 'payapp.svg'%>
+      <%# <div class="col-12">
+        <div class="main_logo">
+          <%= image_tag 'endebt_logo.svg'%>
+        <%# </div> %>
+      <%# </div> %>
+      <% if user_signed_in? %>
+        <div class="d-flex justify-content-center mt-4 mb-2">
+          <%= link_to "Add Your Debt", new_debt_path, class: "btn btn-action m-3" %>
+        </div>
+      <% end %>
+    </div>
+</div>
+  <div class="container second-section">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center m-4">Key points to pay off your debt as less as possible</h2>
+          <div class="point">
+            <h4 class="text-center">Understand Debt</h4>
+            <i class="fa-regular fa-lightbulb fa-3x d-flex justify-content-center" style="color: #08815d;"></i>
+            <p class="text-center">Usually the strucure of credit card deb is difficult and likely to pay extra</p>
+          </div>
+          <div class="point">
+            <h4 class="text-center mt-4">Pay off in quick</h4>
+            <i class="fa-solid fa-bolt fa-3x d-flex justify-content-center" style="color: #f2b969;"></i>
+            <p class="text-center">Usually the quicker pay, the less you pay in total, as interest you pay can be reduced</p>
+          </div>
+          <div class="point">
+            <h4 class="text-center mt-4">Keep up</h4>
+            <i class="fa-solid fa-handshake fa-3x d-flex justify-content-center" style="color: #2d8fb9;"></i>
+            <p class="text-center">Don't give up, you can do it! Let's make it together!</p>
+          </div>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+        <div class="d-flex justify-content-center mt-4 mb-2">
+          <%= link_to "Add Your Debt", new_debt_path, class: "btn btn-action m-3" %>
+        </div>
+      <% end %>
     </div>
   </div>
 
+  <div class="container third-section pb-5">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center m-4">3 Steps to pay off with EnDebt</h2>
+          <div class="step">
+            <h4 class="text-center">1. Add your debt</h4>
+            <p class="text-center">Enter your credit card debt information to start</p>
+          </div>
+          <div class="point">
+            <h4 class="text-center mt-4">2. Find debt breakdown</h4>
+            <p class="text-center">See the information about your debt and understand it</p>
+          </div>
+          <div class="point">
+            <h4 class="text-center mt-4">3. Select your plan</h4>
+            <p class="text-center">Select suggested payment plan and follow it</p>
+          </div>
+        </div>
+      </div>
+      <%= image_tag 'happy1.svg'%>
+    </div>
+      <% if user_signed_in? %>
+        <div class="d-flex justify-content-center mt-4 mb-5">
+          <%= link_to "Add Your Debt", new_debt_path, class: "btn btn-action m-3" %>
+        </div>
+      <% end %>
+  </div>
 
-<br>
 
 <div class="footer">
   <div class="footer-links">
@@ -22,7 +88,4 @@
   <div class="footer-copyright">
     <i class="fa-regular fa-registered"></i> All Rights Reserved
   </div>
-</div>
-
-
 </div>
