@@ -1,5 +1,5 @@
 <div class="container first_view">
-  <h2>Welcome, <%= @debt.name %>!</h2>
+  <h2 class="mb-3">Welcome, <%= @debt.name %>!</h2>
 </div>
 
 
@@ -37,29 +37,26 @@
 
 <%# </div> %>
 
-
-
 <%# try to add bar chart %>
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
 
 
+
 <div class="container mb-5 shadow-sm p-3 mb-1 debt-breakdown">
-  <h5>Debt Breakdown</h5>
-    <div class="shadow-sm p-2 mb-3 rounded debt-summary">
-      <h6>Summary of your debt</h6>
-      <ul>
-        <li>You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[3].total_monthly_payment %> $ with this plan.</li>
-        <li>It means you are paying <%= @payment_options[3].total_monthly_payment - @debt.original_principal %> $ as extra.</li>
+  <h4 class="mb-3">Debt Breakdown</h4>
+    <div class="shadow-sm p-2 mb-2 rounded debt-summary">
+      <ul class="mb-0">
+        <li>You borrowed <%= @debt.original_principal %> $, you will end up paying <%= @payment_options[3].total_monthly_payment %> $ with this plan.</li>
+        <li>You will be paying <%= @payment_options[3].total_monthly_payment - @debt.original_principal %> $ as extra.</li>
         <li>Expected date you finish payoff is <%= @payment_options[3].final_payment_date %>.</li>
-        <li>Possibly you can pay less and earlier if you choose right plan with EnDebt.</li>
         <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
       </ul>
     </div>
 
   <div class="containr mb-3">
     <div class="row">
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 rounded">
           <div data-controller="popover">
             <div data-action="mouseenter->popover#show mouseleave->popover#hide" class="relative">Original Principal</div>
               <template data-popover-target="content">
@@ -71,39 +68,39 @@
           <%= @debt.original_principal %>
         </div>
       </div>
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
-          <p>Remaining Balance</p>
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 rounded">
+          <p class="mb-0">Remaining Balance</p>
           <%= @debt.remaining_principal %>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
-          <p>Expected Total Amount</p>
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 rounded">
+          <p class="mb-0">Total Amount</p>
           <%= @payment_options[3].total_monthly_payment %>
         </div>
       </div>
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
-          <p>Expected Interest Amount</p>
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 rounded">
+          <p class="mb-0">Interest Amount</p>
           <%= @payment_options[3].total_interest_amount %>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
-          <p>Monthly Principal</p>
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 m-1 rounded">
+          <p class="mb-0">Monthly Principal</p>
           <%= @payment_options[3].monthly_payment_principal %>
         </div>
       </div>
-      <div class="col-12">
-        <div class="info-card shadow-sm p-2 m-1 rounded">
-          <p>Expected Finish Date</p>
+      <div class="col-6 p-2">
+        <div class="info-card shadow p-2 m-1 rounded">
+          <p class="mb-0">Finish Date</p>
           <%= @payment_options[3].final_payment_date %>
         </div>
       </div>
