@@ -126,7 +126,9 @@ class PaymentOptionsController < ApplicationController
         end
       end
     end
-    # remain = @selected_payment_options[0].remaining_principal - @selected_payment_options.monthly_payment_principal
+      selected_debt = Debt.find(@selected_payment_options[0].debt_id)
+      remain = selected_debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
+      selected_debt.update(remaining_principal: remain)
     # debt = @selected_payment_options[0].debt_id
     # debt.update(remaining_principal: remain)
 
