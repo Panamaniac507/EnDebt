@@ -2,8 +2,6 @@
   <h2 class="mb-3">Welcome, <%= @debt.name %>!</h2>
 </div>
 
-
-
 <%# <div
   data-controller="swiper"
   data-swiper-next-button-target="nextButton"
@@ -41,8 +39,8 @@
 <%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
 
 
-
-<div class="container mb-5 shadow-sm p-3 mb-1 debt-breakdown">
+<div data-controller="toggle">
+<div class="container mb-5 shadow-sm p-3 mb-1 debt-breakdown" data-toggle-target='debt'>
   <h4 class="mb-3">Debt Breakdown</h4>
     <div class="shadow-sm p-2 mb-2 rounded debt-summary">
       <ul class="mb-0">
@@ -133,15 +131,18 @@
 
 </div>
 
-
-
 <div class="container">
-  <div class="description">
-    <h2>Choose Your Plan</h2>
-    <p>There are 3 plans to payoff your debt earlier, cheaper and maintain your level of life at the same time</p>
-    <p>Choose one, follow the schedule and get your happy life back👏</p>
-  </div>
+  <div class="btn btn-action m-3" data-action='click->toggle#page_change'>Select Plan</div>
 </div>
+
+<div class="plans d-none">
+  <div class="container">
+    <div class="description">
+      <h2>Choose Your Plan</h2>
+      <p>There are 3 plans to payoff your debt earlier, cheaper and maintain your level of life at the same time</p>
+      <p>Choose one, follow the schedule and get your happy life back👏</p>
+    </div>
+  </div>
 
 <div class="container p-3">
   <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel"data-bs-interval="50000">
@@ -170,31 +171,31 @@
   </div>
 </div>
 
-<div data-controller='toggle'>
-<div class="container option-cards p-3 mb-1">
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_mini'>
-        <h4>Minimum Plan</h4>
-        <p>You pay less for monthly payment, but takes longer.
-        End up paying relatively big</p>
+<%# <div data-controller='toggle'> %>
+  <div class="container option-cards p-3 mb-1">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_mini'>
+          <h4>Minimum Plan</h4>
+          <p>You pay less for monthly payment, but takes longer.
+          End up paying relatively big</p>
+        </div>
       </div>
-    </div>
-    <div class="col-12 col-md-4">
-      <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_stand'>
-        <h4>Standard Plan</h4>
-        <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal</p>
+      <div class="col-12 col-md-4">
+        <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_stand'>
+          <h4>Standard Plan</h4>
+          <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal</p>
+        </div>
       </div>
-    </div>
-    <div class="col-12 col-md-4">
-      <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_super'>
-        <h4>Premium Plan</h4>
-        <p>You pay big for monthly payment, but takes shorter.
-        End up paying relatively small.</p>
+      <div class="col-12 col-md-4">
+        <div class="option-card shadow-sm rounded p-3 mb-1" data-action='click->toggle#show_super'>
+          <h4>Premium Plan</h4>
+          <p>You pay big for monthly payment, but takes shorter.
+          End up paying relatively small.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <div class="container plan-detail minimum-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='mini'>
     <h5>Minimum Plan</h5>
@@ -311,6 +312,8 @@
         <%= link_to "Select", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
       </div>
   </div>
+<%# </div> %>
+</div>
 </div>
 
 <div class="container mb-4">
