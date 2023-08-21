@@ -11,6 +11,7 @@
     "chartkick": "^5.0.1",
     "stimulus": "^3.2.2",
     "stimulus-carousel": "^5.0.1",
+    "stimulus-popover": "^6.2.0",
     "stimulus-reveal-controller": "^4.1.0",
     "swiper": "^10.2.0",
     "webpack": "^5.88.2",
