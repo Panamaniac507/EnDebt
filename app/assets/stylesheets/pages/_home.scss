@@ -62,6 +62,20 @@ max-height: 700px;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
+.btn-action1 {
+  background-color: #ba8d19;
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+}
+
+.btn-action1:hover {
+  background-color: #755400;
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+}
+
 .fv-back-color {
   background: linear-gradient(#9BE8D8,#cfe8e3 ) ;
 }

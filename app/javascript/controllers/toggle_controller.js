@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ['mini','stand','super','debt','plans']
+  static targets = ['mini','stand','super','debt','plans','godebt','goplan']
   connect() {
     console.log("hello")
   }
@@ -41,20 +41,16 @@ export default class extends Controller {
   }
 
   page_change() {
-    if (this.debtTarget.classList.contains('d-none')){
-      this.debtTarget.classList.remove('d-none');
-      if (this.plansTarget.classList.contains('d-none')){
-        return
-      } else {
-        this.plansTarget.classList.add('d-none');
-      }
-      return
+    if (this.plansTarget.classList.contains('d-none')){
+      this.plansTarget.classList.remove('d-none')
+      this.debtTarget.classList.add('d-none')
+      this.godebtTarget.classList.remove('d-none')
+      this.goplanTarget.classList.add('d-none')
     } else {
-      this.debtTarget.classList.add('d-none');
-      if (this.plansTarget.classList.contains('d-none')){
-        return this.plansTarget.classList.remove('d-none');
-      }
+      this.plansTarget.classList.add('d-none')
+      this.debtTarget.classList.remove('d-none')
+      this.godebtTarget.classList.add('d-none')
+      this.goplanTarget.classList.remove('d-none')
     }
   }
-
 }
