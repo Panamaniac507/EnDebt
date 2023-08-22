@@ -20,5 +20,5 @@ application.register("swiper", SwiperController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
-import Popover from 'stimulus-popover'
-application.register('popover', Popover)
+// import Popover from 'stimulus-popover'
+// application.register('popover', Popover)
