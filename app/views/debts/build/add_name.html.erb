@@ -1,20 +1,37 @@
 
-<div class="wrapper">
-<div class="container2">
-test
-</div>
-
-<div class="container3">
-<%= image_tag 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'%>
-</div>
-
+<%#= link_to 'skip', next_wizard_path %>
 
 <div class="container">
-<%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-<%= f.input :name, label: "Name", placeholder: "Name" %>
- <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
-<% end %>
-<br>
-<%#= link_to 'skip', next_wizard_path %>
-</div>
-</div>
+
+  <div class="img flex-column">
+    <div class="example-popover">
+      <button
+            type="button"
+            class="btn btn-primary"
+            data-controller="popover">
+            Click me for Popover
+      </button>
+    </div>
+    <%= image_tag 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80' %>
+  <%# <button id="button" aria-describedby="tooltip">My button</button>
+    <div id="tooltip" role="tooltip">My tooltip
+    <div id="arrow" data-popper-arrow></div>
+    </div>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script>
+      const button = document.querySelector('#button');
+      const tooltip = document.querySelector('#tooltip');
+
+      const popperInstance = Popper.createPopper(button, tooltip);
+    </script> %>
+  </div>
+
+  <div class="name_input flex-column">
+    <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
+    <%= f.input :name, label: false, placeholder: "Name" %>
+    <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+  </div>
