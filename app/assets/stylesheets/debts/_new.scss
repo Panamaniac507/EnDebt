@@ -1,12 +1,75 @@
-.test {
-  display: flex;
-  justify-content: center;
+.name_input {
+  // display: flex;
+  // justify-content: center;
   background-color: #cff4fc;
-  margin: 5% 5%;
-  padding: 2% 2%;
+  // margin: 36% 36%;
+  padding-left: 4%;
+  // padding-right: 8%;
+  margin-left: 8%;
+  // margin-right: 8%;
   border-radius: 5%;
 }
 
-// .container {
-//   background-image: url("https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80");
+
+.img {
+  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  max-width: 100%;
+  max-height: 50%;
+
+
+}
+.container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 90%;
+padding-left: 0%;
+}
+
+.flex-column {
+width: 100%;
+}
+
+// #tooltip {
+//   background: #333;
+//   color: white;
+//   font-weight: bold;
+//   padding: 4px 8px;
+//   font-size: 13px;
+//   border-radius: 4px;
+// }
+
+// #arrow,
+// #arrow::before {
+//   position: absolute;
+//   width: 8px;
+//   height: 8px;
+//   background: inherit;
+// }
+
+// #arrow {
+//   visibility: hidden;
+// }
+
+// #arrow::before {
+//   visibility: visible;
+//   content: '';
+//   transform: rotate(45deg);
+// }
+
+// #tooltip[data-popper-placement^='top'] > #arrow {
+//   bottom: -4px;
+// }
+
+// #tooltip[data-popper-placement^='bottom'] > #arrow {
+//   top: -4px;
+// }
+
+// #tooltip[data-popper-placement^='left'] > #arrow {
+//   right: -4px;
+// }
+
+// #tooltip[data-popper-placement^='right'] > #arrow {
+//   left: -4px;
 // }
