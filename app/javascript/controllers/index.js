@@ -3,13 +3,12 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-import Carousel from 'stimulus-carousel'
 
-// import CarouselController from "./carousel_controller"
-// application.register("carousel", CarouselController)
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
 
-// const application = Application.start()
-application.register('carousel', Carousel)
+import ConfettiController from "./confetti_controller"
+application.register("confetti", ConfettiController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -20,5 +19,3 @@ application.register("swiper", SwiperController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
-// import Popover from 'stimulus-popover'
-// application.register('popover', Popover)

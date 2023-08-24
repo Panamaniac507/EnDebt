@@ -9,6 +9,7 @@
     "bootstrap": "^5.3.1",
     "chart.js": "^4.3.3",
     "chartkick": "^5.0.1",
+    "particles.js": "^2.0.0",
     "stimulus": "^3.2.2",
     "stimulus-carousel": "^5.0.1",
     "stimulus-popover": "^6.2.0",
