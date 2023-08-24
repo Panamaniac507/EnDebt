@@ -1,7 +1,8 @@
 <div class="container">
 <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-<%= f.input :remaining_principal, label: "Remaining Principal" %>
+<%= f.input :remaining_principal, label: "Remaining Principal", placeholder: "Remaining Principal" %>
  <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
 <% end %>
-<%= link_to 'skip', next_wizard_path %>
+<br>
+<%#= link_to 'skip', next_wizard_path %>
 </div>
