@@ -1,12 +1,14 @@
+<div id="particles-js" class="transparent"></div>
+<div id="wrapper">
 <div class="container">
   <div class="container first_view">
   <h2>Hey, how are you?? <%= @debt.name %></h2>
 </div>
 
-<div id="particles-js"></div>
-<div id="wrapper">
+
+<%# <div id="wrapper">
 この中にコンテンツが入ります。
-<!--/wrapper--></div>
+<!--/wrapper--></div> %>
 
 <div class="container payment">
   <% @selected_payment_options.each do |option| %>
@@ -105,9 +107,10 @@
     </div>
   <% end %>
 
-  <div class="confirm">
+  <div class="confirm" data-controller="confetti">
     <h3>Did you pay this month???</h3>
-    <%= link_to "Done", payment_options_paid_path, class: "btn btn-primary mt-3"%>
+    <%= link_to "Done", payment_options_paid_path, class: "btn btn-primary mt-3", data: {action: "click->confetti#celebrate"} %>
   </div>
 
+</div>
 </div>
