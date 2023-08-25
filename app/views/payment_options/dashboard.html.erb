@@ -10,26 +10,29 @@
 この中にコンテンツが入ります。
 <!--/wrapper--></div> %>
 
-<div class="container payment">
+<div class="container payment mt-3">
   <% @selected_payment_options.each do |option| %>
-  <div class="container schedule">
-    <h3>Your Next Payment Due Date</h3>
+  <div class="container schedule mb-5 shadow-sm p-3 mt-3 debt-breakdown rounded">
+    <h5>Your Next Payment Due Date</h5>
     <% option.payments.each do |payment| %>
       <% if payment.status === 1 %>
-        <strong><%= payment.next_paying_date %></strong>
+        <h3><%= payment.next_paying_date %></h3>
       <% end %>
     <% end %>
+    <div class="confirm mt-3">
+    <h6>Did you pay this month???</h6>
+    <%= link_to "YES!!", payment_options_paid_path(payment: true), class: "btn btn-action mt-3" %>
+  </div>
   </div>
   <% end %>
 </div>
 
 
 <% @selected_payment_options.each do |option| %>
-  <div class="container mb-5 shadow-sm p-3 mb-1 rounded">
-    <h2>Debt Breakdown</h2>
-        <h5>Points you need to understand about your debt</h5>
+  <div class="container mb-5 shadow-sm p-3 mb-1 rounded ">
+    <h3>Debt Breakdown with your plan</h3>
+        <h6 class="mt-2">Summary</h6>
         <ul>
-          <li>The less you pay for monthly payment, the longer takes and end up paying relatively big.</li>
           <li>You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= option.total_monthly_payment %> $ with this plan.</li>
           <li> It means you are paying <%= option.total_monthly_payment - @debt.original_principal %> $ as extra.</li>
           <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
@@ -61,14 +64,14 @@
 
     <div class="containr">
       <div class="row">
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Original Principal</p>
             <%= @debt.original_principal %>
           </div>
         </div>
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Remaining Balance</p>
             <%= option.debt.remaining_principal %>
           </div>
@@ -76,14 +79,14 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Expected Total Amount</p>
             <%= option.total_monthly_payment %>
           </div>
         </div>
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Expected Interest Amount</p>
             <%= option.total_interest_amount %>
           </div>
@@ -91,14 +94,14 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Monthly Principal</p>
             <%= option.monthly_payment_principal %>
           </div>
         </div>
-        <div class="col-6">
-          <div class="info-card shadow-sm p-3 mb-1 rounded">
+        <div class="col-12">
+          <div class="info-card shadow-sm p-3 mb-2 rounded">
             <p>Expected Finish Date</p>
             <%= option.final_payment_date %>
           </div>
@@ -107,10 +110,10 @@
     </div>
   <% end %>
 
-  <div class="confirm">
+  <%# <div class="confirm">
     <h3>Did you pay this month???</h3>
     <%= link_to "Done", payment_options_paid_path(payment: true), class: "btn btn-primary mt-3" %>
-  </div>
+  <%# </div> %>
 
 </div>
 </div>
