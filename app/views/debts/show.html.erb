@@ -1,5 +1,5 @@
 <div class="container first_view">
-  <h2 class="mb-3">Welcome, <%= @debt.name %>!</h2>
+  <h2 class="mb-3">Hey, <%= @debt.name %>!</h2>
 </div>
 
 <%# <div
@@ -42,16 +42,18 @@
 <div data-controller="toggle">
   <div class="container mb-5 shadow-sm p-3 mb-1 debt-breakdown rounded-top" data-toggle-target='debt'>
     <h4 class="mb-3">Debt Breakdown</h4>
-      <div class="shadow-sm p-2 mb-2 rounded debt-summary">
+      <h6 class="mt-2">Summary</h6>
+      <div class="shadow-sm p-2 mb-2 debt-summary">
         <ul class="mb-0">
-          <li>You borrowed <%= @debt.original_principal %> $, you will end up paying <%= @payment_options[3].total_monthly_payment %> $ with this plan.</li>
-          <li>You will be paying <%= @payment_options[3].total_monthly_payment - @debt.original_principal %> $ as extra.</li>
+          <li>You borrowed <%= number_to_currency(@debt.original_principal, precision: 0) %>. you will end up paying <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) %> with this plan.</li>
+          <li>It means you will be paying <%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0) %> as extra.</li>
           <li>Expected date you finish payoff is <%= @payment_options[3].final_payment_date %>.</li>
           <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
         </ul>
       </div>
 
     <div class="containr mb-3">
+      <h6 class="mt-4">Details</h6>
       <div class="row">
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
@@ -63,13 +65,13 @@
                   </div>
                 </template>
             </div>
-            <%= @debt.original_principal %>
+            <%= number_to_currency(@debt.original_principal, precision:0) %>
           </div>
         </div>
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
             <p class="mb-0">Remaining Balance</p>
-            <%= @debt.remaining_principal %>
+            <%= number_to_currency(@debt.remaining_principal, precision:0) %>
           </div>
         </div>
       </div>
@@ -78,13 +80,13 @@
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
             <p class="mb-0">Total Amount</p>
-            <%= @payment_options[3].total_monthly_payment %>
+            <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) %>
           </div>
         </div>
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
             <p class="mb-0">Interest Amount</p>
-            <%= @payment_options[3].total_interest_amount %>
+            <%= number_to_currency(@payment_options[3].total_interest_amount, precision:0) %>
           </div>
         </div>
       </div>
@@ -93,7 +95,7 @@
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 m-1 rounded">
             <p class="mb-0">Monthly Principal</p>
-            <%= @payment_options[3].monthly_payment_principal %>
+            <%= number_to_currency(@payment_options[3].monthly_payment_principal, precision:0) %>
           </div>
         </div>
         <div class="col-6 p-2">
@@ -135,7 +137,7 @@
     <div class="container plans-field-fv p-3 rounded-top">
       <div class="description">
         <h4>Choose Your Plan</h4>
-        <p class="shadow-sm p-2 mb-2 rounded debt-summary" >We prepare 3 plans to payoff your debt! Choose the one you like!</p>
+        <p class="shadow-sm p-2 mb-2 debt-summary" >We prepare 3 plans to payoff your debt! Choose the one you like!</p>
       </div>
 
 
@@ -174,18 +176,18 @@
           <div class="option-card shadow-sm rounded p-3 mb-1 minimum-card-select" data-action='click->toggle#show_mini'>
             <h4>Minimum Plan</h4>
             <p>You pay less for monthly payment, but takes longer and end up paying a lot.</p>
-            <p class="m-0">Total payment is <%= @payment_options[0].total_monthly_payment %>$</p>
-            <p class="m-0">Pay off at <%= @payment_options[0].final_payment_date %></p>
-            <p class="m-0">Comparing with original plan, you can save up <%= @payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment %>$</p>
+            <%# <p class="m-0">Total payment is <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0)</p> %>
+            <%# <p class="m-0">Pay off at <%= @payment_options[0].final_payment_date %></p>
+            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment, precision:0) %>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="option-card shadow-sm rounded p-3 mb-1 standard-card-select" data-action='click->toggle#show_stand'>
             <h4>Standard Plan</h4>
             <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal</p>
-             <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %>$</p>
-            <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %></p>
-                        <p class="m-0">Comparing with original plan, you can save up <%= @payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment %>$</p>
+             <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %></p>
+            <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %></p>
+            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment, precision:0) %></p>
           </div>
         </div>
         <div class="col-12 col-md-4">
@@ -193,9 +195,9 @@
             <h4>Premium Plan</h4>
             <p>You pay big for monthly payment, but takes shorter.
             End up paying relatively small.</p>
-             <p class="m-0">Total payment is <%= @payment_options[2].total_monthly_payment %>$</p>
-            <p class="m-0">Pay off at <%= @payment_options[2].final_payment_date %></p>
-            <p class="m-0">Comparing with original plan, you can save up <%= @payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment %>$</p>
+            <%# <p class="m-0">Total payment is <%= @payment_options[2].total_monthly_payment</p> %>
+            <%# <p class="m-0">Pay off at <%= @payment_options[2].final_payment_date</p> %>
+            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment, precision:0) %></p>
           </div>
         </div>
       </div>
@@ -203,40 +205,40 @@
 
     <div class="container plan-detail minimum-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='mini'>
       <h5>Minimum Plan</h5>
-      <h6>Point of this plan</h6>
+      <h6>Summary</h6>
       <p>You pay less for monthly payment, but takes longer.
         End up paying relatively big.
-        You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[0].total_monthly_payment %> $ with this plan. It means you are paying <%= @payment_options[0].total_monthly_payment - @debt.original_principal %> $ as extra </p>
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[0].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
         <div class="container">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Total Amount</p>
-                <%= @payment_options[0].total_monthly_payment %>
+                <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Interest Amount</p>
-                <%= @payment_options[0].total_interest_amount %>
+                <%= number_to_currency(@payment_options[0].total_interest_amount, precision:0) %>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Monthly Principal</p>
-                <%= @payment_options[0].monthly_payment_principal %>
+                <%= number_to_currency(@payment_options[0].monthly_payment_principal, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Finish Date</p>
                 <%= @payment_options[0].final_payment_date %>
               </div>
             </div>
           </div>
-          <%= link_to "Select", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-primary mt-3" %>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-action mt-3 text-center" %>
         </div>
     </div>
 
@@ -244,37 +246,37 @@
       <h5>Standard Plan</h5>
       <h6>Point of this plan</h6>
       <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal.
-        You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[1].total_monthly_payment %> $ with this plan. It means you are paying <%= @payment_options[1].total_monthly_payment - @debt.original_principal %> $ as extra </p>
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
         <div class="container">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Total Amount</p>
-                <%= @payment_options[1].total_monthly_payment %>
+                <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Interest Amount</p>
-                <%= @payment_options[1].total_interest_amount %>
+                <%= number_to_currency(@payment_options[1].total_interest_amount, precision:0) %>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Monthly Principal</p>
-                <%= @payment_options[1].monthly_payment_principal %>
+                <%= number_to_currency(@payment_options[1].monthly_payment_principal, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Finish Date</p>
                 <%= @payment_options[1].final_payment_date %>
               </div>
             </div>
           </div>
-          <%= link_to "Select", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-primary mt-3" %>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-action mt-3 text-center" %>
         </div>
     </div>
 
@@ -283,46 +285,46 @@
       <h6>Point of this plan</h6>
       <p>You pay big for monthly payment, but takes shorter.
           End up paying relatively small.
-        You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= @payment_options[2].total_monthly_payment %> $ with this plan. It means you are paying <%= @payment_options[2].total_monthly_payment - @debt.original_principal %> $ as extra </p>
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %> $, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> $ with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
         <div class="container">
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Total Amount</p>
-                <%= @payment_options[2].total_monthly_payment %>
+                <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Interest Amount</p>
-                <%= @payment_options[2].total_interest_amount %>
+                <%= number_to_currency(@payment_options[2].total_interest_amount, precision:0) %>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Monthly Principal</p>
-                <%= @payment_options[2].monthly_payment_principal %>
+                <%= number_to_currency(@payment_options[2].monthly_payment_principal, precision:0) %>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <div class="info-card shadow-sm p-3 mb-1 rounded">
                 <p>Expected Finish Date</p>
                 <%= @payment_options[2].final_payment_date %>
               </div>
             </div>
           </div>
-          <%= link_to "Select", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-primary mt-3" %>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-action mt-3 text-center" %>
         </div>
     </div>
   <%# </div> %>
   </div>
   <div class="container text-center">
-    <div class="btn btn-action m-3" data-action='click->toggle#page_change' data-toggle-target='goplan'>Select Plans</div>
+    <div class="btn btn-action" data-action='click->toggle#page_change' data-toggle-target='goplan'>Select Plans</div>
   </div>
   <div class="container text-center">
-    <div class="btn btn-action1 m-3 d-none" data-action='click->toggle#page_change' data-toggle-target='godebt'>See Debt Breakdown</div>
+    <div class="btn btn-action1 d-none" data-action='click->toggle#page_change' data-toggle-target='godebt'>See Debt Breakdown</div>
   </div>
 </div>
 
