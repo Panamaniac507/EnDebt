@@ -4,9 +4,9 @@ import { Popover } from "bootstrap";
 export default class extends Controller {
   connect() {
     this.popover = new Popover(this.element, {
-      content: "This is a popover content.",
+      content: "The first step is always the hardest, you got this!.",
       trigger: "click", // Show popover on click
-      placement: "left"
+      placement: "right"
     });
   }
 }

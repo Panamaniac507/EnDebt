@@ -1,37 +1,38 @@
 
 <%#= link_to 'skip', next_wizard_path %>
 
-<div class="main">
 
-  <div class="img flex-column">
+
+
+
+
+
+
+
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80);">
+  <div class="container">
+    <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
+    <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
+    <div class="name_input">
+    <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
+    <%= f.input :name, label: false, placeholder: "Name" %>
+    <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
+    <% end %>
+    <br>
+    <div class="d-flex">
+    <img class="avatar-large" alt="avatar" src="https://avatars.githubusercontent.com/u/103368056?v=4" />
     <div class="example-popover">
       <button
             type="button"
             class="btn btn-primary"
             data-controller="popover">
-            Click me for Popover
+            A short message from Ryo, our Founder
       </button>
-    </div>
-    <%= image_tag 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80' %>
-  <%# <button id="button" aria-describedby="tooltip">My button</button>
-    <div id="tooltip" role="tooltip">My tooltip
-    <div id="arrow" data-popper-arrow></div>
-    </div>
-
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script>
-      const button = document.querySelector('#button');
-      const tooltip = document.querySelector('#tooltip');
-
-      const popperInstance = Popper.createPopper(button, tooltip);
-    </script> %>
+    <%#= image_tag 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80' %>
   </div>
-
-  <div class="name_input flex-column">
-    <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-    <%= f.input :name, label: false, placeholder: "Name" %>
-    <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
-    <% end %>
   </div>
-
   </div>
+  </div>
+</div>
