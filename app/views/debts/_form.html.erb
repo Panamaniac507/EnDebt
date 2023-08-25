@@ -24,31 +24,31 @@
    </div>
 
    <div class="mb-3">
-     <%= f.input :interest_rate, label: "Interest Rate" %>
+     <%= f.input :interest_rate, label: false %>
    </div>
 
    <div class="mb-3">
-     <%= f.input :monthly_principal_amount, label: "Monthly Principal Amount" %>
+     <%= f.input :monthly_principal_amount, label: false %>
    </div>
 
   <div class="mb-3">
-     <%= f.input :remaining_principal, label: "Remaining Principal" %>
+     <%= f.input :remaining_principal, label: false %>
    </div>
 
    <div class="mb-3">
-    <%= f.input :original_principal, label: "Original Principal" %>
+    <%= f.input :original_principal, label: false %>
    </div>
 
    <div class="mb-3">
-    <%= f.input :income, label: "Monthly Income"%>
+    <%= f.input :income, label: false %>
    </div>
 
    <div class="mb-3">
-    <%= f.input :expense, label: "Monthly Expense" %>
+    <%= f.input :expense, label: false %>
   </div>
 
   <div class="mb-3">
-    <%= f.input :debt_due_date, label: "Debt Due Date"%>
+    <%= f.input :debt_due_date, label: false %>
   </div>
 
   <%= f.submit "Create Debt Profile", class: 'btn btn-primary' %>
