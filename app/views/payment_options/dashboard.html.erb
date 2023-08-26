@@ -21,7 +21,7 @@
       <% end %>
     <% end %>
     <div class="confirm mt-3">
-    <h6>Did you pay this month???</h6>
+    <h6>Did you pay this Month???</h6>
     <%= link_to "YES!!", payment_options_paid_path(payment: true), class: "btn btn-action mt-3" %>
   </div>
   </div>
@@ -31,11 +31,11 @@
 
 <% @selected_payment_options.each do |option| %>
   <div class="container mb-5 shadow-sm p-3 mb-1 rounded ">
-    <h3>Debt Breakdown with your plan</h3>
+    <h3>Debt Breakdown & Current Payment Plan</h3>
         <h6 class="mt-2">Summary</h6>
         <ul>
           <li>You borrowed <%= @debt.original_principal %> $, then you will end up paying <%= option.total_monthly_payment %> $ with this plan.</li>
-          <li> It means you are paying <%= option.total_monthly_payment - @debt.original_principal %> $ as extra.</li>
+          <li> It means you are currently paying <%= option.total_monthly_payment - @debt.original_principal %> $ as extra.</li>
           <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
         </ul>
     <div class="container p-3">

@@ -20,6 +20,7 @@ class DebtsController < ApplicationController
     @debt = Debt.new
     # @debt.remaining_principal = debt_params[:original_principal]
     @debt.user = current_user
+    @debt.status = 'building'
     @debt.save
     authorize @debt
     redirect_to new_debt_build_path(@debt)
