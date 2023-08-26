@@ -1,9 +1,23 @@
 <div class="container">
+  <h1>Your Debts List</h1>
 
+  <% @debts.each_with_index do |debt, index| %>
+    <div class="debt-card mb-5 shadow-sm p-3 mb-1 debt-breakdown rounded">
+      <h3>Debt <%= index + 1 %></h3>
+      <%= number_to_currency(debt.original_principal, unit:"¥", precision:0) %>
+      <%= link_to "Dashbord", payment_options_dashboard_debt_path(debt.id)%>
+    </div>
+  <% end %>
 </div>
 
-<% @debts.each do |debt| %>
-  <%= debt %>
-  <%= debt.name %>
-    <%= debt.id %>
-<% end %>
+    <%# t.string "name"
+    t.bigint "user_id", null: false
+    t.float "interest_rate"
+    t.integer "remaining_principal"
+    t.integer "original_principal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "income"
+    t.integer "expense"
+    t.date "debt_due_date"
+    t.integer "monthly_principal_amount" %>

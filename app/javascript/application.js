@@ -13,6 +13,6 @@ import "bootstrap"
 // @import 'swiper/scss';
 // @import 'swiper/scss/pagination';
 // @import 'swiper/scss/navigation';
-document.addEventListener('DOMContentLoaded', function() {
-  var popoverTrigger = new bootstrap.Popover(document.getElementById('popoverButton'));
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   // var popoverTrigger = new bootstrap.Popover(document.getElementById('popoverButton'));
+// });

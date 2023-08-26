@@ -1,4 +1,6 @@
-<div id="particles-js" class="transparent" data-controller="confetti"></div>
+<% if @paid %>
+  <%= render "shared/confetti" %>
+<% end %>
 <div id="wrapper">
 
 <div class="container">
@@ -22,7 +24,7 @@
     <% end %>
     <div class="confirm mt-3">
     <h6>Did you pay this Month???</h6>
-    <%= link_to "YES!!", payment_options_paid_path(payment: true), class: "btn btn-action mt-3" %>
+    <%= link_to "YES!!", payment_options_paid_path(debt_id: @debt.id, payment: true), class: "btn btn-action mt-3" %>
   </div>
   </div>
   <% end %>
