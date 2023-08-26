@@ -11,7 +11,7 @@
 
     <div class="name_input">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-    <%= f.input :expense, label: false, placeholder: "Expenses in ¥ or $" %>
+    <%= f.input :expense, label: false, placeholder: "Expenses in ¥" %>
     <%= f.submit "Next", class: 'btn btn-primary' %>
     <% end %>
     </div>
