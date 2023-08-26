@@ -15,7 +15,7 @@ class PaymentOptionsController < ApplicationController
     skip_authorization
     @payment_option_selected = PaymentOption.find(params[:id])
     @payment_option_selected.update(active_plan: true)
-    redirect_to payment_options_dashboard_path
+    redirect_to payment_options_dashboard_path(@payment_option_selected.debt_id)
   end
 
   def create
@@ -36,9 +36,17 @@ class PaymentOptionsController < ApplicationController
     # in the future, we will have several debts therefore line 26.
     # add policy pundit later
     skip_authorization
-    @debts = current_user.debts
-    @debt = @debts[0]
-    @payment_options = current_user.payment_options
+
+    # scope = Debt.all
+
+    # scope = scope.where(critria) if params[:criteria]
+
+    @paid = true if params[:payment]
+
+    @debt = Debt.find(params[:debt_id])
+    # @debts = current_user.debts
+    # @debt = @debts[0]
+    @payment_options = @debt.payment_options
     @selected_payment_options = @payment_options.where(active_plan: true)
     # @payment_options.each do |option|
     #   if option.active_plan == true
@@ -108,9 +116,11 @@ class PaymentOptionsController < ApplicationController
 
   def paid
     skip_authorization
-    @debts = current_user.debts
-    @debt = @debts[0]
-    @payment_options = current_user.payment_options
+
+    @debt = Debt.find(params[:debt_id])
+    # @debts = current_user.debts
+    # @debt = @debts[0]
+    @payment_options = @debt.payment_options
     @selected_payment_options = @payment_options.where(active_plan: true)
     payment_id = 0
     @selected_payment_options[0].payments.each do |payment|
@@ -131,8 +141,7 @@ class PaymentOptionsController < ApplicationController
       selected_debt.update(remaining_principal: remain)
     # debt = @selected_payment_options[0].debt_id
     # debt.update(remaining_principal: remain)
-
-    redirect_to payment_options_dashboard_path
+    redirect_to payment_options_dashboard_path(debt_id: @debt.id, payment: true)
   end
 
 
