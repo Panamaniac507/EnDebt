@@ -57,41 +57,34 @@
       <div class="row">
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
-            <div data-controller="popover">
-              <div data-action="mouseenter->popover#show mouseleave->popover#hide" class="relative">Original Principal</div>
-                <template data-popover-target="content">
-                  <div data-popover-target="card shadow-lg absolute left-0">
-                    <p>This content is in a hidden template.</p>
-                  </div>
-                </template>
-            </div>
+            <p class="mb-0">Original Principal</p>
             <%= number_to_currency(@debt.original_principal, precision:0) %>
           </div>
         </div>
+
         <div class="col-6 p-2">
-          <div class="info-card shadow p-2 rounded">
-
-
           <div class="example-popover">
-            <button
-            type="button"
-            class="btn btn-primary add_pop"
-            data-controller="popover">
-            <p class="mb-0">Remaining Balance</p>
-            </button>
-          </div>
-
-
-            <%= number_to_currency(@debt.remaining_principal, precision:0) %>
+            <div class="info-card shadow p-2 rounded">
+              <div class="d-flex">
+                <p class="mb-0">Remaining Balance</p>
+                <div class="add_pop" data-controller="popover"><i class="fa-regular fa-circle-question"></i></div>
+              </div>
+              <%= number_to_currency(@debt.remaining_principal, precision:0) %>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-6 p-2">
-          <div class="info-card shadow p-2 rounded">
-            <p class="mb-0">Total Amount</p>
-            <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) %>
+          <div class="example-popover">
+            <div class="info-card shadow p-2 rounded">
+              <div class="d-flex">
+                <p class="mb-0">Total Amount</p>
+                <div class="add_pop" data-controller="popover"><i class="fa-regular fa-circle-question"></i></div>
+              </div>
+              <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) %>
+            </div>
           </div>
         </div>
         <div class="col-6 p-2">
@@ -122,13 +115,13 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50000">
         <div class="carousel-inner">
           <div class="carousel-item">
-            <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+            <%= column_chart @data_total, colors: ["#78C1F3","#F94949"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
           </div>
           <div class="carousel-item active">
-            <%= column_chart @data_all, colors: ["#78C1F3","#FFC93C"], title: "Changes on monthly payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+            <%= column_chart @data_all, colors: ["#78C1F3","#F94949"], title: "Changes on monthly payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
           </div>
           <div class="carousel-item">
-            <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
+            <%= pie_chart @progress_data, colors: ["#78C1F3","#F94949"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -141,7 +134,6 @@
         </button>
       </div>
     </div>
-
   </div>
 
   <div class="d-none" data-toggle-target="plans">
@@ -152,33 +144,33 @@
       </div>
 
 
-  <div class="container p-3 debt-summary d-block w-90 shadow-sm p-3 mb-1 rounded">
-    <%# <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel"data-bs-interval="50000"> %>
-      <%# <div class="carousel-inner"> %>
-        <%# <div class="carousel-item active"> %>
-            <%= column_chart @data_compare, colors: ["#78C1F3","#FFC93C"], title: "Comparison of Plans", stacked:true %>
-        <%# </div> %>
-        <%# <div class="carousel-item">
-            <%= column_chart @data_plan_1, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Minimun Plan", stacked:true %>
-        <%# </div> %>
-        <%# <div class="carousel-item"> %>
-            <%# <%= column_chart @data_plan_2, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Standard Plan", stacked:true%>
-        <%# </div> %>
-        <%# <div class="carousel-item"> %>
-          <%# <%= column_chart @data_plan_3, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Super Plan", stacked:true%>
-        <%# </div> %>
-      <%# </div> %>
-      <%# <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div> %>
-  </div>
-  </div>
+      <div class="container p-3 debt-summary d-block w-90 shadow-sm p-3 mb-1 rounded">
+        <%# <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel"data-bs-interval="50000"> %>
+          <%# <div class="carousel-inner"> %>
+            <%# <div class="carousel-item active"> %>
+                <%= column_chart @data_compare, colors: ["#78C1F3","#FFC93C"], title: "Comparison of Plans", stacked:true %>
+            <%# </div> %>
+            <%# <div class="carousel-item">
+                <%= column_chart @data_plan_1, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Minimun Plan", stacked:true %>
+            <%# </div> %>
+            <%# <div class="carousel-item"> %>
+                <%# <%= column_chart @data_plan_2, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Standard Plan", stacked:true%>
+            <%# </div> %>
+            <%# <div class="carousel-item"> %>
+              <%# <%= column_chart @data_plan_3, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Super Plan", stacked:true%>
+            <%# </div> %>
+          <%# </div> %>
+          <%# <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> %>
+      </div>
+    </div>
 
   <%# <div data-controller='toggle'> %>
     <div class="container option-cards p-3 mb-1">
@@ -253,7 +245,7 @@
         </div>
     </div>
 
-      <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='stand'>
+    <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='stand'>
       <h5>Standard Plan</h5>
       <h6>Point of this Plan</h6>
       <p>You make moderate monthly payments and takes mederate to payoff. End up paying relatively normal.
@@ -291,7 +283,7 @@
         </div>
     </div>
 
-      <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded d-none"data-toggle-target='super'>
+    <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded d-none"data-toggle-target='super'>
       <h5>Premium Plan</h5>
       <h6>Point of this Plan</h6>
       <p>You make big monthly payments, but takes shorter.
