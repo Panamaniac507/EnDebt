@@ -6,6 +6,10 @@ class DebtPolicy < ApplicationPolicy
     end
   end
 
+  # def index?
+  #   true
+  # end
+
   def show?
     record.user == user
   end
@@ -13,6 +17,7 @@ class DebtPolicy < ApplicationPolicy
   def new?
     create?
   end
+
   def create?
     true
   end

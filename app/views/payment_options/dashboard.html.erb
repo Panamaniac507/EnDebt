@@ -1,9 +1,10 @@
 <div id="particles-js" class="transparent" data-controller="confetti"></div>
 <div id="wrapper">
+
 <div class="container">
   <div class="container first_view">
-  <h2>Hey, How are you?? <%= @debt.name %></h2>
-</div>
+    <h2>Hey, how are you?? <%= @debt.name %></h2>
+  </div>
 
 
 <%# <div id="wrapper">
@@ -45,10 +46,11 @@
           </div>
           <div class="carousel-item">
             <%= pie_chart @progress_data, colors: ["#78C1F3","#FFC93C"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
+            <h3><%= (option.debt.remaining_principal/@debt.original_principal)*100 %> % of your progress</h3>
           </div>
-          <div class="carousel-item">
+          <%# <div class="carousel-item">
             <%= column_chart @data_total, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
-          </div>
+          <%# </div> %>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -63,6 +65,7 @@
   </div>
 
     <div class="containr">
+      <h6 class="mt-4">Details</h6>
       <div class="row">
         <div class="col-12">
           <div class="info-card shadow-sm p-3 mb-2 rounded">

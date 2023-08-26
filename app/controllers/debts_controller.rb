@@ -6,6 +6,16 @@ class DebtsController < ApplicationController
   #   authorize @debt
   # end
 
+  def index
+      user = User.find(current_user.id)
+      # @debts = user.debts
+      # @debts.each do |debt|
+      # @debt = debt
+      # authorize @debt
+      # end
+      @debts = policy_scope(user.debts)
+  end
+
   def new
     @debt = Debt.new
     # @debt.remaining_principal = debt_params[:original_principal]
