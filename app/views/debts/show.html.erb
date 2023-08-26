@@ -70,7 +70,18 @@
         </div>
         <div class="col-6 p-2">
           <div class="info-card shadow p-2 rounded">
+
+
+          <div class="example-popover">
+            <button
+            type="button"
+            class="btn btn-primary add_pop"
+            data-controller="popover">
             <p class="mb-0">Remaining Balance</p>
+            </button>
+          </div>
+
+
             <%= number_to_currency(@debt.remaining_principal, precision:0) %>
           </div>
         </div>

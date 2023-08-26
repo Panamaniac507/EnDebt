@@ -6,7 +6,11 @@ export default class extends Controller {
      let message
      if(this.element.classList.contains("add_due_date"))
       {message = "You will never walk alone, EnDebt will sort You Out!"}
+      else if (this.element.classList.contains("add_pop"))
+      {message = "test test"}
       else {message = "The first step is always the hardest, you got this!."}
+
+
       this.popover = new Popover(this.element, {
       content: message,
       trigger: "click", // Show popover on click
