@@ -4,12 +4,7 @@ import "particles.js"
 export default class extends Controller {
   connect() {
     console.log("confetti")
-    // // this.particles = new particlesJS()
-    // const queryString = window.location.search;
-    // let regex = "payment=true"
-    if (true){
-      this.celebrate()
-    }
+    this.celebrate()
   }
 
 
@@ -27,7 +22,7 @@ export default class extends Controller {
     particlesJS.load('particles-js', "/pconfig.json", () => {
     setTimeout(() => {
       this.element.innerHTML = ""
-    }, 3000);
+    }, 10000);
       console.log('callback - particles-js config loaded');
     });
   }

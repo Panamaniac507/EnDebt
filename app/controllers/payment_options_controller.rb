@@ -15,7 +15,7 @@ class PaymentOptionsController < ApplicationController
     skip_authorization
     @payment_option_selected = PaymentOption.find(params[:id])
     @payment_option_selected.update(active_plan: true)
-    redirect_to payment_options_dashboard_path(@payment_option_selected.debt_id)
+    redirect_to payment_options_dashboard_path(debt_id: @payment_option_selected.debt_id)
   end
 
   def create
