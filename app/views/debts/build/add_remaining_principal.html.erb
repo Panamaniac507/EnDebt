@@ -10,7 +10,7 @@
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
     <div class="name_input">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-    <%= f.input :remaining_principal, label: false, placeholder: "Remaining Principal in ¥ or $" %>
+    <%= f.input :remaining_principal, label: false, placeholder: "Remaining Principal in ¥" %>
     <%= f.submit "Next", class: 'btn btn-primary' %>
     <% end %>
     <br>
