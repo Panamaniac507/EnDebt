@@ -178,26 +178,26 @@
             <p>You pay less for monthly payment, but takes longer and end up paying a lot.</p>
             <%# <p class="m-0">Total payment is <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0)</p> %>
             <%# <p class="m-0">Pay off at <%= @payment_options[0].final_payment_date %></p>
-            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment, precision:0) %>
+            <p class="m-0">Comparing with your original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment, precision:0) %>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="option-card shadow-sm rounded p-3 mb-1 standard-card-select" data-action='click->toggle#show_stand'>
             <h4>Standard Plan</h4>
-            <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal</p>
+            <p>You make moderate monthly payments and takes a moderate timeline to pay it off. You would end up paying a moderate amount. </p>
              <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %></p>
             <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %></p>
-            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment, precision:0) %></p>
+            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment, precision:0) %></p>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="option-card shadow-sm rounded p-3 mb-1 premium-card-select" data-action='click->toggle#show_super'>
             <h4>Premium Plan</h4>
-            <p>You pay big for monthly payment, but takes shorter.
-            End up paying relatively small.</p>
+            <p>Your monthly payments are big, but takes a shorter timeline.
+            End up paying a relatively small amount.</p>
             <%# <p class="m-0">Total payment is <%= @payment_options[2].total_monthly_payment</p> %>
             <%# <p class="m-0">Pay off at <%= @payment_options[2].final_payment_date</p> %>
-            <p class="m-0">Comparing with original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment, precision:0) %></p>
+            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment, precision:0) %></p>
           </div>
         </div>
       </div>
@@ -244,8 +244,8 @@
 
       <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='stand'>
       <h5>Standard Plan</h5>
-      <h6>Point of this plan</h6>
-      <p>You pay moderate for monthly payment and takes mederate to payoff. End up paying relatively normal.
+      <h6>Point of this Plan</h6>
+      <p>You make moderate monthly payments and takes mederate to payoff. End up paying relatively normal.
         You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
         <div class="container">
           <div class="row">
@@ -282,9 +282,9 @@
 
       <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded d-none"data-toggle-target='super'>
       <h5>Premium Plan</h5>
-      <h6>Point of this plan</h6>
-      <p>You pay big for monthly payment, but takes shorter.
-          End up paying relatively small.
+      <h6>Point of this Plan</h6>
+      <p>You make big monthly payments, but takes shorter.
+          End up paying a relatively small amount.
         You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %> $, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> $ with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
         <div class="container">
           <div class="row">
