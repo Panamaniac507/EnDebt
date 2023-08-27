@@ -75,9 +75,9 @@ class DebtsController < ApplicationController
     @payment_options[3].payments.each do |payment|
       @data_monthly_principal << [payment.next_paying_date, @debt.monthly_principal_amount]
     end
-    num = (@data_monthly_principal.count / 5)
+    num = (@data_monthly_principal.count / 10)
     count = 0
-    5.times do |n|
+    10.times do |n|
       @data_monthly_principal_short << @data_monthly_principal[count]
       count += num
     end
@@ -87,9 +87,9 @@ class DebtsController < ApplicationController
     @payment_options[3].payments.each do |payment|
       @data_monthly_interest << [payment.next_paying_date, (payment.next_payment_amount - @debt.monthly_principal_amount)]
     end
-    num = (@data_monthly_interest.count / 5)
+    num = (@data_monthly_interest.count / 10)
     count = 0
-    5.times do |n|
+    10.times do |n|
       @data_monthly_interest_short << @data_monthly_interest[count]
       count += num
     end
@@ -153,11 +153,11 @@ class DebtsController < ApplicationController
     @data_plan_3 = [
       {
         name: "Principal Amount",
-        data: [["Super Plan",@debt_p_plan_3]]
+        data: [["Premium Plan",@debt_p_plan_3]]
       },
       {
         name: "Interest Amount",
-        data: [["Super Plan",@debt_i_plan_3]]
+        data: [["Premium Plan",@debt_i_plan_3]]
       }
     ]
 
@@ -169,11 +169,11 @@ class DebtsController < ApplicationController
     @data_compare = [
       {
         name: "Principal Amount",
-        data: [["Original Plan",@debt_p_original],["Minimum Plan",@debt_p_plan_1], ["Standard Plan",@debt_p_plan_2],["Super Plan",@debt_p_plan_3]]
+        data: [["Original Plan",@debt_p_original],["Minimum Plan",@debt_p_plan_1], ["Standard Plan",@debt_p_plan_2],["Premium Plan",@debt_p_plan_3]]
       },
       {
         name: "Interest Amount",
-        data: [["Original Plan",@debt_i_original],["Minimum Plan",@debt_i_plan_1], ["Standard Plan",@debt_i_plan_2],["Super Plan",@debt_i_plan_3]]
+        data: [["Original Plan",@debt_i_original],["Minimum Plan",@debt_i_plan_1], ["Standard Plan",@debt_i_plan_2],["Premium Plan",@debt_i_plan_3]]
       }
     ]
     #to call chatgpt, should NOT run it if it is required as it costs

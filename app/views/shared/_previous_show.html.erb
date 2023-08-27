@@ -1,0 +1,346 @@
+
+<%# Just store the code which is not used but might restore %>
+
+<%# Below here, current one %>
+<%# -------------------------------------------- %>
+
+<%# <div class="container">
+  <h2 class="mb-3">Hello, <%= @debt.name %>!</h2>
+  <%# <p>Get understanding of your debt and find right option for you !</p> %>
+<%# </div> %>
+
+
+
+<%# <div
+  data-controller="swiper"
+  data-swiper-next-button-target="nextButton"
+  data-swiper-prev-button-target="prevButton"
+  class="mySwiper"
+> %>
+
+<%# <div data-controller="swiper">
+    <div class="swiper-container" data-swiper-target="container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="" alt="Slide 1">slide1</div>
+        <div class="swiper-slide"><img src="" alt="Slide 2">slide2</div>
+        <!-- Add more slides here -->
+      </div>
+    </div>
+    <div data-action="click->swiper#prevSlide">Previous</div>
+    <div data-action="click->swiper#nextSlide">Next</div>
+</div> %>
+
+  <%# colum chart-- %>
+
+<%# <%=  line_chart @debt.payment_options.first.group_by_day_of_week(:created_at, format: "%a").count%>
+<%# <%= line_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
+<%# <div class="original_payment"> %>
+<%# <% column_chart @original_payments, stacked: true %>
+<%# </div> %>
+
+<%# <div class="original_interest"> %>
+
+<%# <% column_chart @monthly_interests %>
+
+<%# </div> %>
+
+<%# try to add bar chart %>
+<%# <%= bar_chart Payment.group(:next_payment_amount).next_payment_amount %>
+
+
+<%# <div data-controller="toggle">
+  <div class="container mb-5 shadow-sm p-3 mb-1 debt-breakdown rounded-top" data-toggle-target='debt'>
+    <h4 class="mb-3">Debt Breakdown</h4>
+      <h6 class="mt-2">Summary</h6>
+      <div class="shadow-sm p-2 mb-2 debt-summary">
+        <ul class="mb-0">
+          <%# <li>You borrowed <%= number_to_currency(@debt.original_principal, precision: 0) . you will end up paying <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) with this plan.</li> %>
+          <%# <li>It means you will be paying <%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0) as extra.</li> %>
+          <%# <li>Expected date you finish payoff is <%= @payment_options[3].final_payment_date.</li> %>
+          <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
+        <%# </ul> %>
+      </div>
+
+    <div class="containr mb-3">
+      <h6 class="mt-4">Details</h6>
+      <div class="row">
+        <div class="col-6 p-2">
+          <div class="info-card shadow p-2 rounded">
+            <p class="mb-0">Original Principal</p>
+            <%= number_to_currency(@debt.original_principal, precision:0) %>
+          </div>
+        </div>
+
+        <div class="col-6 p-2">
+          <div class="example-popover">
+            <div class="info-card shadow p-2 rounded">
+              <div class="d-flex">
+                <p class="mb-0">Remaining Balance</p>
+                <div class="add_pop" data-controller="popover"><i class="fa-regular fa-circle-question"></i></div>
+              </div>
+              <%= number_to_currency(@debt.remaining_principal, precision:0) %>
+            </div>
+          </div>
+        </div>
+      </div> %>
+
+      <div class="row">
+        <div class="col-6 p-2">
+          <div class="example-popover">
+            <div class="info-card shadow p-2 rounded">
+              <div class="d-flex">
+                <p class="mb-0">Total Amount</p>
+                <div class="add_pop" data-controller="popover"><i class="fa-regular fa-circle-question"></i></div>
+              </div>
+              <%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0) %>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 p-2">
+          <div class="info-card shadow p-2 rounded">
+            <p class="mb-0">Interest Amount</p>
+            <%= number_to_currency(@payment_options[3].total_interest_amount, precision:0) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 p-2">
+          <div class="info-card shadow p-2 m-1 rounded">
+            <p class="mb-0">Monthly Principal</p>
+            <%= number_to_currency(@payment_options[3].monthly_payment_principal, precision:0) %>
+          </div>
+        </div>
+        <div class="col-6 p-2">
+          <div class="info-card shadow p-2 m-1 rounded">
+            <p class="mb-0">Finish Date</p>
+            <%= @payment_options[3].final_payment_date %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container p-3 shadow-sm mb-2 rounded debt-summary">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50000">
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <%= column_chart @data_total, colors: ["#78C1F3","#F94949"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+          </div>
+          <div class="carousel-item active">
+            <%= column_chart @data_all, colors: ["#78C1F3","#F94949"], title: "Changes on monthly payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
+          </div>
+          <div class="carousel-item">
+            <%= pie_chart @progress_data, colors: ["#78C1F3","#F94949"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 mb-1 rounded",donut: true %>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-none" data-toggle-target="plans">
+    <div class="container plans-field-fv p-3 rounded-top">
+      <div class="description">
+        <h4>Choose Your Plan</h4>
+        <p class="shadow-sm p-2 mb-2 debt-summary" >We prepare 3 plans to payoff your debt! Choose the one you like!</p>
+      </div>
+
+
+      <div class="container p-3 debt-summary d-block w-90 shadow-sm p-3 mb-1 rounded">
+        <%# <div id="carouselExampleControls1" class="carousel slide" data-bs-ride="carousel"data-bs-interval="50000"> %>
+          <%# <div class="carousel-inner"> %>
+            <%# <div class="carousel-item active"> %>
+                <%= column_chart @data_compare, colors: ["#78C1F3","#FFC93C"], title: "Comparison of Plans", stacked:true %>
+            <%# </div> %>
+            <%# <div class="carousel-item">
+                <%= column_chart @data_plan_1, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Minimun Plan", stacked:true %>
+            <%# </div> %>
+            <%# <div class="carousel-item"> %>
+                <%# <%= column_chart @data_plan_2, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Standard Plan", stacked:true%>
+            <%# </div> %>
+            <%# <div class="carousel-item"> %>
+              <%# <%= column_chart @data_plan_3, colors: ["#78C1F3","#FFC93C"], title: "Expected Amount for Principal and Interest for Super Plan", stacked:true%>
+            <%# </div> %>
+          <%# </div> %>
+          <%# <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div> %>
+      <%# </div> %>
+    <%# </div> %>
+
+  <%# <div data-controller='toggle'> %>
+    <div class="container option-cards p-3 mb-1">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="option-card shadow-sm rounded p-3 mb-1 minimum-card-select" data-action='click->toggle#show_mini'>
+            <h4>Minimum Plan</h4>
+            <p>You pay less for monthly payment, but takes longer and end up paying a lot.</p>
+            <%# <p class="m-0">Total payment is <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0)</p> %>
+            <%# <p class="m-0">Pay off at <%= @payment_options[0].final_payment_date %></p>
+            <p class="m-0">Comparing with your original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment, precision:0) %>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="option-card shadow-sm rounded p-3 mb-1 standard-card-select" data-action='click->toggle#show_stand'>
+            <h4>Standard Plan</h4>
+            <p>You make moderate monthly payments and takes a moderate timeline to pay it off. You would end up paying a moderate amount. </p>
+             <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %></p>
+            <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %></p>
+            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment, precision:0) %></p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="option-card shadow-sm rounded p-3 mb-1 premium-card-select" data-action='click->toggle#show_super'>
+            <h4>Premium Plan</h4>
+            <p>Your monthly payments are big, but takes a shorter timeline.
+            End up paying a relatively small amount.</p>
+            <%# <p class="m-0">Total payment is <%= @payment_options[2].total_monthly_payment</p> %>
+            <%# <p class="m-0">Pay off at <%= @payment_options[2].final_payment_date</p> %>
+            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency(@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment, precision:0) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container plan-detail minimum-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='mini'>
+      <h5>Minimum Plan</h5>
+      <h6>Summary</h6>
+      <p>You pay less for monthly payment, but takes longer.
+        End up paying relatively big.
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[0].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Total Amount</p>
+                <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Interest Amount</p>
+                <%= number_to_currency(@payment_options[0].total_interest_amount, precision:0) %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Monthly Principal</p>
+                <%= number_to_currency(@payment_options[0].monthly_payment_principal, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Finish Date</p>
+                <%= @payment_options[0].final_payment_date %>
+              </div>
+            </div>
+          </div>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-action mt-3 text-center" %>
+        </div>
+    </div>
+
+    <div class="container plan-detail standard-card shadow-sm p-3 mb-1 rounded d-none" data-toggle-target='stand'>
+      <h5>Standard Plan</h5>
+      <h6>Point of this Plan</h6>
+      <p>You make moderate monthly payments and takes mederate to payoff. End up paying relatively normal.
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Total Amount</p>
+                <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Interest Amount</p>
+                <%= number_to_currency(@payment_options[1].total_interest_amount, precision:0) %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Monthly Principal</p>
+                <%= number_to_currency(@payment_options[1].monthly_payment_principal, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Finish Date</p>
+                <%= @payment_options[1].final_payment_date %>
+              </div>
+            </div>
+          </div>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-action mt-3 text-center" %>
+        </div>
+    </div>
+
+    <div class="container plan-detail super-card shadow-sm p-3 mb-1 rounded d-none"data-toggle-target='super'>
+      <h5>Premium Plan</h5>
+      <h6>Point of this Plan</h6>
+      <p>You make big monthly payments, but takes shorter.
+          End up paying a relatively small amount.
+        You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %> $, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> $ with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Total Amount</p>
+                <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Interest Amount</p>
+                <%= number_to_currency(@payment_options[2].total_interest_amount, precision:0) %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Monthly Principal</p>
+                <%= number_to_currency(@payment_options[2].monthly_payment_principal, precision:0) %>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="info-card shadow-sm p-3 mb-1 rounded">
+                <p>Expected Finish Date</p>
+                <%= @payment_options[2].final_payment_date %>
+              </div>
+            </div>
+          </div>
+          <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-action mt-3 text-center" %>
+        </div>
+    </div>
+  <%# </div> %>
+  </div>
+  <div class="container text-center">
+    <div class="btn btn-action" data-action='click->toggle#page_change' data-toggle-target='goplan'>Select Plans</div>
+  </div>
+  <div class="container text-center">
+    <div class="btn btn-action1 d-none" data-action='click->toggle#page_change' data-toggle-target='godebt'>See Debt Breakdown</div>
+  </div>
+</div>
+
+<div class="container mb-4">
+  <%# chat gpt thing here %>
+ <%# <%= @response["choices"][0]["message"]["content"] %>
+</div>

@@ -7,7 +7,25 @@ export default class extends Controller {
      if(this.element.classList.contains("add_due_date"))
       {message = "You will never walk alone, EnDebt will sort You Out!"}
       else if (this.element.classList.contains("add_pop"))
-      {message = "test test"}
+      {message = "Ask contact"}
+      else if (this.element.classList.contains("original_principal")){
+        message = "Principal is the actual amount of money you borrow which doesn't contain the interest. You need to pay off aside from interest amount"
+      }
+      else if (this.element.classList.contains("remaining_principal")){
+        message = "The remaining amount of money you borrow, which you need to pay off aside from interest amount"
+      }
+      else if (this.element.classList.contains("total_payment_amount")){
+        message = "The amount of money you need to payoff in total through your journey, which is sum of original principal and interest amount"
+      }
+      else if (this.element.classList.contains("insterest_amount")){
+        message = "Interest amount is the amount of money you need to pay aside from principal. interest is % mulitpled against remaining principal every month and this money is the Biggest issue which prevent you from paying off."
+      }
+      else if (this.element.classList.contains("monthly_principal")){
+        message = "The amount of money you need to payoff monthly for principal, which is sum of original principal and interest amount"
+      }
+      else if (this.element.classList.contains("final_due_date")){
+        message = "The date you will pay off your debt at this rate"
+      }
       else {message = "The first step is always the hardest, you got this!."}
 
 

@@ -65,8 +65,196 @@ margin-bottom: 2.5%;
   background: linear-gradient(#44c38e, #dcfadd);
 }
 
+.pc-info-card {
+  background: linear-gradient(to right, white, rgb(244, 255, 253));
+  width: 12vw;
+  height: 12vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
 
+.pc-item-name {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
 
+.pc-item-data {
+}
+
+.show-container {
+  background-color: #f0f4fc;
+}
+
+.pc-info-cards {
+  margin-top: 10px ;
+  margin-bottom: 10px;
+}
+
+.pc-chart-balance {
+  background: linear-gradient(to right, white, rgb(244, 255, 253));
+  width: 26vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left:25px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.pc-chart-breakdown {
+  background: linear-gradient(to right, white, rgb(244, 255, 253));
+  width: 26vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left:25px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.pc-chart-sumarry {
+  background: linear-gradient(to right, white, rgb(244, 255, 253));
+  width: 26vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left:25px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.pc-chart-compare {
+  background: linear-gradient(to right, white, rgb(244, 255, 253));
+  width: 80vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.btn-select {
+  background: linear-gradient(to right, #FFC93C, #ffe5a2);
+  width: 30%;
+  height: 20%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.btn-select:hover {
+  background-color: #FFC93C;
+  width: 30%;
+  height: 20%;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.btn-plan-detail {
+  background: linear-gradient(to right, rgb(199, 253, 243), rgb(169, 253, 238));
+  width: 30%;
+  height: 20%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+  margin: 10px auto;
+}
+
+.btn-plan-detail:hover {
+  background: linear-gradient(to right, rgb(216, 250, 244), rgb(169, 253, 238));
+  width: 30%;
+  height: 20%;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  margin: 10px auto;
+}
+
+.pc-mini-select-card {
+  background: linear-gradient(to right, white, rgb(199, 238, 250));
+  width: 25vw;
+  height: 18vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.pc-standard-select-card {
+  background: linear-gradient(to right, white, rgb(199, 255, 245));
+  width: 25vw;
+  height: 18vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.pc-premium-select-card {
+  background: linear-gradient(to right, white, rgb(252, 255, 207));
+  width: 25vw;
+  height: 18vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.detail-plan-card-mini {
+  background: linear-gradient(to right, white, rgb(199, 238, 250));
+  width: 80vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.detail-plan-card-standard {
+  background: linear-gradient(to right, white, rgb(199, 255, 245));
+  width: 80vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.detail-plan-card-premium {
+  background: linear-gradient(to right, white, rgb(252, 255, 207));
+  width: 80vw;
+  height: 25vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.payment-date {
+  background: linear-gradient(to right, white, rgb(125, 205, 242));
+  width: 26vw;
+  height: 18vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left:25px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.debt-list-card {
+  background: linear-gradient(to right, white, rgb(199, 238, 250));
+  width: 25vw;
+  height: 18vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
 
 // .modal-wrapper {
 //   z-index: 999;
