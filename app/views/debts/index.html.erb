@@ -1,11 +1,12 @@
 <div class="container">
-  <h1>Your Debts List</h1>
+  <h1 class="mb-3">Your Debts List</h1>
 
   <% @debts.each_with_index do |debt, index| %>
-    <div class="debt-card mb-5 shadow-sm p-3 mb-1 debt-breakdown rounded">
-      <h3>Debt <%= index + 1 %></h3>
-      <%= number_to_currency(debt.original_principal, unit:"¥", precision:0) %>
-      <%= link_to "Dashbord", payment_options_dashboard_debt_path(debt.id)%>
+    <div class="debt-list-card">
+      <h3 class="fw-bold">Debt <%= index + 1 %></h3>
+      <p class=fs-6>Original principal</p>
+      <p class="fs-5 fw-bold"><%= number_to_currency(debt.original_principal, unit:"¥", precision:0) %></p>
+      <%= link_to "Dashbord", payment_options_dashboard_debt_path(debt.id), class: "btn btn-select" %>
     </div>
   <% end %>
 </div>
