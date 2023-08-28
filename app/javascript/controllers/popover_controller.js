@@ -42,8 +42,6 @@ export default class extends Controller {
         message = "The date you will pay off your debt at this rate"
       }
       else {message = "The first step is always the hardest, you got this!."}
-
-
       this.popover = new Popover(this.element, {
       content: message,
       trigger: "click", // Show popover on click

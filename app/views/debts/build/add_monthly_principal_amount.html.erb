@@ -1,18 +1,18 @@
 <%#= link_to 'skip', next_wizard_path %>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80);">
-  <div class="container">
+  <%# <div class="container">
     <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
     <div class="name_input">
       <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-            <div class="d-flex">
-              <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
-              <div class="monthlyp1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
-            </div>
-      <%= f.submit "Next", class: 'btn btn-primary' %>
-      <% end %>
-      <br>
+            <%# <div class="d-flex"> %>
+              <%# <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
+              <%# <div class="monthlyp1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div> %>
+            <%# </div> %>
+      <%# <%= f.submit "Next", class: 'btn btn-primary' %>
+      <%# <% end %>
+      <%# <br>  %>
         <%# <div class="d-flex">
         <img class="avatar-large" alt="avatar" src="https://avatars.githubusercontent.com/u/103368056?v=4" />
         <div class="example-popover">
@@ -24,14 +24,13 @@
           </button> %>
         <%# </div> %>
         <%# </div> %>
-    </div>
-  </div>
+    <%# </div>
+  </div> %>
 
   <div class="container">
     <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
     <div class="name_input_test">
-      <h5 class="mb-4">Add monthly principal of your debt</h5>
       <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
         <div class="d-flex">
           <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
@@ -41,5 +40,13 @@
       <% end %>
       <br>
     </div>
+  </div>
+</div>
+
+<div class="notification">
+  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <div class="notification-content">
+    <p><small>Barb B. Que - VOGUE MAGAZINE</small></p>
+    <p><strong>"Do yourself a favor and listen to these guys"</strong></p>
   </div>
 </div>
