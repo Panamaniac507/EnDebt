@@ -77,7 +77,7 @@ max-height: 700px;
 }
 
 .fv-back-color {
-  background: linear-gradient(#9BE8D8,#cfe8e3 ) ;
+  background: linear-gradient(#e8faf7,#b9fffe ) ;
 }
 
 .second-section {
@@ -86,4 +86,20 @@ max-height: 700px;
 
 .third-section {
   background-color: #dffff0;
+}
+
+.btn-select-lp {
+  background: linear-gradient(to right, #FFC93C, #ffe5a2);
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 3px 3px rgb(182, 182, 182);
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.btn-select-lp:hover {
+  background-color: #FFC93C;
+  width: 60%;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
