@@ -2,8 +2,9 @@ class Debts::BuildController < ApplicationController
   before_action :skip_authorization
   include Wicked::Wizard
 
-
-  steps :add_name, :add_interest_rate, :add_monthly_principal_amount, :add_remaining_principal, :add_original_principal, :add_income, :add_expense, :add_debt_due_date
+  steps :add_name, :add_original_principal, :add_remaining_principal,
+        :add_monthly_principal_amount, :add_interest_rate,
+        :add_income, :add_expense, :add_debt_due_date
 
   def show
     @debt = Debt.find(params[:debt_id])
