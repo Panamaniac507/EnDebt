@@ -8,6 +8,21 @@ export default class extends Controller {
       {message = "You will never walk alone, EnDebt will sort You Out!"}
       else if (this.element.classList.contains("add_pop"))
       {message = "Ask contact"}
+      else if (this.element.classList.contains("original1")){
+        message = "Principal is the actual amount of money you borrow which doesn't contain the interest. You need to pay off aside from interest amount"
+      }
+      else if (this.element.classList.contains("expense1")){
+        message = "Expenses refer to your monthly expenses "
+      }
+      else if (this.element.classList.contains("income1")){
+        message = "Income refers to your annual income"
+      }
+      else if (this.element.classList.contains("interest1")){
+        message = "Interest rate is the monetary charge for borrowing money expressed as a percentage"}
+      else if (this.element.classList.contains("monthlyp1")){
+        message = "The amount of money you need to payoff monthly for principal, which is sum of original principal and interest amount"}
+      else if (this.element.classList.contains("remai1")){
+        message = "The remaining amount of money you borrow, which you need to pay off aside from interest amount"}
       else if (this.element.classList.contains("original_principal")){
         message = "Principal is the actual amount of money you borrow which doesn't contain the interest. You need to pay off aside from interest amount"
       }

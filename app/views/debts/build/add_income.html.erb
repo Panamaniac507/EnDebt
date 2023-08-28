@@ -10,7 +10,10 @@
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
     <div class="name_input">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-    <%= f.input :income, label: false, as: :currency, placeholder: "Income" %>
+          <div class="d-flex">
+            <%= f.input :income, label: false, as: :currency, placeholder: "Income" %>
+            <div class="income1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
+          </div>
     <%= f.submit "Next", class: 'btn btn-primary' %>
     <% end %>
     <br>
