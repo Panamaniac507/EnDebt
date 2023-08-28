@@ -7,7 +7,7 @@
       </div>
 
       <div class="d-flex justify-content-center pc-info-cards">
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Original Principal</p>
@@ -16,7 +16,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 pc-info-card align-items-center">
           <i class="fa-solid fa-scale-balanced fa-2x mb-2" style="color: #8fd6c8;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Remaining Principal</p>
@@ -25,7 +25,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@debt.remaining_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 pc-info-card align-items-center">
           <i class="fa-solid fa-pen-to-square fa-2x mb-2" style="color: #e6a98e;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Total Payment Amount</p>
@@ -34,7 +34,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 pc-info-card align-items-center">
           <i class="fa-solid fa-percent fa-2x mb-2" style="color: #d26856;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Interest Amount</p>
@@ -43,7 +43,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].total_interest_amount, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 pc-info-card align-items-center">
           <i class="fa-regular fa-calendar-check fa-2x mb-2" style="color: #5a79af;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Monthly Principal</p>
@@ -52,7 +52,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].monthly_payment_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-2 pc-info-card align-items-center">
+        <div class="col-12 pc-info-card align-items-center">
           <i class="fa-regular fa-calendar-days fa-2x mb-2" style="color: #ff2e2e;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Final Due Date</p>
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row d-flex justify-content-center">
         <div class="col-4 pc-chart-sumarry">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
           <p class="fs-5">Points you need to understand about debt</p>
