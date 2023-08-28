@@ -126,24 +126,31 @@ class PaymentOptionsController < ApplicationController
     @selected_payment_options[0].payments.each do |payment|
       if payment.status == 1
         @payment_update = Payment.find(payment.id)
-        @payment_update.update(status: 2)
         payment_id = @payment_update.id + 1
         if payment_id
           @next = Payment.find(payment_id)
-          @next.update(status: 1)
+          if @next.payment_option.debt_id == @debt.id
+            @next.update(status: 1)
+            @payment_update.update(status: 2)
+            remain = @debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
+            @debt.update(remaining_principal: remain)
+          else
+            @payment_update.update(status: 3)
+            remain = 0
+            @update.update(remaining_principal: remain)
+          end
         else
           @payment_update.update(status: 3)
+          remain = 0
+          @debt.update(remaining_principal: remain)
         end
       end
     end
-      selected_debt = Debt.find(@selected_payment_options[0].debt_id)
-      remain = selected_debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
-      selected_debt.update(remaining_principal: remain)
-    # debt = @selected_payment_options[0].debt_id
-    # debt.update(remaining_principal: remain)
+      # selected_debt = Debt.find(@selected_payment_options[0].debt_id)
+      # debt = @selected_payment_options[0].debt_id
+      # debt.update(remaining_principal: remain)
     redirect_to payment_options_dashboard_path(debt_id: @debt.id, payment: true)
   end
-
 
   # def show
   #   @payment_options = Payment_option.find(params[:id])
