@@ -9,7 +9,7 @@
     </div>
 
     <div class="row payment mt-3">
-      <div class="payment-date col-4">
+      <div class="payment-date col-6">
         <% @selected_payment_options.each do |option| %>
           <% option.payments.each do |payment| %>
             <% if payment.status === 1 %>
@@ -26,6 +26,7 @@
                 <%= link_to "YES! I did!", payment_options_paid_path(debt_id: @debt.id, payment: true), data: { turbo: false }, class: "btn btn-select" %>
               <% elsif payment.status === 3 %>
                 <h5>Good Job and No Debt Anymore!</h5>
+                <%= image_tag 'celebrate.svg', style: 'height:200px;width:auto;'%>
               <% end %>
             </div>
           <% end %>
@@ -99,8 +100,8 @@
             <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
             <p class="fs-5">Points you need to understand about debt</p>
               <ul class="">
-                <li>You borrowed <%= number_to_currency(@debt.original_principal, precision: 0, unit:"¥") %>. you will end up paying <%= number_to_currency(option.total_monthly_payment, precision:0, unit:"¥") %> with this plan.</li>
-                <li>It means you will be paying <%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %> as extra.</li>
+                <li>You borrowed <span class="principal-word"><%= number_to_currency(@debt.original_principal, precision: 0, unit:"¥") %></span>. you will end up paying <span class="total-amount-word"><%= number_to_currency(option.total_monthly_payment, precision:0, unit:"¥") %></span> with this plan.</li>
+                <li>It means you will be paying <span class="interest-word"><%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %> as extra.</li>
                 <li>Expected date you finish payoff is <%= option.final_payment_date %>.</li>
                 <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
               </ul>
