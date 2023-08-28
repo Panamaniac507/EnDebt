@@ -109,7 +109,7 @@ class PaymentOptionsController < ApplicationController
     # pie chart for progress
     @progress_data =
       {
-        "Payment Done": 20, "Payment Not Done":60
+        "Payment Done": (@debt.original_principal - @debt.remaining_principal), "Payment Not Done": @debt.remaining_principal
       }
 
   end
@@ -122,30 +122,84 @@ class PaymentOptionsController < ApplicationController
     # @debt = @debts[0]
     @payment_options = @debt.payment_options
     @selected_payment_options = @payment_options.where(active_plan: true)
-    payment_id = 0
+    @payment_id = 0
+
     @selected_payment_options[0].payments.each do |payment|
       if payment.status == 1
-        @payment_update = Payment.find(payment.id)
-        payment_id = @payment_update.id + 1
-        if payment_id
-          @next = Payment.find(payment_id)
-          if @next.payment_option.debt_id == @debt.id
-            @next.update(status: 1)
-            @payment_update.update(status: 2)
-            remain = @debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
-            @debt.update(remaining_principal: remain)
-          else
-            @payment_update.update(status: 3)
-            remain = 0
-            @update.update(remaining_principal: remain)
-          end
-        else
-          @payment_update.update(status: 3)
-          remain = 0
-          @debt.update(remaining_principal: remain)
-        end
+        @payment_id = payment.id
       end
     end
+
+    if @selected_payment_options[0].payments[@selected_payment_options[0].payments.length - 1].id == @payment_id
+      @up = Payment.find(@payment_id)
+      @up.update(status: 3)
+      remain = 0
+      @debt.update(remaining_principal: remain)
+      raise
+    else
+      @pay_update = Payment.find(@payment_id)
+      @pay_update.update(status: 2)
+      next_one = @payment_id + 1
+      @pay_update_done = Payment.find(next_one)
+      @pay_update_done.update(status: 1)
+      remain = @debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
+      @debt.update(remaining_principal: remain)
+    end
+
+    # if payment.status === 1 && @selected_payment_options[0].payments.length-1 != i
+    #     @update = Payment.find(payment.id)
+    #     @next = payment.id + 1
+    #     @update.update(status: 2)
+    #     remain = @debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
+    #     @debt.update(remaining_principal: remain)
+    #   end
+    # end
+
+    # if @next
+    #   next_payment = Payment.find(@next)
+    #   if next_payment.payment_option.debt_id == @debt.id
+    #     next_payment.update(status: 1)
+    #   else
+    #     @up = Payment.find(payment.id)
+    #     @up.update(status: 3)
+    #     remain = 0
+    #     @debt.update(remaining_principal: remain)
+    #   end
+    # else
+    #   @up = Payment.find(@selected_payment_options[0].payments[@selected_payment_options[0].payments.length-1].id)
+    #   @up.update(status: 3)
+    #   remain = 0
+    #   @debt.update(remaining_principal: remain)
+    # end
+
+
+    # @selected_payment_options[0].payments.each_with_index do |payment, i|
+    #   @payment_update = Payment.find(payment.id)
+    #   if payment.status == 1 && @selected_payment_options[0].payments.length-1 != i
+    #     payment_id = @payment_update.id + 1
+    #     if payment_id
+    #       @next = Payment.find(payment_id)
+    #       if @next.payment_option.debt_id == @debt.id
+    #         @next.update(status: 1)
+    #         @payment_update.update(status: 2)
+    #         remain = @debt.remaining_principal - @selected_payment_options[0].monthly_payment_principal
+    #         @debt.update(remaining_principal: remain)
+    #       else
+    #         @payment_update.update(status: 3)
+    #         remain = 0
+    #         @debt.update(remaining_principal: remain)
+    #       end
+    #     else
+    #       @payment_update.update(status: 3)
+    #       remain = 0
+    #       @debt.update(remaining_principal: remain)
+    #     end
+    #   else
+    #     @payment_update.update(status: 3)
+    #     remain = 0
+    #     @debt.update(remaining_principal: remain)
+    #   end
+    # end
       # selected_debt = Debt.find(@selected_payment_options[0].debt_id)
       # debt = @selected_payment_options[0].debt_id
       # debt.update(remaining_principal: remain)
