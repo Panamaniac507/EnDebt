@@ -94,13 +94,14 @@ class Debt < ApplicationRecord
         # month takes to finish payoff for debt breackdown
         num_month_payoff_0 = num_month_payoff_0.to_i
 
-        original_date = Date.today
-        original_date.change(day: self.debt_due_date.day)
-        final_date_1 = original_date >> num_month_payoff_1
-        final_date_2 = original_date >> num_month_payoff_2
-        final_date_3 = original_date >> num_month_payoff_3
+        # original_date = Date.today
+        # original_date.change(day: self.debt_due_date.day)
+        original_date = self.debt_due_date
+        final_date_1 = original_date >> (num_month_payoff_1 - 1)
+        final_date_2 = original_date >> (num_month_payoff_2 - 1)
+        final_date_3 = original_date >> (num_month_payoff_3 - 1)
         # for debt breakdown
-        final_date_0 = original_date >> num_month_payoff_0
+        final_date_0 = original_date >> (num_month_payoff_0 - 1)
 
         final_payment_date_1 = Date.new(final_date_1.year, final_date_1.month, self.debt_due_date.mday)
         final_payment_date_2 = Date.new(final_date_2.year, final_date_2.month, self.debt_due_date.mday)
@@ -111,27 +112,33 @@ class Debt < ApplicationRecord
 
         # get next payment date
         array_next_paying_date_1 = []
-        today = Date.today
-        today.change(day: self.debt_due_date.day)
-        next_paying_date_1 = today >> 1
+        original_date = self.debt_due_date
+        # today = Date.today
+        # today.change(day: self.debt_due_date.day)
+        # next_paying_date_1 = today >> 1
+        next_paying_date_1 = original_date
         num_month_payoff_1.times do |num|
           array_next_paying_date_1 << next_paying_date_1
           next_paying_date_1 = next_paying_date_1 >> 1
         end
 
         array_next_paying_date_2 = []
-        today = Date.today
-        today.change(day: self.debt_due_date.day)
-        next_paying_date_2 = today >> 1
+        # today = Date.today
+        # today.change(day: self.debt_due_date.day)
+        original_date = self.debt_due_date
+        # next_paying_date_2 = today >> 1
+        next_paying_date_2 = original_date
         num_month_payoff_2.times do |num|
           array_next_paying_date_2 << next_paying_date_2
           next_paying_date_2 = next_paying_date_2 >> 1
         end
 
         array_next_paying_date_3 = []
-        today = Date.today
-        today.change(day: self.debt_due_date.day)
-        next_paying_date_3 = today >> 1
+        original_date = self.debt_due_date
+        # today = Date.today
+        # today.change(day: self.debt_due_date.day)
+        # next_paying_date_3 = today >> 1
+        next_paying_date_3 = original_date
         num_month_payoff_3.times do |num|
           array_next_paying_date_3 << next_paying_date_3
           next_paying_date_3 = next_paying_date_3 >> 1
@@ -139,9 +146,11 @@ class Debt < ApplicationRecord
 
         # for debt breakdown
         array_next_paying_date_0 = []
-        today = Date.today
-        today.change(day: self.debt_due_date.day)
-        next_paying_date_0 = today >> 1
+        # today = Date.today
+        # today.change(day: self.debt_due_date.day)
+        original_date = self.debt_due_date
+        # next_paying_date_0 = today >> 1
+        next_paying_date_0 = original_date
         num_month_payoff_0.times do |num|
           array_next_paying_date_0 << next_paying_date_0
           next_paying_date_0 = next_paying_date_0 >> 1
@@ -159,10 +168,14 @@ class Debt < ApplicationRecord
           monthly_interest_amount_1 = remaining_principal_1 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_1 << monthly_interest_amount_1.round
         end
-        if remaining_principal_1 > 0
-          array_interest_amount_1 << (remaining_principal_1 * (self.interest_rate / 100) * 30 / 365).round
+          remaining_principal_1 = remaining_principal_1 - monthly_payment_principal_1
+          monthly_interest_amount_1 = remaining_principal_1 * (self.interest_rate / 100) * 30 / 365
+          array_interest_amount_1 << monthly_interest_amount_1.round
           last_monthly_principal_1 = remaining_principal_1
-        end
+        # if remaining_principal_1 > 0
+        #   array_interest_amount_1 << (remaining_principal_1 * (self.interest_rate / 100) * 30 / 365).round
+        #   last_monthly_principal_1 = remaining_principal_1
+        # end
 
         array_interest_amount_2 = []
         monthly_interest_amount_2 = self.original_principal * (self.interest_rate / 100) * 30 / 365
@@ -175,10 +188,14 @@ class Debt < ApplicationRecord
           monthly_interest_amount_2 = remaining_principal_2 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_2 << monthly_interest_amount_2.round
         end
-        if remaining_principal_2 > 0
-          array_interest_amount_2 << (remaining_principal_2 * (self.interest_rate / 100) * 30 / 365).round
+          remaining_principal_2 = remaining_principal_2 - monthly_payment_principal_2
+          monthly_interest_amount_2 = remaining_principal_2 * (self.interest_rate / 100) * 30 / 365
+          array_interest_amount_2 << monthly_interest_amount_2.round
           last_monthly_principal_2 = remaining_principal_2
-        end
+        # if remaining_principal_2 > 0
+        #   array_interest_amount_2 << (remaining_principal_2 * (self.interest_rate / 100) * 30 / 365).round
+        #   last_monthly_principal_2 = remaining_principal_2
+        # end
 
         array_interest_amount_3 = []
         monthly_interest_amount_3 = self.original_principal * (self.interest_rate / 100) * 30 / 365
@@ -191,10 +208,14 @@ class Debt < ApplicationRecord
           monthly_interest_amount_3 = remaining_principal_3 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_3 << monthly_interest_amount_3.round
         end
-        if remaining_principal_3 > 0
-          array_interest_amount_3 << (remaining_principal_3 * (self.interest_rate / 100) * 30 / 365).round
+          remaining_principal_3 = remaining_principal_3 - monthly_payment_principal_3
+          monthly_interest_amount_3 = remaining_principal_3 * (self.interest_rate / 100) * 30 / 365
+          array_interest_amount_3 << monthly_interest_amount_3.round
           last_monthly_principal_3 = remaining_principal_3
-        end
+        # if remaining_principal_3 > 0
+        #   array_interest_amount_3 << (remaining_principal_3 * (self.interest_rate / 100) * 30 / 365).round
+        #   last_monthly_principal_3 = remaining_principal_3
+        # end
 
         # for debt breakdown
         array_interest_amount_0 = []
@@ -208,56 +229,83 @@ class Debt < ApplicationRecord
           monthly_interest_amount_0 = remaining_principal_0 * (self.interest_rate / 100) * 30 / 365
           array_interest_amount_0 << monthly_interest_amount_0.round
         end
-        if remaining_principal_0 > 0
-          array_interest_amount_0 << (remaining_principal_0 * (self.interest_rate / 100) * 30 / 365).round
+          remaining_principal_0 = remaining_principal_0 - monthly_payment_principal_0
+          monthly_interest_amount_0 = remaining_principal_0 * (self.interest_rate / 100) * 30 / 365
+          array_interest_amount_0 << monthly_interest_amount_0.round
           last_monthly_principal_0 = remaining_principal_0
-        end
+        # if remaining_principal_0 > 0
+        #   array_interest_amount_0 << (remaining_principal_0 * (self.interest_rate / 100) * 30 / 365).round
+        #   last_monthly_principal_0 = remaining_principal_0
+        # end
 
         # get total monthly payment amount for each month
         array_total_monthly_payment_1 = []
         array_interest_amount_1.each do |amount|
-          if array_interest_amount_1.last === amount && amount != monthly_payment_principal_1
-            total_monthly_payment_1 = last_monthly_principal_1
-          else
-            total_monthly_payment_1 = amount + monthly_payment_principal_1
-          end
+          total_monthly_payment_1 = amount + monthly_payment_principal_1
           array_total_monthly_payment_1 << total_monthly_payment_1
-          array_total_monthly_payment_1.compact!
         end
+        if remaining_principal_1
+          array_total_monthly_payment_1[array_total_monthly_payment_1.length - 1] = last_monthly_principal_1 + array_interest_amount_1.last
+        end
+          # if array_interest_amount_1.last === amount && amount != monthly_payment_principal_1
+          #   total_monthly_payment_1 = last_monthly_principal_1
+          # else
+          #   total_monthly_payment_1 = amount + monthly_payment_principal_1
+          # end
+          # array_total_monthly_payment_1 << total_monthly_payment_1
+          array_total_monthly_payment_1.compact!
+
 
         array_total_monthly_payment_2 = []
         array_interest_amount_2.each do |amount|
-          if array_interest_amount_2.last === amount && amount != monthly_payment_principal_2
-            total_monthly_payment_2 = last_monthly_principal_2
-          else
-            total_monthly_payment_2 = amount + monthly_payment_principal_2
-          end
+          total_monthly_payment_2 = amount + monthly_payment_principal_2
           array_total_monthly_payment_2 << total_monthly_payment_2
-          array_total_monthly_payment_2.compact!
         end
+        if remaining_principal_2
+          array_total_monthly_payment_2[array_total_monthly_payment_2.length - 1] = last_monthly_principal_2 + array_interest_amount_2.last
+        end
+          # if array_interest_amount_2.last === amount && amount != monthly_payment_principal_2
+          #   total_monthly_payment_2 = last_monthly_principal_2
+          # else
+          #   total_monthly_payment_2 = amount + monthly_payment_principal_2
+          # end
+          # array_total_monthly_payment_2 << total_monthly_payment_2
+          array_total_monthly_payment_2.compact!
+
 
         array_total_monthly_payment_3 = []
         array_interest_amount_3.each do |amount|
-          if array_interest_amount_3.last === amount && amount != monthly_payment_principal_3
-            total_monthly_payment_3 = last_monthly_principal_3
-          else
-            total_monthly_payment_3 = amount + monthly_payment_principal_3
-          end
+          total_monthly_payment_3 = amount + monthly_payment_principal_3
           array_total_monthly_payment_3 << total_monthly_payment_3
-          array_total_monthly_payment_3.compact!
         end
+        if remaining_principal_3
+          array_total_monthly_payment_3[array_total_monthly_payment_3.length-1] = last_monthly_principal_3 + array_interest_amount_3.last
+        end
+          # if array_interest_amount_3.last === amount && amount != monthly_payment_principal_3
+          #   total_monthly_payment_3 = last_monthly_principal_3
+          # else
+          #   total_monthly_payment_3 = amount + monthly_payment_principal_3
+          # end
+          # array_total_monthly_payment_3 << total_monthly_payment_3
+          array_total_monthly_payment_3.compact!
+
 
         # for debt breakdown
         array_total_monthly_payment_0 = []
         array_interest_amount_0.each do |amount|
-          if array_interest_amount_0.last === amount && amount != monthly_payment_principal_0
-            total_monthly_payment_0 = last_monthly_principal_0
-          else
-            total_monthly_payment_0 = amount + monthly_payment_principal_0
-          end
+          total_monthly_payment_0 = amount + monthly_payment_principal_0
           array_total_monthly_payment_0 << total_monthly_payment_0
-          array_total_monthly_payment_0.compact!
+          end
+        if remaining_principal_0
+          array_total_monthly_payment_0[array_total_monthly_payment_0.length-1] = last_monthly_principal_0 + array_interest_amount_0.last
         end
+          # if array_interest_amount_0.last === amount && amount != monthly_payment_principal_0
+          #   total_monthly_payment_0 = last_monthly_principal_0
+          # else
+          #   total_monthly_payment_0 = amount + monthly_payment_principal_0
+          # end
+          # array_total_monthly_payment_0 << total_monthly_payment_0
+          array_total_monthly_payment_0.compact!
 
 
         # get total payment to payoff in total
@@ -335,6 +383,6 @@ class Debt < ApplicationRecord
                 status = false
               end
               Payment.create!(next_payment_amount: data_next_payment_amount_0, next_paying_date: data_next_paying_date_0, status: status, payment_option: payment_option_0)
-            end
+          end
   end
 end

@@ -13,8 +13,10 @@
         <% @selected_payment_options.each do |option| %>
           <% option.payments.each do |payment| %>
             <% if payment.status === 1 %>
-              <h5>Your Next Payment Due Date</h5>
+              <h5>Next Payment Due Date</h5>
               <h3><%= payment.next_paying_date %></h3>
+              <h5>Next Payment Amount</h5>
+              <h3><%= number_to_currency(payment.next_payment_amount, precision:0, unit:"¥") %></h3>
             <% elsif payment.status === 3 %>
               <h5>You made it!!</h5>
             <% end %>
