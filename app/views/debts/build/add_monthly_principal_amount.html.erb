@@ -5,25 +5,41 @@
     <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
     <div class="name_input">
-    <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
-          <div class="d-flex">
-            <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
-            <div class="monthlyp1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
-          </div>
-    <%= f.submit "Next", class: 'btn btn-primary' %>
-    <% end %>
-    <br>
-    <%# <div class="d-flex">
-    <img class="avatar-large" alt="avatar" src="https://avatars.githubusercontent.com/u/103368056?v=4" />
-    <div class="example-popover">
-      <button
-            type="button"
-            class="btn btn-primary"
-            data-controller="popover">
-            A short message from Ryo, our Founder
-      </button> %>
+      <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
+            <div class="d-flex">
+              <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
+              <div class="monthlyp1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
+            </div>
+      <%= f.submit "Next", class: 'btn btn-primary' %>
+      <% end %>
+      <br>
+        <%# <div class="d-flex">
+        <img class="avatar-large" alt="avatar" src="https://avatars.githubusercontent.com/u/103368056?v=4" />
+        <div class="example-popover">
+          <button
+                type="button"
+                class="btn btn-primary"
+                data-controller="popover">
+                A short message from Ryo, our Founder
+          </button> %>
+        <%# </div> %>
+        <%# </div> %>
     </div>
-    </div>
+  </div>
+
+  <div class="container">
+    <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
+    <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
+    <div class="name_input_test">
+      <h5 class="mb-4">Add monthly principal of your debt</h5>
+      <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
+        <div class="d-flex">
+          <%= f.input :monthly_principal_amount, label: false, as: :currency, placeholder: "Monthly Principal" %>
+          <div class="monthlyp1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question fa-lg" style="color: #525252;"></i></div>
+        </div>
+        <%= f.submit "Next", class: 'btn btn-next' %>
+      <% end %>
+      <br>
     </div>
   </div>
 </div>

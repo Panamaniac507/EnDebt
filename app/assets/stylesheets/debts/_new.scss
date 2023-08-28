@@ -64,3 +64,34 @@
   .d-flex {
     gap: 10px;
   }
+
+
+  .name_input_test {
+    background: linear-gradient(to right, rgb(239, 252, 254), rgb(170, 242, 255));
+    width: 70vw;
+    height: 15vw;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left:0px;
+    padding: 30px;
+    border-radius: 15px;
+  }
+
+  .btn-next {
+    background: linear-gradient(to right, #fddd8a, #ffecbd);
+    width: 20%;
+    height: 20%;
+    font-weight: bold;
+    box-shadow: 3px 3px rgb(182, 182, 182);
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+
+  .btn-next:hover {
+    background-color: #f6bf35;
+    width: 20%;
+    height: 20%;
+    font-weight: bold;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  }
