@@ -140,8 +140,8 @@ margin-bottom: 2.5%;
 
 .btn-select {
   background: linear-gradient(to right, #FFC93C, #ffe5a2);
-  width: 30%;
-  height: 20%;
+  width: 360px;
+  height: 40px;
   font-weight: bold;
   box-shadow: 3px 3px rgb(182, 182, 182);
   margin-top: 10px;
@@ -150,25 +150,27 @@ margin-bottom: 2.5%;
 
 .btn-select:hover {
   background-color: #FFC93C;
-  width: 30%;
-  height: 20%;
+  width: 360px;
+  height: 40px;
   font-weight: bold;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 
 .btn-plan-detail {
   background: linear-gradient(to right, rgb(199, 253, 243), rgb(169, 253, 238));
-  width: 30%;
-  height: 20%;
+  width: 120px;
+  height: 50px;
   font-weight: bold;
   box-shadow: 3px 3px rgb(182, 182, 182);
   margin: 10px auto;
+  padding: 10px;
+  text-align: center;
 }
 
 .btn-plan-detail:hover {
   background: linear-gradient(to right, rgb(216, 250, 244), rgb(169, 253, 238));
-  width: 30%;
-  height: 20%;
+  width: 120px;
+  height: 50px;
   font-weight: bold;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
   margin: 10px auto;
@@ -176,8 +178,8 @@ margin-bottom: 2.5%;
 
 .pc-mini-select-card {
   background: linear-gradient(to right, white, rgb(199, 238, 250));
-  width: 25vw;
-  height: 18vw;
+  width: 350px;
+  height: 260px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 0 10px;
   padding: 15px;
@@ -186,8 +188,8 @@ margin-bottom: 2.5%;
 
 .pc-standard-select-card {
   background: linear-gradient(to right, white, rgb(199, 255, 245));
-  width: 25vw;
-  height: 18vw;
+  width: 350px;
+  height: 260px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 0 10px;
   padding: 15px;
@@ -196,8 +198,8 @@ margin-bottom: 2.5%;
 
 .pc-premium-select-card {
   background: linear-gradient(to right, white, rgb(252, 255, 207));
-  width: 25vw;
-  height: 18vw;
+  width: 350px;
+  height: 260px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 0 10px;
   padding: 15px;
