@@ -166,11 +166,15 @@ margin-bottom: 2.5%;
   box-shadow: 3px 3px rgb(182, 182, 182);
   margin: 10px auto;
   align-items: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .btn-plan-detail:hover {
   background: linear-gradient(to right, rgb(216, 250, 244), rgb(169, 253, 238));
-  width: 12opx;
+
+  width: 120px;
+
   height: 50px;
   font-weight: bold;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
@@ -182,6 +186,7 @@ margin-bottom: 2.5%;
   background: linear-gradient(to right, white, rgb(199, 238, 250));
   width: 340px;
   height: 240px;
+
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 0 5px;
   padding: 15px;

@@ -4,13 +4,13 @@
   <div class="container">
     <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
-    <div class="name_input">
+    <div class="name_input_test">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
       <div class="d-flex">
         <%= f.input :original_principal, label: false, as: :currency, placeholder: "Original Principal" %>
         <div class="original1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
       </div>
-    <%= f.submit "Next", class: 'btn btn-primary' %>
+    <%= f.submit "Next", class: 'btn btn-next' %>
     <% end %>
     <br>
     <%# <div class="d-flex">
