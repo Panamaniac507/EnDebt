@@ -1,21 +1,17 @@
-<div class="container">
-<br>
 <%#= link_to 'skip', next_wizard_path %>
-</div>
-
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1669951584605-4deba095a87f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3164&q=80);">
   <div class="container">
     <h1>Debt's Worst Nightmare? <strong>It is called EnDebt!</strong></h1>
     <p>The Simple, Powerful, and Safe app that turns Debt Repayment into a Triumphant Experience.</p>
 
-    <div class="name_input">
+    <div class="name_input_test">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
           <div class="d-flex">
             <%= f.input :expense, label: false, as: :currency, placeholder: "Expenses" %>
             <div class="expense1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
           </div>
-    <%= f.submit "Next", class: 'btn btn-primary' %>
+    <%= f.submit "Next", class: 'btn btn-next' %>
     <% end %>
     </div>
     </div>
@@ -32,5 +28,13 @@
     </div>
     </div>
     </div>
+  </div>
+</div>
+
+<div class="notification">
+  <img src='https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1684062302/hkoli5ebkgncg8epdnff.jpg' class="avatar-large" />
+  <div class="notification-content">
+    <p><small>Chuckle McSnort - THE TELEGRAPH</small></p>
+    <p><strong>"Tired of juggling loans? Time to let EnDebt work its magic and make your loan management a breeze!"</strong></p>
   </div>
 </div>
