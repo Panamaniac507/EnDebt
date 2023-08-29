@@ -6,7 +6,7 @@
         <p>Let's get better understanding of your debt and find right option for you !</p>
       </div>
 
-      <div class="d-flex justify-content-center pc-info-cards">
+      <div class="row d-flex justify-content-center pc-info-cards">
         <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
           <div class="d-flex">
@@ -16,7 +16,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-12 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-solid fa-scale-balanced fa-2x mb-2" style="color: #8fd6c8;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Remaining Principal</p>
@@ -25,7 +25,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@debt.remaining_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-12 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-solid fa-pen-to-square fa-2x mb-2" style="color: #e6a98e;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Total Payment Amount</p>
@@ -34,7 +34,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-12 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-solid fa-percent fa-2x mb-2" style="color: #d26856;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Interest Amount</p>
@@ -43,7 +43,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].total_interest_amount, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-12 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-regular fa-calendar-check fa-2x mb-2" style="color: #5a79af;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Monthly Principal</p>
@@ -52,7 +52,7 @@
           <p class="pc-item-data fs-5 fw-bold"><%= number_to_currency(@payment_options[3].monthly_payment_principal, precision:0, unit:"¥") %></p>
         </div>
 
-        <div class="col-12 pc-info-card align-items-center">
+        <div class="col-12 col-md-6 col-xl-2 pc-info-card align-items-center">
           <i class="fa-regular fa-calendar-days fa-2x mb-2" style="color: #ff2e2e;"></i>
           <div class="d-flex">
             <p class="pc-item-name fs-6">Final Due Date</p>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="row d-flex justify-content-center">
-        <div class="col-4 pc-chart-sumarry">
+        <div class="col-12 col-md-12 col-xl-4 pc-chart-sumarry">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
           <p class="fs-5">Points you need to understand about debt</p>
             <ul class="">
@@ -73,10 +73,10 @@
               <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
             </ul>
         </div>
-        <div class="col-4 pc-chart-balance d-flex align-items-center">
+        <div class="col-12 col-md-12 col-xl-4 pc-chart-balance d-flex align-items-center">
           <%= column_chart @data_total, colors: ["#78C1F3","#F94949"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
         </div>
-        <div class="col-4 pc-chart-breakdown d-flex align-items-center">
+        <div class="col-12 col-md-12 col-xl-4 pc-chart-breakdown d-flex align-items-center">
           <%= column_chart @data_all, colors: ["#78C1F3","#F94949"], title: "Changes of payment amount", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
         </div>
       </div>
@@ -88,12 +88,13 @@
         <p>We prepare 3 plans to payoff your debt! Choose the one you like!</p>
       </div>
 
-      <div class="row">
-        <div class="col-12 pc-chart-compare">
+
+        <div class="pc-chart-compare">
           <%= column_chart @data_compare, colors: ["#78C1F3","#F94949"], title: "Comparison of Plans", stacked:true %>
         </div>
 
-        <div class="col-4">
+      <div class="row">
+        <div class="col-12 col-md-12 col-xl-4">
           <div class="pc-mini-select-card">
             <h4 class="fw-bold">Minimum Plan</h4>
             <p>You pay less for monthly payment, but takes longer and end up paying a lot.</p>
@@ -106,12 +107,12 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-xl-4">
           <div class="pc-standard-select-card">
             <h4 class="fw-bold">Standard Plan</h4>
-            <p>You make moderate monthly payments and takes a moderate timeline to pay it off.</p>
-            <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %></p>
-          <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %></p>
+            <p>You make moderate monthly payments, takes a moderate timeline to pay it off.</p>
+            <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %>
+            <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %>
             <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment).abs, precision:0, unit: "¥") %></p>
             <div class="d-flex align-items-end">
               <div class="btn btn-plan-detail" data-action='click->toggle#show_stand'>Detail</div>
@@ -119,7 +120,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-xl-4">
           <div class="pc-premium-select-card">
             <h4 class="fw-bold">Premium Plan</h4>
             <p>Your monthly payments are big, but takes a shorter timeline.</p>
@@ -178,7 +179,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[0].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-select mt-3 text-center" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-select mt-3 text-center ", style: "align-items: center;" %>
           </div>
         </div>
       </div>
@@ -228,7 +229,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[1].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-select mt-3 text-center" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
           </div>
         </div>
       </div>
@@ -278,7 +279,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[2].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-select mt-3 text-center" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
           </div>
         </div>
       </div>
