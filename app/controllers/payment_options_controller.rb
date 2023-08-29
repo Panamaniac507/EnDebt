@@ -132,10 +132,9 @@ class PaymentOptionsController < ApplicationController
 
     if @selected_payment_options[0].payments[@selected_payment_options[0].payments.length - 1].id == @payment_id
       @up = Payment.find(@payment_id)
-      @up.update(status: 3)
+      # @up.update(status: 3)
       remain = 0
       @debt.update(remaining_principal: remain)
-      raise
     else
       @pay_update = Payment.find(@payment_id)
       @pay_update.update(status: 2)
