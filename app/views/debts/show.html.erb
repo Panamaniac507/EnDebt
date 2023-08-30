@@ -79,6 +79,10 @@
         <div class="col-12 col-md-12 col-xl-4 pc-chart-breakdown d-flex align-items-center">
           <%= column_chart @data_all, colors: ["#78C1F3","#F94949"], title: "Changes of payment amount", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
         </div>
+        <div class="col-12 col-lg-6 pc-chart-breakdown d-flex align-items-center progress">
+          <span><%= ((((@debt.original_principal).to_f - (@debt.remaining_principal).to_f)/@debt.original_principal)*100).floor %>%</span>
+          <%= pie_chart @progress_data, colors: ["#78C1F3","#F94949"], title: "Progress of Payment", class: "d-block w-90 shadow-sm p-3 rounded",donut: true %>
+        </div>
       </div>
     </div>
 
