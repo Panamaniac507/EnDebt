@@ -8,7 +8,7 @@
     <div class="name_input_test">
     <%= simple_form_for @debt, url: wizard_path, method: :put do |f| %>
           <div class="d-flex">
-            <%= f.input :expense, label: false, as: :currency, placeholder: "Expenses" %>
+            <%= f.input :expense, label: false, as: :currency, placeholder: "Monthly Expenses" %>
             <div class="expense1 mb-0" data-controller="popover"><i class="fa-regular fa-circle-question" style="color: #919191;"></i></div>
           </div>
     <%= f.submit "Next", class: 'btn btn-next' %>

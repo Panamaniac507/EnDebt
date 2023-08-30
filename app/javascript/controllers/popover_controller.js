@@ -15,7 +15,7 @@ export default class extends Controller {
         message = "Expenses refer to your monthly expenses "
       }
       else if (this.element.classList.contains("income1")){
-        message = "Income refers to your annual income"
+        message = "Income refers to your monthly income"
       }
       else if (this.element.classList.contains("interest1")){
         message = "Interest rate is the monetary charge for borrowing money expressed as a percentage"}

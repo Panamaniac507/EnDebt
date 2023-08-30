@@ -116,6 +116,18 @@ margin-bottom: 2.5%;
   border-radius: 15px;
 }
 
+.progress {
+  position: relative;
+  height: fit-content;
+}
+.progress span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  font-size: 40px;
+}
+
 .pc-chart-sumarry {
   background: linear-gradient(to right, white, rgb(244, 255, 253));
   width: 340px;
@@ -145,7 +157,7 @@ margin-bottom: 2.5%;
   font-weight: bold;
   box-shadow: 3px 3px rgb(182, 182, 182);
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   align-items: center;
 }
 
@@ -244,8 +256,8 @@ margin-bottom: 2.5%;
 
 .payment-date {
   background: linear-gradient(to right, white, rgb(125, 205, 242));
-  width: 350px;
-  height: 300px;
+  width: 340px;
+  height: 340px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-top: 10px;
   margin-right: 10px;
