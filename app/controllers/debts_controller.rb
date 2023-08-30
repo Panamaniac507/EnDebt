@@ -108,7 +108,7 @@ class DebtsController < ApplicationController
     # pie chart for progress
     @progress_data =
       {
-        "Payment Done": 20, "Payment Not Done":60
+        "Payment Done": (@debt.original_principal - @debt.remaining_principal), "Payment Not Done": @debt.remaining_principal
       }
 
 
