@@ -4,9 +4,19 @@
   <% @debts.each_with_index do |debt, index| %>
     <div class="debt-list-card">
       <h3 class="fw-bold">Debt <%= index + 1 %></h3>
-      <p class=fs-6>Original principal</p>
-      <p class="fs-5 fw-bold"><%= number_to_currency(debt.original_principal, unit:"¥", precision:0) %></p>
-      <%= link_to "Dashbord", payment_options_dashboard_debt_path(debt.id), class: "btn btn-select", style: "align-items: center;" %>
+      <div class="mb-2">
+        <p class="fs-6 m-0">Original principal</p>
+        <p class="fs-5 fw-bold"><%= number_to_currency(debt.original_principal, unit:"¥", precision:0) %></p>
+      </div>
+      <div class="mb-2">
+        <p class="fs-6 m-0">Remaining principal</p>
+        <p class="fs-5 fw-bold"><%= number_to_currency(debt.remaining_principal, unit:"¥", precision:0) %></p>
+      </div>
+      <div class="mb-2">
+        <p class="fs-6 m-0">Final due date</p>
+        <p class="fs-5 fw-bold"><%= debt.debt_due_date %></p>
+      </div>
+      <%= link_to "Go to Dashbord", payment_options_dashboard_debt_path(debt.id), class: "btn btn-select", style: "align-items: center;" %>
     </div>
   <% end %>
 </div>
