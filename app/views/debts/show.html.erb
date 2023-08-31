@@ -3,7 +3,7 @@
     <div data-toggle-target='debt'>
       <div class="first-message">
         <h2 class="fw-bold">Hello, <%= @debt.name %>!</h2>
-        <p>Let's get better understanding of your debt and find right option for you !</p>
+        <p>Let's get a better understanding of your Debt and let's find the right option for You !</p>
       </div>
 
       <div class="row d-flex justify-content-center pc-info-cards">
@@ -65,11 +65,11 @@
       <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-12 col-xl-4 pc-chart-sumarry">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
-          <p class="fs-5">Points you need to understand about debt</p>
+          <p class="fs-5">Points you need to understand about your Debt</p>
             <ul class="">
-              <li>You borrowed <span class="principal-word"><%= number_to_currency(@debt.original_principal, precision: 0, unit:"¥") %></span>. you will end up paying <span class="total-amount-word"><%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0, unit:"¥") %></span> with this plan.</li>
-              <li>It means you will be paying <span class="interest-word"><%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %></span> as extra.</li>
-              <li>Expected date you finish payoff is <%= @payment_options[3].final_payment_date %>.</li>
+              <li>You borrowed <span class="principal-word"><%= number_to_currency(@debt.original_principal, precision: 0, unit:"¥") %></span>. You will end up paying <span class="total-amount-word"><%= number_to_currency(@payment_options[3].total_monthly_payment, precision:0, unit:"¥") %></span> with this plan.</li>
+              <li>It means you will be paying additional <span class="interest-word"><%= number_to_currency(@payment_options[3].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %></span>.</li>
+              <li>The expected date to pay this debt off is <%= @payment_options[3].final_payment_date %>.</li>
               <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
             </ul>
         </div>
@@ -88,8 +88,8 @@
 
     <div class="d-none" data-toggle-target="plans">
       <div class="first-message">
-        <h2 class="fw-bold">You are about to make a start to say good-bye to your debt, <%= @debt.name %>!</h2>
-        <p>We prepare 3 plans to payoff your debt! Choose the one you like!</p>
+        <h2 class="fw-bold">You are about to start a journey to a Debt-free life, <%= @debt.name %>!</h2>
+        <p>We have prepared 3 options to help you payoff your Debt!, Choose your preferred one!</p>
       </div>
 
 
@@ -243,7 +243,7 @@
           <h5 class="fw-bold">Premium Plan</h5>
           <p>You make big monthly payments, but takes shorter.
           End up paying a relatively small amount.
-          You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %> $, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> $ with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+          You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
 
           <div class="row d-flex justify-content-center pc-info-cards">
 
