@@ -36,6 +36,7 @@ gem "groupdate"
 
 # gem to create a very cool carousel for the new debt profile page
 gem "wicked"
+gem "line-bot-api"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
