@@ -118,8 +118,8 @@ margin-bottom: 2.5%;
 
 .progress {
   position: relative;
-  height: fit-content;
 }
+
 .progress span{
   position: absolute;
   top: 50%;
@@ -241,7 +241,7 @@ margin-bottom: 2.5%;
 .detail-plan-card-mini {
   background: linear-gradient(to right, white, rgb(199, 238, 250));
   width: 850px;
-  height: 400px;
+  height: 420px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 20px auto;
   padding: 15px;
@@ -251,7 +251,7 @@ margin-bottom: 2.5%;
 .detail-plan-card-standard {
   background: linear-gradient(to right, white, rgb(199, 255, 245));
   width: 850px;
-  height: 400px;
+  height: 420px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 20px auto;
   padding: 15px;
@@ -261,7 +261,7 @@ margin-bottom: 2.5%;
 .detail-plan-card-premium {
   background: linear-gradient(to right, white, rgb(252, 255, 207));
   width: 850px;
-  height: 400px;
+  height: 420px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 20px auto;
   padding: 15px;

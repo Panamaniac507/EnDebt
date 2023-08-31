@@ -63,7 +63,7 @@
       </div>
 
       <div class="row d-flex justify-content-center">
-        <div class="col-12 col-md-12 col-xl-4 pc-chart-sumarry">
+        <div class="col-12 col-md-12 col-lg-6 pc-chart-sumarry">
           <i class="fa-solid fa-piggy-bank fa-2x mb-2" style="color: #68c2e8;"></i>
           <p class="fs-5">Points you need to understand about your Debt</p>
             <ul class="">
@@ -73,10 +73,12 @@
               <%# <li>Why? this huge? Because the interest amount is calculated every month based on your remaining principal. Meaning paying too much interest.</li> %>
             </ul>
         </div>
-        <div class="col-12 col-md-12 col-xl-4 pc-chart-balance d-flex align-items-center">
+        <div class="col-12 col-md-12 col-lg-6 pc-chart-balance d-flex align-items-center">
           <%= column_chart @data_total, colors: ["#78C1F3","#F94949"], title: "Expected Amount for Principal and Interest", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
         </div>
-        <div class="col-12 col-md-12 col-xl-4 pc-chart-breakdown d-flex align-items-center">
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-12 col-lg-6 pc-chart-breakdown d-flex align-items-center">
           <%= column_chart @data_all, colors: ["#78C1F3","#F94949"], title: "Changes of payment amount", class: "d-block w-90 shadow-sm p-3 mb-1 rounded", stacked:true%>
         </div>
         <div class="col-12 col-lg-6 pc-chart-breakdown d-flex align-items-center progress">
@@ -143,7 +145,7 @@
           <h5 class="fw-bold">Minimum Plan</h5>
           <p>You pay less for monthly payment, but takes longer.
             End up paying relatively big.
-            You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[0].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+            You borrowed <span class="fs-5 fw-bold"><%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %></span>, then you will end up paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0, unit:"¥") %></span> with this plan. It means you are paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[0].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %></span> as extra </p>
 
           <div class="row d-flex justify-content-center pc-info-cards">
 
@@ -192,8 +194,8 @@
       <div class="col-12">
         <div class="detail-plan-card-standard d-none" data-toggle-target='stand'>
           <h5 class="fw-bold plan-title">Standard Plan</h5>
-          <p>You pay moderate monthly payments and takes mederate to payoff.
-        You borrowed <%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %>, then you will end up paying <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0, unit:"¥") %> with this plan. It means you are paying <%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+          <p>You pay moderate monthly payments, takes mederate timeline to payoff and end up paying a relatively moderate amount.
+        You borrowed <span class="fs-5 fw-bold"><%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %></span>, then you will end up paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0, unit:"¥") %></span> with this plan. It means you are paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %></span> as extra </p>
 
           <div class="row d-flex justify-content-center pc-info-cards">
 
@@ -243,7 +245,7 @@
           <h5 class="fw-bold">Premium Plan</h5>
           <p>Monthly payments is big, but takes shorter.
           End up paying a relatively small amount.
-          You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
+          You borrowed <span class="fs-5 fw-bold"><%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %></span>, then you will end up paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0, unit:"¥") %></span> with this plan. It means you are paying <span class="fs-5 fw-bold"><%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0, unit:"¥") %></span> as extra </p>
 
           <div class="row d-flex justify-content-center pc-info-cards">
 

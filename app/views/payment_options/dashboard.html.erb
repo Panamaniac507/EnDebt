@@ -5,10 +5,10 @@
   <div class="container">
     <div class="first-message">
       <h2 class="fw-bold">Hello, <%= @debt.name %>!</h2>
-      <p>Here is your dashboard</p>
+      <p>Here is your dashboard to manage your debt</p>
     </div>
 
-    <div class="row payment mt-3">
+    <div class="row payment mt-2 mb-4">
       <div class="payment-date col-12 col-lg-6">
         <% @selected_payment_options.each do |option| %>
           <% option.payments.each do |payment| %>
