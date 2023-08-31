@@ -202,8 +202,8 @@ class PaymentOptionsController < ApplicationController
       # selected_debt = Debt.find(@selected_payment_options[0].debt_id)
       # debt = @selected_payment_options[0].debt_id
       # debt.update(remaining_principal: remain)
-      linebot = LineService.new(ENV["YAN_LINE_ID"])
-      message_text = "Well done on your new payment!, Welcome to EnDebt!"
+      linebot = LineService.new(ENV["JOE_LINE_ID"])
+      message_text = "Well done on your first payment!, Welcome to EnDebt!"
       linebot.send_message(message_text)
 
     redirect_to payment_options_dashboard_path(debt_id: @debt.id, payment: true)
