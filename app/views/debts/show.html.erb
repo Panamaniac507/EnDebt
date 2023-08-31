@@ -104,7 +104,7 @@
             <p>You pay less for monthly payment, but takes longer and end up paying a lot.</p>
             <%# <p class="m-0">Total payment is <%= number_to_currency(@payment_options[0].total_monthly_payment, precision:0)</p> %>
             <%# <p class="m-0">Pay off at <%= @payment_options[0].final_payment_date %></p>
-            <p class="m-0">Comparing with your original plan, you can save up <%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment).abs, precision:0, unit: "¥") %>
+            <p class="m-0">Comparing with your original plan, you can save up <span class="fs-5 fw-bold"><%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[0].total_monthly_payment).abs, precision:0, unit: "¥") %></span></p>
             <div class="d-flex align-items-end">
               <div class="btn btn-plan-detail" data-action='click->toggle#show_mini'>Detail</div>
             </div>
@@ -114,10 +114,10 @@
         <div class="col-12 col-xl-4">
           <div class="pc-standard-select-card">
             <h4 class="fw-bold">Standard Plan</h4>
-            <p>You make moderate monthly payments, takes a moderate timeline to pay it off.</p>
+            <p>You make moderate monthly payments, takes a moderate timeline.</p>
             <%# <p class="m-0">Total payment is <%= @payment_options[1].total_monthly_payment %>
             <%# <p class="m-0">Pay off at <%= @payment_options[1].final_payment_date %>
-            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment).abs, precision:0, unit: "¥") %></p>
+            <p class="m-0">Comparing with the original plan, you can save up <span class="fs-5 fw-bold"><%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[1].total_monthly_payment).abs, precision:0, unit: "¥") %></span></p>
             <div class="d-flex align-items-end">
               <div class="btn btn-plan-detail" data-action='click->toggle#show_stand'>Detail</div>
             </div>
@@ -130,7 +130,7 @@
             <p>Your monthly payments are big, but takes a shorter timeline.</p>
             <%# <p class="m-0">Total payment is <%= @payment_options[2].total_monthly_payment</p> %>
             <%# <p class="m-0">Pay off at <%= @payment_options[2].final_payment_date</p> %>
-            <p class="m-0">Comparing with the original plan, you can save up <%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment).abs, precision:0, unit:"¥") %></p>
+            <p class="m-0">Comparing with the original plan, you can save up <span class="fs-5 fw-bold"><%= number_to_currency((@payment_options[3].total_monthly_payment - @payment_options[2].total_monthly_payment).abs, precision:0, unit:"¥") %></span></p>
             <div class="d-flex align-items-end">
               <div class="btn btn-plan-detail" data-action='click->toggle#show_super'>Detail</div>
             </div>
@@ -183,7 +183,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[0].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, class: "btn btn-select mt-3 text-center ", style: "align-items: center;" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[0]), method: :put, data:{turbo: false}, class: "btn btn-select mt-3 text-center ", style: "align-items: center;" %>
           </div>
         </div>
       </div>
@@ -191,8 +191,8 @@
 
       <div class="col-12">
         <div class="detail-plan-card-standard d-none" data-toggle-target='stand'>
-          <h5 class="fw-bold">Standard Plan</h5>
-          <p>You make moderate monthly payments and takes mederate to payoff. End up paying relatively normal.
+          <h5 class="fw-bold plan-title">Standard Plan</h5>
+          <p>You pay moderate monthly payments and takes mederate to payoff.
         You borrowed <%= number_to_currency(@debt.original_principal, precision:0, unit:"¥") %>, then you will end up paying <%= number_to_currency(@payment_options[1].total_monthly_payment, precision:0, unit:"¥") %> with this plan. It means you are paying <%= number_to_currency(@payment_options[1].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
 
           <div class="row d-flex justify-content-center pc-info-cards">
@@ -233,7 +233,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[1].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[1]), method: :put,data:{turbo: false}, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
           </div>
         </div>
       </div>
@@ -241,7 +241,7 @@
             <div class="col-12">
         <div class="detail-plan-card-premium d-none" data-toggle-target='super'>
           <h5 class="fw-bold">Premium Plan</h5>
-          <p>You make big monthly payments, but takes shorter.
+          <p>Monthly payments is big, but takes shorter.
           End up paying a relatively small amount.
           You borrowed <%= number_to_currency(@debt.original_principal, precision:0) %>, then you will end up paying <%= number_to_currency(@payment_options[2].total_monthly_payment, precision:0) %> with this plan. It means you are paying <%= number_to_currency(@payment_options[2].total_monthly_payment - @debt.original_principal, precision:0) %> as extra </p>
 
@@ -283,7 +283,7 @@
               <p class="pc-item-data fs-5 fw-bold"><%= @payment_options[2].final_payment_date %></p>
             </div>
 
-            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
+            <%= link_to "Select this plan", payment_options_choose_path(@payment_options[2]), method: :put, data:{turbo: false}, class: "btn btn-select mt-3 text-center",style: "align-items: center;" %>
           </div>
         </div>
       </div>
@@ -296,8 +296,7 @@
       <div class="btn btn-select" data-action='click->toggle#page_change'>Select Plans</div>
     </div>
     <div class="container text-center mt-5 d-none" data-toggle-target='godebt'>
-      <p class="fs-4">Do you want to understand your debt more?</p>
-      <div class="btn btn-select" data-action='click->toggle#page_change'>Review Debt Breakdown</div>
+      <div class="btn btn-back" data-action='click->toggle#page_change'>Back to Debt Breakdown</div>
     </div>
   </div>
 </div>
