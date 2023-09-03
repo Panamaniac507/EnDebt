@@ -13,8 +13,6 @@ class Debt < ApplicationRecord
 
   enum status: { building: 'building', add_name: 'add_name', add_interest_rate: 'add_interest_rate', add_original_principal: 'add_original_principal', add_remaining_principal: 'add_remaining_principal', add_monthly_principal_amount: 'add_monthly_principal_amount', add_expense: 'add_expense', add_income: 'add_income', add_debt_due_date: 'add_debt_due_date', active: 'active' }
 
-
-# the below is to be able to create our debt profile parameter by parameter
   def active?
     status == 'active'
   end
@@ -49,26 +47,23 @@ class Debt < ApplicationRecord
 
   # below is logic to create payment options object and payment object
   def create_payment_options
-        if self.income < self.expense
-          monthly_payment_principal_1 = 50
-        else
+    if self.income < self.expense
+      monthly_payment_principal_1 = 50
+    else
           monthly_payment_principal_1 = 0.1 * self.income
           monthly_payment_principal_2 = 0.2 * self.income
           monthly_payment_principal_3 = 0.3 * self.income
-        end
-
+    end
         monthly_payment_principal_1 = monthly_payment_principal_1.to_i
         monthly_payment_principal_2 = monthly_payment_principal_2.to_i
         monthly_payment_principal_3 = monthly_payment_principal_3.to_i
-
         # for debt breakdown
         monthly_payment_principal_0 = self.monthly_principal_amount
-
         # get "final_payment_date"
         num_month_payoff_1 = self.original_principal / monthly_payment_principal_1
-        if num_month_payoff_1.is_a?(Float)
-          num_month_payoff_1 = num_month_payoff_1.floor + 1
-        end
+    if num_month_payoff_1.is_a?(Float)
+        num_month_payoff_1 = num_month_payoff_1.floor + 1
+    end
         # month takes to finish payoff
         num_month_payoff_1 = num_month_payoff_1.to_i
 
