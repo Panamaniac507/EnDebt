@@ -23,7 +23,7 @@
             <div class="">
               <% if payment.status === 1 %>
                 <h6>Did you pay this Month?</h6>
-                <%= link_to "YES! I did!", payment_options_paid_path(debt_id: @debt.id, payment: true), data: { turbo: false }, class: "btn btn-select", style: "align-items: center;" %>
+                <%= link_to "Yes, I did!", payment_options_paid_path(debt_id: @debt.id, payment: true), data: { turbo: false }, class: "btn btn-select", style: "align-items: center;" %>
               <% elsif payment.status === 3 %>
                 <h5>Good Job and No Debt Anymore!</h5>
                 <%= image_tag 'celebrate.svg', style: 'height:200px;width:auto;'%>
